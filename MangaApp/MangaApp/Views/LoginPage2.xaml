@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MangaApp.Views.LoginPage2">
+    <ContentPage.Content>
+        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+            <Label Text="Login" FontSize="Large" HorizontalOptions="CenterAndExpand"></Label>
+            <StackLayout Padding="40" VerticalOptions="Center"
+                     HorizontalOptions="FillAndExpand">
+                <Label  Text="Email:"/>
+                <Entry x:Name="email" Placeholder="Email"/>
+                <Label Text="Password:"/>
+                <Entry x:Name="password" IsPassword="True" Placeholder="Password"/>
+                <Button Text="Login" Clicked="Button_Clicked_1"/>
+                <Label Text="Register" HorizontalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
