@@ -4,13 +4,24 @@
              x:Class="MangaApp.Views.Reading">
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="lstdslh" >
+            <CarouselView x:Name="lstdslh">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding ListImage}"
+                               Aspect="AspectFill"
+                               HeightRequest="200"
+                               WidthRequest="200"
+                               HorizontalOptions="Center" />
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <!--<ListView x:Name="lstdslh" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding ListImage}" Detail="{Binding ChapterID} "/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </ListView>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
