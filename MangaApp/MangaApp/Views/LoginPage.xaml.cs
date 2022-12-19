@@ -39,5 +39,9 @@ namespace MangaApp.Views
             await Application.Current.MainPage.Navigation.PopAsync();
             Application.Current.MainPage = new AppShell();
         }
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PopAsync();
+        }
     }
 }

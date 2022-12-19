@@ -40,5 +40,10 @@ namespace MangaApp.Views
                 await DisplayAlert("OPPSIE", "Wrong password or email", "Yes");
             }
         }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new LoginPage());
+        }
     }
 }

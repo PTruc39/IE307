@@ -1,10 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MangaApp.Views.Reading">
+             x:Class="MangaApp.Views.Reading"
+             Shell.NavBarIsVisible="true"
+             Shell.TabBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout>
-            <CarouselView x:Name="lstdslh">
+            <Label x:Name=" currentItem"
+                   FontSize="25"/>
+            <Button Text="Scroll to 2"
+                Clicked="Button_Clicked" />
+            <Entry x:Name="Phone" Placeholder="Phone Number" Keyboard="Numeric"/>
+            <CarouselView x:Name="lstdslh"
+                          CurrentItemChanged="lstdslh_CurrentItemChanged"
+                          PositionChanged="lstdslh_PositionChanged">
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
                         <Image Source="{Binding ListImage}"

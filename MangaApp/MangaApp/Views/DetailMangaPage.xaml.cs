@@ -30,7 +30,7 @@ namespace MangaApp.Views
         public DetailMangaPage(Manga manga)
         {
             InitializeComponent();
-            MangaImage.Text = manga.MangaImage;
+            MangaImage.Source = manga.MangaImage;
             MangaName.Text = manga.MangaName;
             Description.Text = manga.Description;
             GetChapterList(manga);

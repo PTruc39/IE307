@@ -5,7 +5,11 @@
     <ContentPage.Content>
         <StackLayout>
             <Label x:Name="MangaName"/>
-            <Label x:Name="MangaImage"/>
+            <Image x:Name="MangaImage"
+                   Aspect="AspectFill"
+                  HeightRequest="100"
+                   WidthRequest="100"
+                   HorizontalOptions="Center" />
             <Label x:Name="Description"/>
             <ListView x:Name="lstdslh" ItemSelected="lstdslh_ItemSelected">
                 <ListView.ItemTemplate>

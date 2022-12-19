@@ -16,6 +16,7 @@ namespace MangaApp.Views
     public partial class Reading : ContentPage
     {
         Host host = new Host();
+        int length;
         public Reading()
         {
             InitializeComponent();
@@ -27,11 +28,32 @@ namespace MangaApp.Views
                 (host.url + "api/chapter/GetListByChapter?ChapterID=" + chapter.ChapterID.ToString());
             var dslh = JsonConvert.DeserializeObject<List<ListImg>>(kq);
             lstdslh.ItemsSource = dslh;
+            length = dslh.Count;
         }
         public Reading(Chapter chapter)
         {
             InitializeComponent();
             GetChapterList(chapter);
+        }
+
+        private void lstdslh_CurrentItemChanged(object sender, CurrentItemChangedEventArgs e)
+        {
+            
+        }
+
+        private void lstdslh_PositionChanged(object sender, PositionChangedEventArgs e)
+        {
+            try
+            {
+                int curr = e.CurrentPosition;
+                currentItem.Text = $"Position:{curr}";
+            }
+            catch { }
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            lstdslh.ScrollTo(2, position: ScrollToPosition.MakeVisible, animate: true);
         }
     }
 }

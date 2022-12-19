@@ -9,7 +9,7 @@
     <ContentPage.Content>
         
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Label Text="LOGIN" FontSize="Large" HorizontalOptions="CenterAndExpand"></Label>
+            <Label Text="REGISTER" FontSize="Large" HorizontalOptions="CenterAndExpand"></Label>
             <StackLayout Padding="40" VerticalOptions="Center"
                      HorizontalOptions="FillAndExpand">
                 <Label Text="Username:"/>
@@ -21,7 +21,8 @@
                 <Button Text="Register" Clicked="Button_Clicked_1"/>
                 <Label Text="Login" HorizontalOptions="Center">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer/>
+                        <TapGestureRecognizer
+                            Tapped="TapGestureRecognizer_Tapped"/>
                     </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
