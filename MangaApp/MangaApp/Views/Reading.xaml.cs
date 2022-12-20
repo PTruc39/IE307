@@ -53,7 +53,11 @@ namespace MangaApp.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            lstdslh.ScrollTo(2, position: ScrollToPosition.MakeVisible, animate: true);
+            int page = 0;
+            if (pagenum.Text != null && pagenum.Text != "")
+                page = Int32.Parse(pagenum.Text);
+
+            lstdslh.ScrollTo(page, position: ScrollToPosition.MakeVisible, animate: true);
         }
     }
 }

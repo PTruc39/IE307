@@ -11,6 +11,9 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding MangaName}" Detail="{Binding Description} ">
+                            <TextCell.ContextActions>
+                                <MenuItem Clicked="MenuItem_Clicked" Text="Delete favorite"  CommandParameter="{Binding .}"></MenuItem>
+                            </TextCell.ContextActions>
                         </TextCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

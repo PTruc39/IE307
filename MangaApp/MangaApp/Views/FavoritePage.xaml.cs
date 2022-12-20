@@ -15,6 +15,7 @@ namespace MangaApp.Views
     {
         Host host = new Host();
         HttpClient http = new HttpClient();
+        HttpClient client = new HttpClient();
         async void LayDSLoaiHoa()
         {
             var kq = await http.GetStringAsync
@@ -41,6 +42,18 @@ namespace MangaApp.Views
 
             Manga manga = (Manga)lstdslh.SelectedItem;
             Navigation.PushAsync(new DetailMangaPage(manga));
+        }
+
+        private async void MenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = (MenuItem)sender;
+            Manga manga = menuItem.CommandParameter as Manga;
+            Favorite favorite = new Favorite();
+            favorite.mangaID = manga.MangaID;
+            favorite.userID = User.userID;
+            var json = JsonConvert.SerializeObject(favorite);
+            var noidung = new StringContent(json, Encoding.UTF8, "application/json");
+            var apires = await client.PostAsync(host.url + "api/user/DeleteFavorite", noidung);
         }
 
         private void Button_Clicked(object sender, EventArgs e)

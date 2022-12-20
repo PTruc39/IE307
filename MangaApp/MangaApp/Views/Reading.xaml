@@ -10,7 +10,7 @@
                    FontSize="25"/>
             <Button Text="Scroll to 2"
                 Clicked="Button_Clicked" />
-            <Entry x:Name="Phone" Placeholder="Phone Number" Keyboard="Numeric"/>
+            <Entry x:Name="pagenum" Placeholder="Page" Keyboard="Numeric"/>
             <CarouselView x:Name="lstdslh"
                           CurrentItemChanged="lstdslh_CurrentItemChanged"
                           PositionChanged="lstdslh_PositionChanged">
