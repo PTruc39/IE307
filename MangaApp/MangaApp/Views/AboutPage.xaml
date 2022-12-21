@@ -24,6 +24,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>-->
+           
             <Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -83,7 +84,11 @@
                     </ScrollView>
                 </StackLayout>
                 <ScrollView Grid.Row="2" Margin="0,10" VerticalScrollBarVisibility="Never">
-                    <StackLayout BackgroundColor="Transparent" BindableLayout.ItemsSource="{Binding Mangas}" BindableLayout.EmptyView="No achievements">
+                    <StackLayout BackgroundColor="Transparent" BindableLayout.ItemsSource="{Binding Mangas}" >
+                        <BindableLayout.EmptyView>
+                            <ActivityIndicator IsRunning="True" IsVisible="true" x:Name="loading"/>
+
+                        </BindableLayout.EmptyView>
                         <BindableLayout.ItemTemplate>
                             <!--<ListView x:Name="lstdslh" ItemSelected="lstdslh_ItemSelected">
                         <ListView.ItemTemplate>-->

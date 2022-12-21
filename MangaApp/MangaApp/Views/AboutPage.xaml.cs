@@ -4,28 +4,40 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 
-namespace MangaApp.Views
+namespace MangaApp.Views 
 {
     
-    public partial class AboutPage : ContentPage
+    public partial class AboutPage : INotifyPropertyChanged
     {
         Host host = new Host();
         HttpClient client = new HttpClient();
         public List<Manga> dslh;
-        public ObservableCollection<Manga> Mangas { get; set; }
+        public ObservableCollection<Manga> _employees;
 
-        public async void LayDSLoaiHoa()
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            List<Manga> dslh = null;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            
+        }
+        public ObservableCollection<Manga> Mangas
+        {
+            get { return _employees; }
+            set { _employees = value; OnPropertyChanged(); }
+        }
+        public async Task<ObservableCollection<Manga>> LayDSLoaiHoa()
+        {
+            //List<Manga> dslh = null;
             HttpClient http = new HttpClient();
             var kq = await http.GetStringAsync
                 (host.url+"api/manga/GetMangaList");
-            Mangas = JsonConvert.DeserializeObject<ObservableCollection<Manga>>(kq);
+            return await Task.FromResult(JsonConvert.DeserializeObject<ObservableCollection<Manga>>(kq));
             /*foreach (var item in dslh)
             {
                 Mangas.Add(new Manga() { MangaName = item.MangaName, MangaID = item.MangaID, MangaImage = item.MangaImage, Description = item.Description });
@@ -37,7 +49,11 @@ namespace MangaApp.Views
         public AboutPage()
         {
             InitializeComponent();
-            LayDSLoaiHoa();
+            //Mangas = LayDSLoaiHoa();
+            Task.Run(async () =>
+            {
+                Mangas = await LayDSLoaiHoa();
+            });
             this.BindingContext = this;
         }
 
@@ -47,6 +63,15 @@ namespace MangaApp.Views
             //Manga manga = (Manga)lstdslh.SelectedItem;
             //Navigation.PushAsync(new DetailMangaPage(manga));
         }
+
+        private async void PropertySelected(object sender, EventArgs e)
+        {
+            var manga = (sender as View).BindingContext as Manga;
+            await this.Navigation.PushAsync(new DetailMangaPage(manga));
+
+
+        }
+
 
         private async void MenuItem_Clicked(object sender, EventArgs e)
         {
@@ -92,13 +117,13 @@ namespace MangaApp.Views
             };
         }
 
-        private async void PropertySelected(object sender, EventArgs e)
+        /*private async void PropertySelected(object sender, EventArgs e)
         {
             var manga = (sender as View).BindingContext as Manga;
             await this.Navigation.PushAsync(new DetailMangaPage(manga));
 
 
-        }
+        }*/
 
         private void SelectType(object sender, EventArgs e)
         {
