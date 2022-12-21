@@ -46,7 +46,7 @@
                 <StackLayout Grid.Row="1">
                     <Label Text="Property Type" TextColor="#515151" FontSize="15" FontFamily="ThemeFontBold"/>
                     <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                        <StackLayout Orientation="Horizontal" Spacing="10" BindableLayout.ItemsSource="{Binding PropertyTypeList}">
+                        <StackLayout Orientation="Horizontal" Spacing="10" BindableLayout.ItemsSource="{Binding Categorys}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
                                     <pv:PancakeView CornerRadius="15" Margin="5,10,0,10" HasShadow="True" BackgroundColor="White">
@@ -76,7 +76,7 @@
                                                 </VisualState>
                                             </VisualStateGroup>
                                         </VisualStateManager.VisualStateGroups>
-                                        <Label x:Name="PropertyTypeName" Padding="20,5" Text="{Binding TypeName}" TextColor="#707070" FontSize="15" FontFamily="ThemeFontRegular"/>
+                                        <Label x:Name="PropertyTypeName" Padding="20,5" Text="{Binding categoryName}" TextColor="#707070" FontSize="15" FontFamily="ThemeFontRegular"/>
                                     </pv:PancakeView>
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
@@ -103,7 +103,11 @@
                                             <TapGestureRecognizer Tapped="PropertySelected"/>
                                         </Grid.GestureRecognizers>
                                         <Image HeightRequest="115" Aspect="AspectFill" Source="{Binding MangaImage}"/>
-                                        <Image Source="bookmark.png" HorizontalOptions="End" Margin="12" HeightRequest="16" VerticalOptions="Start"/>
+                                        <Image Source="FavouriteBlackIcon.png" HorizontalOptions="End" Margin="12" HeightRequest="16" VerticalOptions="Start">
+                                            <Image.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="ImgAddToWishlist" Tapped="ImgAddToWishlist_Tapped"/>
+                                        </Image.GestureRecognizers>
+                                        </Image>
                                         <Grid VerticalOptions="End" Margin="15">
                                             <pv:PancakeView CornerRadius="13" Padding="15,5" BackgroundColor="Black" Opacity="0.5" 
                                                     HorizontalOptions="Start" VerticalOptions="Start">

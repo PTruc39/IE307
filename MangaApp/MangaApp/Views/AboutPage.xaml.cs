@@ -15,10 +15,12 @@ namespace MangaApp.Views
     
     public partial class AboutPage : INotifyPropertyChanged
     {
+        public int favouriteTapCount = 0;
         Host host = new Host();
         HttpClient client = new HttpClient();
         public List<Manga> dslh;
         public ObservableCollection<Manga> _employees;
+        public ObservableCollection<Category> _Categorys;
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -31,6 +33,11 @@ namespace MangaApp.Views
             get { return _employees; }
             set { _employees = value; OnPropertyChanged(); }
         }
+        public ObservableCollection<Category> Categorys
+        {
+            get { return _Categorys; }
+            set { _Categorys = value; OnPropertyChanged(); }
+        }
         public async Task<ObservableCollection<Manga>> LayDSLoaiHoa()
         {
             //List<Manga> dslh = null;
@@ -38,13 +45,17 @@ namespace MangaApp.Views
             var kq = await http.GetStringAsync
                 (host.url+"api/manga/GetMangaList");
             return await Task.FromResult(JsonConvert.DeserializeObject<ObservableCollection<Manga>>(kq));
-            /*foreach (var item in dslh)
-            {
-                Mangas.Add(new Manga() { MangaName = item.MangaName, MangaID = item.MangaID, MangaImage = item.MangaImage, Description = item.Description });
-            }*/
             //lstdslh.ItemsSource = Mangas;
             //lstdslh2.ItemsSource = dslh;
             //this.BindingContext = this;
+        }
+        public async Task<int> GetCategory()
+        {
+            HttpClient http = new HttpClient();
+            var kq = await http.GetStringAsync
+                (host.url + "api/category/GetCategory");
+            Categorys = JsonConvert.DeserializeObject<ObservableCollection<Category>>(kq);
+            return 0;
         }
         public AboutPage()
         {
@@ -53,6 +64,7 @@ namespace MangaApp.Views
             Task.Run(async () =>
             {
                 Mangas = await LayDSLoaiHoa();
+                await GetCategory();
             });
             this.BindingContext = this;
         }
@@ -84,39 +96,31 @@ namespace MangaApp.Views
             var noidung = new StringContent(json, Encoding.UTF8, "application/json");
             var apires = await client.PostAsync(host.url+"api/user/AddFavorite", noidung);
         }
-
-
-
-
-
-
-
-
-        public List<PropertyType> PropertyTypeList => GetPropertyTypes();
-        public List<Property> PropertyList => GetProperties();
-
-        private List<PropertyType> GetPropertyTypes()
+        private async void ImgAddToWishlist_Tapped(object sender, EventArgs e)
         {
-            return new List<PropertyType>
-            {
-                new PropertyType { TypeName = "All" },
-                new PropertyType { TypeName = "Studio" },
-                new PropertyType { TypeName = "4 Bed" },
-                new PropertyType { TypeName = "3 Bed" },
-                new PropertyType { TypeName = "Office" }
-            };
+            
+              var manga = (sender as View).BindingContext as Manga;
+             Favorite favorite = new Favorite();
+            favorite.mangaID = manga.MangaID;
+            favorite.userID = User.userID;
+            var json = JsonConvert.SerializeObject(favorite);
+            var noidung = new StringContent(json, Encoding.UTF8, "application/json");
+            var apires = await client.PostAsync(host.url + "api/user/AddFavorite", noidung);
+             
+            favouriteTapCount++;
+            Image img = (Image)sender;
+            img.Source = favouriteTapCount % 2 == 0 ? "FavouriteBlackIcon.png" : "FavouriteRedIcon.png";
         }
 
-        private List<Property> GetProperties()
-        {
-            return new List<Property>
-            {
-                new Property { Image = "apt1.png", Address = "2162 Patricia Ave, LA", Location = "Califonia", Price = "$1500/mo", Bed = "4 Bed", Bath = "3 Bath", Space = "1600 sqft", Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Bibendum est ultricies integer quis. Iaculis urna id volutpat lacus laoreet. Mauris vitae ultricies leo integer malesuada. Ac odio tempor orci dapibus ultrices in. Egestas diam in arcu cursus euismod. Dictum fusce ut" },
-                new Property { Image = "apt2.png", Address = "2168 Cushions Dr, LA", Location = "Califonia", Price = "$1000/mo", Bed = "3 Bed", Bath = "1 Bath", Space = "1100 sqft", Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Bibendum est ultricies integer quis. Iaculis urna id volutpat lacus laoreet. Mauris vitae ultricies leo integer malesuada. Ac odio tempor orci dapibus ultrices in. Egestas diam in arcu cursus euismod. Dictum fusce ut" },
-                new Property { Image = "apt3.png", Address = "2112 Anthony Way, LA", Location = "Califonia", Price = "$900/mo", Bed = "2 Bed", Bath = "2 Bath", Space = "1200 sqft", Details = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Bibendum est ultricies integer quis. Iaculis urna id volutpat lacus laoreet. Mauris vitae ultricies leo integer malesuada. Ac odio tempor orci dapibus ultrices in. Egestas diam in arcu cursus euismod. Dictum fusce ut" },
-            };
-        }
 
+
+
+
+
+
+      
+
+        
         /*private async void PropertySelected(object sender, EventArgs e)
         {
             var manga = (sender as View).BindingContext as Manga;
@@ -125,8 +129,18 @@ namespace MangaApp.Views
 
         }*/
 
-        private void SelectType(object sender, EventArgs e)
+        private async void SelectType(object sender, EventArgs e)
         {
+            var category = (sender as View).BindingContext as Category;
+            //DisplayAlert("Test thu coi chon dc ko", category.categoryName, "yes", "no");
+            var kq = await client.GetStringAsync
+               (host.url + "api/manga/GetMangaByCategory?categoryID=" + category.categoryID.ToString());
+            //Mangas = JsonConvert.DeserializeObject<ObservableCollection<Manga>>(kq);
+            await Task.Run(async () =>
+            {
+                Mangas = JsonConvert.DeserializeObject<ObservableCollection<Manga>>(kq);
+            });
+
             var view = sender as View;
             var parent = view.Parent as StackLayout;
 
@@ -147,25 +161,6 @@ namespace MangaApp.Views
             if (txtCtrl != null)
                 txtCtrl.TextColor = Color.FromHex(hexColor);
         }
-    }
-
-    public class PropertyType
-    {
-        public string TypeName { get; set; }
-    }
-
-    public class Property
-    {
-        public string Id => Guid.NewGuid().ToString("N");
-        public string PropertyName { get; set; }
-        public string Image { get; set; }
-        public string Address { get; set; }
-        public string Location { get; set; }
-        public string Price { get; set; }
-        public string Bed { get; set; }
-        public string Bath { get; set; }
-        public string Space { get; set; }
-        public string Details { get; set; }
     }
     /*private void Button_Clicked(object sender, EventArgs e)
     {
