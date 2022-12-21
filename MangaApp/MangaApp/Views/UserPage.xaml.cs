@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -10,7 +11,8 @@ using Xamarin.Forms.Xaml;
 
 namespace MangaApp.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    //[XamlCompilation(XamlCompilationOptions.Compile)]
+    [DesignTimeVisible(false)]
     public partial class UserPage : ContentPage
     {
         Host host = new Host();
@@ -20,13 +22,18 @@ namespace MangaApp.Views
             var kq = await http.GetStringAsync
                 (host.url + "api/userInfor/GetUserByID?userID=" + User.userID.ToString());
             var dslh = JsonConvert.DeserializeObject<List<User>>(kq);
-            name.Text = dslh[0].userName;
-            email.Text = dslh[0].email;
+            /*name.Text = dslh[0].userName;
+            email.Text = dslh[0].email;*/
         }
         public UserPage()
         {
             InitializeComponent();
-            LayDSLoaiHoa();
+            //this.BindingContext = this;
         }
+
+
+
+
+
     }
 }
