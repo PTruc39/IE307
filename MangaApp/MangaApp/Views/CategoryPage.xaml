@@ -4,6 +4,18 @@
              x:Class="MangaApp.Views.CategoryPage">
     <ContentPage.Content>
         <StackLayout>
+            <Frame HasShadow="True" Margin="0,5" Padding="0" HeightRequest="70" HorizontalOptions="FillAndExpand">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Image HeightRequest="20" WidthRequest="20" Margin="20,0" Source="search.png"/>
+                    <Entry Grid.Column="1" Placeholder="Search" TextColor="Black" FontSize="15" FontFamily="ThemeFontRegular" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                    <!--<Image Grid.Column="2" HeightRequest="20" WidthRequest="20" Margin="20,0" Source="filter.png"/>-->
+                </Grid>
+            </Frame>
             <Picker x:Name="categoryPicker"
                     Title="PICKKK"
                     TitleColor="Blue"

@@ -25,24 +25,35 @@
                 </ListView.ItemTemplate>
             </ListView>-->
            
-            <Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20">
+            <Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Frame HasShadow="True" Margin="0,20" Padding="0" HeightRequest="40" HorizontalOptions="FillAndExpand">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Image HeightRequest="20" WidthRequest="20" Margin="20,0" Source="search.png"/>
-                        <Entry Grid.Column="1" Placeholder="Search" TextColor="Black" FontSize="15" FontFamily="ThemeFontRegular" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
-                        <!--<Image Grid.Column="2" HeightRequest="20" WidthRequest="20" Margin="20,0" Source="filter.png"/>-->
-                    </Grid>
-                </Frame>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <CarouselView x:Name="Carousel" IndicatorView="IndicatorView"
+                          HeightRequest="200">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                                <Image Source="{Binding MangaImage}" Aspect="AspectFill">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer x:Name="CarouselTap" Tapped="PropertySelected"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                    <IndicatorView x:Name="IndicatorView" Grid.Row="1"
+                IndicatorColor="Gray"
+                SelectedIndicatorColor="DarkGray"
+                IndicatorSize="10"
+                           VerticalOptions="Center"/>
+                </Grid>
                 <StackLayout Grid.Row="1">
                     <Label Text="Property Type" TextColor="#515151" FontSize="15" FontFamily="ThemeFontBold"/>
                     <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
@@ -83,7 +94,7 @@
                         </StackLayout>
                     </ScrollView>
                 </StackLayout>
-                <ScrollView Grid.Row="2" Margin="0,10" VerticalScrollBarVisibility="Never">
+                <ScrollView Grid.Row="2" Margin="0" VerticalScrollBarVisibility="Never">
                     <StackLayout BackgroundColor="Transparent" BindableLayout.ItemsSource="{Binding Mangas}" >
                         <BindableLayout.EmptyView>
                             <ActivityIndicator IsRunning="True" IsVisible="true" x:Name="loading"/>

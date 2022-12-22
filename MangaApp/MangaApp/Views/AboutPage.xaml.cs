@@ -65,7 +65,15 @@ namespace MangaApp.Views
             {
                 Mangas = await LayDSLoaiHoa();
                 await GetCategory();
+                Carousel.ItemsSource = Mangas.Take(5);
+
             });
+            Device.StartTimer(TimeSpan.FromSeconds(2), (Func<bool>)(() =>
+            {
+                Carousel.Position = (Carousel.Position + 1) % 5;
+                return true;
+            }));
+
             this.BindingContext = this;
         }
 
@@ -161,6 +169,7 @@ namespace MangaApp.Views
             if (txtCtrl != null)
                 txtCtrl.TextColor = Color.FromHex(hexColor);
         }
+
     }
     /*private void Button_Clicked(object sender, EventArgs e)
     {
