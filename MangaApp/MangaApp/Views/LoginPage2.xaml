@@ -4,22 +4,25 @@
              x:Class="MangaApp.Views.LoginPage2"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Label Text="Login" FontSize="Large" HorizontalOptions="CenterAndExpand"></Label>
-            <StackLayout Padding="40" VerticalOptions="Center"
+        <Grid Margin="0">
+            <Image Margin="0" Source="loginBG.png" Aspect="AspectFill"/>
+            <StackLayout Margin="20" VerticalOptions="Center">
+                <Label Text="Login" FontSize="Large" HorizontalOptions="CenterAndExpand"></Label>
+                <StackLayout VerticalOptions="Center"
                      HorizontalOptions="FillAndExpand">
-                <Label  Text="Email:"/>
-                <Entry x:Name="email" Placeholder="Email"/>
-                <Label Text="Password:"/>
-                <Entry x:Name="password" IsPassword="True" Placeholder="Password"/>
-                <Button Text="Login" Clicked="Button_Clicked_1"/>
-                <Label Text="Register" HorizontalOptions="Center">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer
+                    <Label  Text="Email:"/>
+                    <Entry x:Name="email" Placeholder="Email"/>
+                    <Label Text="Password:"/>
+                    <Entry x:Name="password" IsPassword="True" Placeholder="Password"/>
+                    <Button Text="Login" Clicked="Button_Clicked_1"/>
+                    <Label Text="Register" HorizontalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
                             Tapped="TapGestureRecognizer_Tapped"/>
-                    </Label.GestureRecognizers>
-                </Label>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

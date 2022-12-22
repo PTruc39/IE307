@@ -16,6 +16,7 @@ namespace MangaApp.Views
     public partial class DetailMangaPage : ContentPage
     {
         Host host = new Host();
+        public List<Chapter> dslh;
         public int favouriteTapCount = 0;
         public ObservableCollection<Manga> Mangas { get; set; }
         HttpClient http = new HttpClient();
@@ -33,7 +34,7 @@ namespace MangaApp.Views
         {
             var kq = await http.GetStringAsync
                 (host.url+"api/chapter/GetChapterByManga?MangaID="+manga.MangaID.ToString());
-            var dslh = JsonConvert.DeserializeObject<List<Chapter>>(kq);
+            dslh = JsonConvert.DeserializeObject<List<Chapter>>(kq);
             lstdslh.ItemsSource = dslh;
         }
         public DetailMangaPage(Manga manga)
@@ -41,9 +42,6 @@ namespace MangaApp.Views
             InitializeComponent();
             this.Manga = manga;
             this.BindingContext = this;
-           // MangaImage.Source = manga.MangaImage;
-          //  MangaName.Text = manga.MangaName;
-           // Description.Text = manga.Description;
             GetChapterList(manga);
         }
         public Manga Manga { get; set; }
@@ -66,6 +64,7 @@ namespace MangaApp.Views
         }
         private void ReadNow(object sender, EventArgs e)
         {
+            Navigation.PushAsync(new Reading(dslh[0]));
         }
 
         protected override void OnAppearing()
