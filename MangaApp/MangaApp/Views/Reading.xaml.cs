@@ -16,24 +16,28 @@ namespace MangaApp.Views
     public partial class Reading : ContentPage
     {
         Host host = new Host();
+        Chapter chap = new Chapter();
+        public List<Chapter> listchaps;
         int length;
         public Reading()
         {
             InitializeComponent();
         }
-        async void GetChapterList(Chapter chapter)
+        async void GetChapterList(int ChapterID)
         {
             HttpClient http = new HttpClient();
             var kq = await http.GetStringAsync
-                (host.url + "api/chapter/GetListByChapter?ChapterID=" + chapter.ChapterID.ToString());
+                (host.url + "api/chapter/GetListByChapter?ChapterID=" + ChapterID.ToString());
             var dslh = JsonConvert.DeserializeObject<List<ListImg>>(kq);
             lstdslh.ItemsSource = dslh;
             length = dslh.Count;
         }
-        public Reading(Chapter chapter)
+        public Reading(Chapter chapter, List<Chapter> listchapter)
         {
             InitializeComponent();
-            GetChapterList(chapter);
+            GetChapterList(chapter.ChapterID);
+            listchaps = listchapter;
+            chap = chapter;
         }
 
         private void lstdslh_CurrentItemChanged(object sender, CurrentItemChangedEventArgs e)
@@ -58,6 +62,35 @@ namespace MangaApp.Views
                 page = Int32.Parse(pagenum.Text);
 
             lstdslh.ScrollTo(page, position: ScrollToPosition.MakeVisible, animate: true);
+        }
+
+        private void Button_Clicked_back(object sender, EventArgs e)
+        {
+            int index = listchaps.FindIndex(item => item.ChapterID == chap.ChapterID-1);
+            if(index != -1)
+            {
+                GetChapterList(chap.ChapterID - 1);
+                chap = listchaps[index];
+            }
+            else
+            {
+                DisplayAlert("no", "ko co chap de back nua", "no", "no");
+            }
+        }
+
+        private void Button_Clicked_next(object sender, EventArgs e)
+        {
+            int index = listchaps.FindIndex(item => item.ChapterID == chap.ChapterID + 1);
+            if (index != -1)
+            {
+                GetChapterList(chap.ChapterID + 1);
+                chap = listchaps[index];
+            }
+            else
+            {
+                DisplayAlert("no", "ko co chap de next nua", "no", "no");
+            }
+
         }
     }
 }

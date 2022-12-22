@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              x:Class="MangaApp.Views.LoginPage"
              Shell.TabBarIsVisible="False"
+             Shell.NavBarIsVisible="False"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <Grid Margin="0">

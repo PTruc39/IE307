@@ -7,9 +7,9 @@
     <ContentPage.Content>
         <Grid Margin="0">
             <Image Margin="0" Source="loginBG.png" Aspect="AspectFill"/>
-            <StackLayout Margin="20" VerticalOptions="Center">
+            <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
                 <Label Text="Login" FontSize="Large" HorizontalOptions="CenterAndExpand"></Label>
-                <StackLayout VerticalOptions="Center"
+                <StackLayout Padding="40" VerticalOptions="Center"
                      HorizontalOptions="FillAndExpand">
                     <Label  Text="Email:"/>
                     <Entry x:Name="email" Placeholder="Email"/>
