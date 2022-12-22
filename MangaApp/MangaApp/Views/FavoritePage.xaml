@@ -1,20 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MangaApp.Views.FavoritePage">
+             x:Class="MangaApp.Views.FavoritePage"
+             Title="My Favourite List">
     <ContentPage.Content>
         <StackLayout>
             <ListView x:Name="lstdslh" ItemSelected="lstdslh_ItemSelected"
-                       IsPullToRefreshEnabled="True"
-                       Refreshing="lsthotel_Refreshing"
+                      RowHeight="150"
+                      IsPullToRefreshEnabled="True"
+                      Refreshing="lsthotel_Refreshing"
                       RefreshControlColor="HotPink">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding MangaName}" Detail="{Binding Description} ">
-                            <TextCell.ContextActions>
-                                <MenuItem Clicked="MenuItem_Clicked" Text="Delete favorite"  CommandParameter="{Binding .}"></MenuItem>
-                            </TextCell.ContextActions>
-                        </TextCell>
+                        <ViewCell>
+                            <Grid Padding="5" RowSpacing="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1.2*"></RowDefinition>
+                                    <RowDefinition Height="0.9*"></RowDefinition>
+                                    <RowDefinition Height="0.9*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding MangaImage}" Aspect="AspectFit"
+                                       Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"/>
+                                <Label Text="{Binding MangaName}" TextColor="Black" 
+                                       FontSize="16" FontAttributes="Bold"
+                                       Grid.Column="1" Grid.Row="0"/>
+                                <Label Text="{Binding Description}" FontSize="15"
+                                       Grid.Column="1" Grid.Row="1"/>
+                            </Grid>
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="MenuItem_Clicked" Text="Delete favorite"  CommandParameter="{Binding .}">
+                                </MenuItem>
+                            </ViewCell.ContextActions>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

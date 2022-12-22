@@ -5,27 +5,30 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="MangaApp.Views.LoginPage"
-             Shell.NavBarIsVisible="False">
+             Shell.TabBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Label Text="REGISTER" FontSize="Large" HorizontalOptions="CenterAndExpand"></Label>
-            <StackLayout Padding="40" VerticalOptions="Center"
+        <Grid Margin="0">
+            <Image Margin="0" Source="loginBG.png" Aspect="AspectFill"/>
+            <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+                <Label Text="REGISTER" FontSize="Large" HorizontalOptions="CenterAndExpand"></Label>
+                <StackLayout Padding="40" VerticalOptions="Center"
                      HorizontalOptions="FillAndExpand">
-                <Label Text="Username:"/>
-                <Entry x:Name="username"  Placeholder="Username"/>
-                <Label  Text="Email:"/>
-                <Entry x:Name="email" Placeholder="Email"/>
-                <Label Text="Password:"/>
-                <Entry x:Name="password" IsPassword="True" Placeholder="Password"/>
-                <Button Text="Register" Clicked="Button_Clicked_1"/>
-                <Label Text="Login" HorizontalOptions="Center">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer
+                    <Label Text="Username:"/>
+                    <Entry x:Name="username"  Placeholder="Username"/>
+                    <Label  Text="Email:"/>
+                    <Entry x:Name="email" Placeholder="Email"/>
+                    <Label Text="Password:"/>
+                    <Entry x:Name="password" IsPassword="True" Placeholder="Password"/>
+                    <Button Text="Register" Clicked="Button_Clicked_1"/>
+                    <Label Text="Login" HorizontalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
                             Tapped="TapGestureRecognizer_Tapped"/>
-                    </Label.GestureRecognizers>
-                </Label>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

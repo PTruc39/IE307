@@ -31,9 +31,9 @@ namespace MangaApp.Views
             //this.BindingContext = this;
         }
 
-
-
-
-
+        private void Logout_Clicked(object sender, EventArgs e)
+        {
+            Shell.Current.Navigation.PopToRootAsync();
+        }
     }
 }

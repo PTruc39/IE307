@@ -11,7 +11,12 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Edit"/>
     </ContentPage.ToolbarItems>
-
+    <!--<ContentPage.Content>
+        <Button HorizontalOptions="Center" VerticalOptions="Center"
+                HeightRequest="50"
+                WidthRequest="100"
+                Text="Log Out" Clicked="Logout_Clicked"></Button>
+    </ContentPage.Content>-->
     <!--<Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
