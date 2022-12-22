@@ -55,7 +55,7 @@
                            VerticalOptions="Center"/>
                 </Grid>
                 <StackLayout Grid.Row="1">
-                    <Label Text="Property Type" TextColor="#515151" FontSize="15" FontFamily="ThemeFontBold"/>
+                    <Label Text="Tags" TextColor="#515151" FontSize="15" FontFamily="ThemeFontBold"/>
                     <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
                         <StackLayout Orientation="Horizontal" Spacing="10" BindableLayout.ItemsSource="{Binding Categorys}">
                             <BindableLayout.ItemTemplate>
