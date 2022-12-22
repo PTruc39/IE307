@@ -49,7 +49,7 @@ namespace MangaApp.Views
         {
 
             Chapter chapter = (Chapter)lstdslh.SelectedItem;
-            Navigation.PushAsync(new Reading(chapter));
+            Navigation.PushAsync(new Reading(chapter,dslh));
         }
         private void GoBack(object sender, EventArgs e)
         {
@@ -64,7 +64,7 @@ namespace MangaApp.Views
         }
         private void ReadNow(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Reading(dslh[0]));
+            Navigation.PushAsync(new Reading(dslh[0],dslh));
         }
 
         protected override void OnAppearing()
