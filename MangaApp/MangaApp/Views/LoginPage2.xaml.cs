@@ -32,8 +32,9 @@ namespace MangaApp.Views
             User.userID = int.Parse(userID);
             if (User.userID != 0)
             {
-                await Application.Current.MainPage.Navigation.PopAsync();
-                Application.Current.MainPage = new AppShell();
+                //await Application.Current.MainPage.Navigation.PopAsync();
+                //Application.Current.MainPage = new AppShell();
+                await Shell.Current.GoToAsync(state: "//AboutPage");
             }
             else
             {
@@ -41,9 +42,10 @@ namespace MangaApp.Views
             }
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new LoginPage());
+            //Navigation.PushAsync(new LoginPage());
+            await Shell.Current.GoToAsync(state: "//LoginPage");
         }
     }
 }

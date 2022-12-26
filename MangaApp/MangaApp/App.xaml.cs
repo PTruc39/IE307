@@ -14,8 +14,8 @@ namespace MangaApp
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            //MainPage = new AppShell();
-            MainPage = new NavigationPage(new LoginPage2());
+            MainPage = new AppShell();
+            //MainPage = new NavigationPage(new LoginPage2());
         }
 
         protected override void OnStart()

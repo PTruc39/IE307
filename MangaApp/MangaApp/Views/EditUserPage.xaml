@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MangaApp.Views.EditUserPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="save" Text="Save" Clicked="save_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid Margin="40" HeightRequest="50">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="User Name :" 
+                       FontSize="18" FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       Grid.Row="0" Grid.Column="0"/>
+            <Entry x:Name="username" 
+                       FontSize="18" FontAttributes="Bold"                      
+                       Grid.Row="0" Grid.Column="1"/>
+            <Label Text="Email :" 
+                       FontSize="18" FontAttributes="Bold"                      
+                       VerticalOptions="Center"                      
+                       Grid.Row="1" Grid.Column="0"/>
+            <Entry x:Name="email" 
+                       FontSize="18" FontAttributes="Bold"                     
+                       Grid.Row="1" Grid.Column="1"/>
+            <Label Text="Password :" 
+                       FontSize="18" FontAttributes="Bold"
+                       VerticalOptions="Center"                                            
+                       Grid.Row="2" Grid.Column="0"/>
+            <Entry x:Name="password" IsPassword="True"
+                       FontSize="18" FontAttributes="Bold"                     
+                       Grid.Row="2" Grid.Column="1"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
