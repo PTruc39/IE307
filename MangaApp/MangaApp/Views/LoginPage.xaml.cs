@@ -35,13 +35,15 @@ namespace MangaApp.Views
             User.userID = int.Parse(userID);
 
             await DisplayAlert("adsad", User.userID.ToString(), "sd", "no");
-            
-            await Application.Current.MainPage.Navigation.PopAsync();
-            Application.Current.MainPage = new AppShell();
+
+            //await Application.Current.MainPage.Navigation.PopAsync();
+            //Application.Current.MainPage = new AppShell();
+            await Shell.Current.GoToAsync(state: "//AboutPage");
+
         }
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            Navigation.PopAsync();
+            await Shell.Current.GoToAsync(state: "///LoginPage2");
         }
     }
 }

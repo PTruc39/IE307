@@ -9,14 +9,53 @@
              mc:Ignorable="d" NavigationPage.HasNavigationBar="False"
              x:Class="MangaApp.Views.UserPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Edit"/>
+        <ToolbarItem x:Name="edit" Text="Edit" Clicked="ToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>
-    <!--<ContentPage.Content>
-        <Button HorizontalOptions="Center" VerticalOptions="Center"
+    <ContentPage.Content>
+        <StackLayout x:Name="userInfor" VerticalOptions="Center" HorizontalOptions="Center">
+            <pv:PancakeView HeightRequest="150" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="Center" 
+                        CornerRadius="75" Margin="5,10,0,10" HasShadow="True" BackgroundColor="White">
+                <Image Source="avatar.jpg" Aspect="AspectFill"/>
+            </pv:PancakeView>
+            <Grid Margin="40">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="User Name :" 
+                       FontSize="18" FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       Grid.Row="0" Grid.Column="0"/>
+                <Entry x:Name="username" 
+                       FontSize="18" FontAttributes="Bold"                      
+                       IsEnabled="False" Grid.Row="0" Grid.Column="1"/>
+                <Label Text="Email :" 
+                       FontSize="18" FontAttributes="Bold"                      
+                       VerticalOptions="Center"                      
+                       Grid.Row="1" Grid.Column="0"/>
+                <Entry x:Name="email" IsEnabled="False" 
+                       FontSize="18" FontAttributes="Bold"                     
+                       Grid.Row="1" Grid.Column="1"/>
+                <Label Text="Password :" 
+                       FontSize="18" FontAttributes="Bold"
+                       VerticalOptions="Center"                                            
+                       Grid.Row="2" Grid.Column="0"/>
+                <Entry x:Name="password" IsPassword="True" 
+                       FontSize="18" FontAttributes="Bold"                     
+                       IsEnabled="False" Grid.Row="2" Grid.Column="1"/>
+            </Grid>
+           
+            <Button HorizontalOptions="Center" VerticalOptions="Center"
                 HeightRequest="50"
                 WidthRequest="100"
                 Text="Log Out" Clicked="Logout_Clicked"></Button>
-    </ContentPage.Content>-->
+        </StackLayout>
+    </ContentPage.Content>
     <!--<Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
