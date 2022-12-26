@@ -91,11 +91,11 @@
                                                
                                                 <Label Text="{Binding comment}"
                                    HorizontalOptions="Center" />
-                                                <Label Text="{Binding comment}"
+                                                <!--<Label Text="{Binding comment}"
                                    FontAttributes="Italic"
                                    HorizontalOptions="Center"
                                    MaxLines="5"
-                                   LineBreakMode="TailTruncation" />
+                                   LineBreakMode="TailTruncation" />-->
                                             </StackLayout>
                                         </Frame>
                                     </StackLayout>

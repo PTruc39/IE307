@@ -86,7 +86,7 @@ namespace MangaApp.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CommentPage(this.Manga));
+            Navigation.PushAsync(new CommentPage(this.Manga,cmt));
 
         }
     }
