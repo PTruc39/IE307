@@ -11,6 +11,7 @@
                 <RowDefinition Height="1.5*"/>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="Auto"/>
+
             </Grid.RowDefinitions>
             <Image Aspect="AspectFill" Source="{Binding Manga.MangaImage}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
             <ImageButton BackgroundColor="Transparent" Aspect="Fill" Source="back.png" Margin="25" WidthRequest="20" HeightRequest="13" 
@@ -56,27 +57,65 @@
                         <Label Text="Details" FontSize="15" FontFamily="ThemeFontBold" TextColor="#515151"/>
                         <Label Text="{Binding Manga.Description}"  FontSize="15" FontFamily="ThemeFontRegular" TextColor="#515151"/>
                         <Label Text="Chapter" FontSize="15" FontFamily="ThemeFontBold" TextColor="#515151"/>
-                        <ListView x:Name="lstdslh" ItemSelected="lstdslh_ItemSelected">
-                            <ListView.ItemTemplate>
+                        <ScrollView VerticalOptions="FillAndExpand"
+                                Orientation="Vertical">
+                            <ListView x:Name="lstdslh" ItemSelected="lstdslh_ItemSelected" RowHeight="30">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextCell Text="{Binding ChapterName}" Detail="{Binding MangaID} "/>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </ScrollView>
+                        <Button Text="write comment" Clicked="Button_Clicked"/>
+
+                        <CarouselView x:Name="lstdslh2"
+                  PeekAreaInsets="100" >
+                            <CarouselView.ItemTemplate>
                                 <DataTemplate>
-                                    <TextCell Text="{Binding ChapterName}" Detail="{Binding MangaID} "/>
+                                    <StackLayout>
+                                        <Frame HasShadow="True"
+                           BorderColor="DarkGray"
+                           CornerRadius="5"
+                           Margin="20"
+                           HeightRequest="350"
+                           WidthRequest="150"
+                           HorizontalOptions="Center"
+                           VerticalOptions="CenterAndExpand">
+                                            <StackLayout>
+                                                <Label Text="{Binding userName}" 
+                                   FontAttributes="Bold"
+                                   FontSize="Large"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center" />
+                                               
+                                                <Label Text="{Binding comment}"
+                                   HorizontalOptions="Center" />
+                                                <!--<Label Text="{Binding comment}"
+                                   FontAttributes="Italic"
+                                   HorizontalOptions="Center"
+                                   MaxLines="5"
+                                   LineBreakMode="TailTruncation" />-->
+                                            </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
                                 </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                            </CarouselView.ItemTemplate>
+                        </CarouselView>
                     </StackLayout>
                 </ScrollView>
             </pv:PancakeView>
             <pv:PancakeView Grid.Row="2" HeightRequest="50">
                 <pv:PancakeView.GestureRecognizers>
                     <TapGestureRecognizer Tapped="ReadNow"/>
-               </pv:PancakeView.GestureRecognizers>
+                </pv:PancakeView.GestureRecognizers>
                 <pv:PancakeView.BackgroundGradientStops>
-                        <pv:GradientStopCollection>
-                            <pv:GradientStop Color="#FF4157" Offset="0" />
-                            <pv:GradientStop Color="#FF4359" Offset="0.5" />
-                            <pv:GradientStop Color="#FE93C5" Offset="1" />
-                        </pv:GradientStopCollection>
-                    </pv:PancakeView.BackgroundGradientStops>
+                    <pv:GradientStopCollection>
+                        <pv:GradientStop Color="#FF4157" Offset="0" />
+                        <pv:GradientStop Color="#FF4359" Offset="0.5" />
+                        <pv:GradientStop Color="#FE93C5" Offset="1" />
+                    </pv:GradientStopCollection>
+                </pv:PancakeView.BackgroundGradientStops>
                 <Label Text="Read Now" TextColor="White" FontSize="15" FontFamily="ThemeFontBold" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
             </pv:PancakeView>
         </Grid>

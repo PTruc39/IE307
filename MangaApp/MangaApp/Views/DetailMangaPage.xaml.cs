@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using MangaApp.Models;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,6 +18,7 @@ namespace MangaApp.Views
     {
         Host host = new Host();
         public List<Chapter> dslh;
+        public List<Comment> cmt ;
         public int favouriteTapCount = 0;
         public ObservableCollection<Manga> Mangas { get; set; }
         HttpClient http = new HttpClient();
@@ -37,12 +39,20 @@ namespace MangaApp.Views
             dslh = JsonConvert.DeserializeObject<List<Chapter>>(kq);
             lstdslh.ItemsSource = dslh;
         }
+        async void GetComment(Manga manga)
+        {
+            var kq = await http.GetStringAsync
+                (host.url + "api/comment/GetCommentByManga?MangaID=" + manga.MangaID.ToString());
+            cmt = JsonConvert.DeserializeObject<List<Comment>>(kq);
+            lstdslh2.ItemsSource = cmt;
+        }
         public DetailMangaPage(Manga manga)
         {
             InitializeComponent();
             this.Manga = manga;
             this.BindingContext = this;
             GetChapterList(manga);
+            GetComment(manga);
         }
         public Manga Manga { get; set; }
         private void lstdslh_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -72,6 +82,12 @@ namespace MangaApp.Views
             base.OnAppearing();
             DetailsView.TranslationY = 600;
             DetailsView.TranslateTo(0, 0, 500, Easing.SinInOut);
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CommentPage(this.Manga,cmt));
+
         }
     }
 }
