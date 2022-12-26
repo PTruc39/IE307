@@ -11,7 +11,8 @@
              xmlns:vm="clr-namespace:MangaApp.ViewModels"
              Title="{Binding Title}">
     <ContentPage.Content>
-        <StackLayout>
+        <ScrollView>
+            <StackLayout>
             <!--<ListView x:Name="lstdslh" ItemSelected="lstdslh_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -29,8 +30,12 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+                    </Grid.RowDefinitions>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -94,8 +99,8 @@
                         </StackLayout>
                     </ScrollView>
                 </StackLayout>
-                <ScrollView Grid.Row="2" Margin="0" VerticalScrollBarVisibility="Never">
-                    <StackLayout BackgroundColor="Transparent" BindableLayout.ItemsSource="{Binding Mangas}" >
+                <ScrollView  Orientation="Horizontal" Grid.Row="2" Margin="0" VerticalScrollBarVisibility="Never">
+                    <StackLayout  Orientation="Horizontal" BackgroundColor="Transparent" BindableLayout.ItemsSource="{Binding Mangas}" >
                         <BindableLayout.EmptyView>
                             <ActivityIndicator IsRunning="True" IsVisible="true" x:Name="loading"/>
 
@@ -133,11 +138,11 @@
                                             <StackLayout Orientation="Horizontal" Spacing="15">
                                                 <StackLayout Orientation="Horizontal" Spacing="10">
                                                     <Image WidthRequest="16" Source="bed.png"/>
-                                                    <Label Text="{Binding MangaName}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
+                                                    <Label Text="{Binding Liked}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal" Spacing="10">
                                                     <Image WidthRequest="16" Source="shower.png"/>
-                                                    <Label Text="{Binding MangaName}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
+                                                    <Label Text="{Binding Liked}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal" Spacing="10">
                                                     <Image WidthRequest="16" Source="square.png"/>
@@ -153,8 +158,147 @@
                         </BindableLayout.ItemTemplate>
                     </StackLayout>
                 </ScrollView>
-            </Grid>
+                <!--TESTINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-->
+                    <StackLayout Grid.Row="3">
+                        <Label Text="NEWEST MANGA" TextColor="#515151" FontSize="15" FontFamily="ThemeFontBold"/>
+                        <!--<ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                            <StackLayout Orientation="Horizontal" Spacing="10" BindableLayout.ItemsSource="{Binding Categorys}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <pv:PancakeView CornerRadius="15" Margin="5,10,0,10" HasShadow="True" BackgroundColor="White">
+                                            <pv:PancakeView.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="SelectType"/>
+                                            </pv:PancakeView.GestureRecognizers>
+                                            <VisualStateManager.VisualStateGroups>
+                                                <VisualStateGroup x:Name="CommonStates">
+                                                    <VisualState x:Name="Normal">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundGradientStops" Value="{x:Null}"/>
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+                                                    <VisualState x:Name="Selected">
+                                                        <VisualState.Setters>
+                                                            <Setter Property="BackgroundGradientStops">
+                                                                <Setter.Value>
+                                                                    <pv:GradientStopCollection>
+                                                                        <pv:GradientStop Color="#FF4157" Offset="0" />
+                                                                        <pv:GradientStop Color="#FF4359" Offset="0.5" />
+                                                                        <pv:GradientStop Color="#FE93C5" Offset="1" />
+                                                                    </pv:GradientStopCollection>
+                                                                </Setter.Value>
+                                                            </Setter>
+                                                            <Setter Property="BackgroundGradientAngle" Value="270"/>
+                                                        </VisualState.Setters>
+                                                    </VisualState>
+                                                </VisualStateGroup>
+                                            </VisualStateManager.VisualStateGroups>
+                                            <Label x:Name="PropertyTypeName" Padding="20,5" Text="{Binding categoryName}" TextColor="#707070" FontSize="15" FontFamily="ThemeFontRegular"/>
+                                        </pv:PancakeView>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </ScrollView>-->
+                    </StackLayout>
+                    <ScrollView  Orientation="Horizontal" Grid.Row="4" Margin="0" VerticalScrollBarVisibility="Never">
+                        <StackLayout  Orientation="Horizontal" BackgroundColor="Transparent" BindableLayout.ItemsSource="{Binding Mangas2}" >
+                            <BindableLayout.EmptyView>
+                                <ActivityIndicator IsRunning="True" IsVisible="true" x:Name="loading2"/>
+
+                            </BindableLayout.EmptyView>
+                            <BindableLayout.ItemTemplate>
+                                <!--<ListView x:Name="lstdslh" ItemSelected="lstdslh_ItemSelected">
+                        <ListView.ItemTemplate>-->
+                                <DataTemplate>
+                                    <pv:PancakeView HeightRequest="190" Margin="5,10" CornerRadius="5" HasShadow="True" BackgroundColor="White">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="PropertySelected"/>
+                                            </Grid.GestureRecognizers>
+                                            <Image HeightRequest="115" Aspect="AspectFill" Source="{Binding MangaImage}"/>
+                                            <Image Source="FavouriteBlackIcon.png" HorizontalOptions="End" Margin="12" HeightRequest="16" VerticalOptions="Start">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer x:Name="ImgAddToWishlist" Tapped="ImgAddToWishlist_Tapped"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                            <Grid VerticalOptions="End" Margin="15">
+                                                <pv:PancakeView CornerRadius="13" Padding="15,5" BackgroundColor="Black" Opacity="0.5" 
+                                                    HorizontalOptions="Start" VerticalOptions="Start">
+                                                    <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Start">
+                                                        <Image HeightRequest="12" WidthRequest="12" Source="location.png" VerticalOptions="Center" HorizontalOptions="Start"/>
+                                                        <Label Text="{Binding MangaName}" FontSize="12" TextColor="White" FontFamily="ThemeFontRegular" VerticalOptions="Center"/>
+                                                    </StackLayout>
+                                                </pv:PancakeView>
+                                            </Grid>
+                                            <StackLayout Grid.Row="1" Spacing="5" Margin="20,5">
+                                                <Label Text="{Binding MangaName}" FontSize="15" FontFamily="ThemeFontBold" TextColor="#515151"/>
+                                                <StackLayout Orientation="Horizontal" Spacing="15">
+                                                    <StackLayout Orientation="Horizontal" Spacing="10">
+                                                        <Image WidthRequest="16" Source="bed.png"/>
+                                                        <Label Text="{Binding Liked}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Horizontal" Spacing="10">
+                                                        <Image WidthRequest="16" Source="shower.png"/>
+                                                        <Label Text="{Binding Liked}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
+                                                    </StackLayout>
+                                                    <StackLayout Orientation="Horizontal" Spacing="10">
+                                                        <Image WidthRequest="16" Source="square.png"/>
+                                                        <Label Text="{Binding MangaName}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Grid>
+                                    </pv:PancakeView>
+                                </DataTemplate>
+                                <!--</ListView.ItemTemplate>
+                    </ListView>-->
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </ScrollView>
+                    <StackLayout Grid.Row="5">
+                        <Label Text="TOP 10 MANGA FAVORITE" TextColor="#515151" FontSize="15" FontFamily="ThemeFontBold"/>
+                        
+                    </StackLayout>
+                    <ListView x:Name="lstdslh"   Grid.Row="6"
+                      RowHeight="150"
+                      IsPullToRefreshEnabled="True"
+                      
+                      RefreshControlColor="HotPink">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="5" RowSpacing="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1.2*"></RowDefinition>
+                                            <RowDefinition Height="0.9*"></RowDefinition>
+                                            <RowDefinition Height="0.9*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Source="{Binding MangaImage}" Aspect="AspectFit"
+                                       Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"/>
+                                        <Label Text="{Binding MangaName}" TextColor="Black" 
+                                       FontSize="16" FontAttributes="Bold"
+                                       Grid.Column="1" Grid.Row="0"/>
+                                        <Label Text="{Binding Description}" FontSize="15"
+                                       Grid.Column="1" Grid.Row="1"/>
+                                    </Grid>
+                                    <!--<ViewCell.ContextActions>
+                                        <MenuItem Clicked="MenuItem_Clicked" Text="Delete favorite"  CommandParameter="{Binding .}">
+                                        </MenuItem>
+                                    </ViewCell.ContextActions>-->
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
     <!--<ContentPage.BindingContext>
         <vm:AboutViewModel />

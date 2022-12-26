@@ -10,5 +10,7 @@ namespace MangaApp
         public string MangaName { get; set; }
         public string MangaImage { get; set; }
         public string Description { get; set; }
+        public int Liked { get; set; }
+
     }
 }
