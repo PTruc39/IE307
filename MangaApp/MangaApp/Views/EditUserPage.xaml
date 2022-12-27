@@ -6,11 +6,10 @@
         <ToolbarItem x:Name="save" Text="Save" Clicked="save_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid Margin="40" HeightRequest="50">
+        <Grid Margin="40">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -30,13 +29,6 @@
             <Entry x:Name="email" 
                        FontSize="18" FontAttributes="Bold"                     
                        Grid.Row="1" Grid.Column="1"/>
-            <Label Text="Password :" 
-                       FontSize="18" FontAttributes="Bold"
-                       VerticalOptions="Center"                                            
-                       Grid.Row="2" Grid.Column="0"/>
-            <Entry x:Name="password" IsPassword="True"
-                       FontSize="18" FontAttributes="Bold"                     
-                       Grid.Row="2" Grid.Column="1"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -21,21 +21,15 @@ namespace MangaApp.Views
         HttpClient http = new HttpClient();
 
         public List<User> userinfor;
-
-        //public event PropertyChangedEventHandler PropertyChanged;
-        //protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-        //}
-        //public ObservableCollection<User> userinfor
-        //{
-        //    get { return _userinfor; }
-        //    set { _userinfor = value; OnPropertyChanged(); }
-        //}
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            getUser();
+        }
         public async void getUser()
         {
             HttpClient http = new HttpClient();
+
             var kq = await http.GetStringAsync
                 (host.url + "api/userInfor/GetUserByID?userID=" + User.userID.ToString());
             userinfor = JsonConvert.DeserializeObject<List<User>>(kq);
@@ -46,11 +40,8 @@ namespace MangaApp.Views
         public UserPage()
         {
             InitializeComponent();
-            //this.InforUser = lstInforUser[0];
             getUser();
-            //DisplayAlert("thong bao","user Name: " + user[0].userName.ToString(),"OK", "no");
         }
-        //public User InforUser { get; set; }
         
         private void Logout_Clicked(object sender, EventArgs e)
         {
@@ -59,7 +50,7 @@ namespace MangaApp.Views
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new EditUserPage(userinfor[0]));
+            await Navigation.PushAsync(new EditUserPage(userinfor));
         }
     }
 }
