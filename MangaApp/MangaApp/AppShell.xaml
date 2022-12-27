@@ -39,6 +39,7 @@
         <ShellContent Title="Favorite" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:FavoritePage}" />
         <ShellContent Title="Category" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:CategoryPage}" />
         <ShellContent Title="User" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:UserPage}" />
+        <ShellContent Title="Test Page" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:NewItemPage}" />
     </TabBar>
 
     <!--

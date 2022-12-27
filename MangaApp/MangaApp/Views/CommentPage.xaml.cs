@@ -59,5 +59,23 @@ namespace MangaApp.Views
             { GetComment(this.Manga); }
             finally { lstdslh.EndRefresh(); }
         }
+
+        private async void MenuItem_Clicked(object sender, EventArgs e)
+        {
+            MenuItem menuItem = (MenuItem)sender;
+            Comment binhluan = menuItem.CommandParameter as Comment;
+            if (User.userID == binhluan.userID)
+            {
+                Comment cmt = new Comment();
+                cmt.commentID = binhluan.commentID;
+                var json = JsonConvert.SerializeObject(cmt);
+                var noidung = new StringContent(json, Encoding.UTF8, "application/json");
+                var apires = await client.PostAsync(host.url + "api/comment/DeleteComment", noidung);
+                GetComment(this.Manga);
+            }
+            else
+                DisplayAlert("KHONG duoc xoa", "KHONG", "KHONG", "KHONGGG");
+
+        }
     }
 }

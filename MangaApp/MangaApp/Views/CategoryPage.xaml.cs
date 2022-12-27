@@ -64,5 +64,11 @@ namespace MangaApp.Views
             var noidung = new StringContent(json, Encoding.UTF8, "application/json");
             var apires = await http.PostAsync(host.url + "api/user/AddFavorite", noidung);
         }
+        async void OnActionSheetSimpleClicked(object sender, EventArgs e)
+        {
+            var action = await DisplayActionSheet("ActionSheet: Send to?", "Cancel", null, "Email", "Twitter", "Facebook");
+            if (action == "Email")
+            await DisplayAlert("pick", action, "yes", "no");
+        }
     }
 }

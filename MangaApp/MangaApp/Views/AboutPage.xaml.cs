@@ -19,8 +19,8 @@ namespace MangaApp.Views
         Host host = new Host();
         HttpClient client = new HttpClient();
         public List<Manga> dslh;
-        public ObservableCollection<Manga> _employees;
-        public ObservableCollection<Category> _Categorys;
+        public List<Manga> _employees;
+        public List<Category> _Categorys;
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -28,23 +28,28 @@ namespace MangaApp.Views
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             
         }
-        public ObservableCollection<Manga> Mangas
+        public List<Manga> Mangas
         {
             get { return _employees; }
             set { _employees = value; OnPropertyChanged(); }
         }
-        public ObservableCollection<Category> Categorys
+        public List<Manga> Mangas2
+        {
+            get { return _employees; }
+            set { _employees = value; OnPropertyChanged(); }
+        }
+        public List<Category> Categorys
         {
             get { return _Categorys; }
             set { _Categorys = value; OnPropertyChanged(); }
         }
-        public async Task<ObservableCollection<Manga>> LayDSLoaiHoa()
+        public async Task<List<Manga>> LayDSLoaiHoa()
         {
             //List<Manga> dslh = null;
             HttpClient http = new HttpClient();
             var kq = await http.GetStringAsync
                 (host.url+"api/manga/GetMangaList");
-            return await Task.FromResult(JsonConvert.DeserializeObject<ObservableCollection<Manga>>(kq));
+            return await Task.FromResult(JsonConvert.DeserializeObject<List<Manga>>(kq).OrderByDescending(o => o.Liked).ToList());
             //lstdslh.ItemsSource = Mangas;
             //lstdslh2.ItemsSource = dslh;
             //this.BindingContext = this;
@@ -54,7 +59,7 @@ namespace MangaApp.Views
             HttpClient http = new HttpClient();
             var kq = await http.GetStringAsync
                 (host.url + "api/category/GetCategory");
-            Categorys = JsonConvert.DeserializeObject<ObservableCollection<Category>>(kq);
+            Categorys = JsonConvert.DeserializeObject<List<Category>>(kq);
             return 0;
         }
         public AboutPage()
@@ -64,6 +69,8 @@ namespace MangaApp.Views
             Task.Run(async () =>
             {
                 Mangas = await LayDSLoaiHoa();
+                Mangas2 = Mangas;
+                lstdslh.ItemsSource = Mangas;
                 await GetCategory();
                 Carousel.ItemsSource = Mangas.Take(5);
 
@@ -143,10 +150,10 @@ namespace MangaApp.Views
             //DisplayAlert("Test thu coi chon dc ko", category.categoryName, "yes", "no");
             var kq = await client.GetStringAsync
                (host.url + "api/manga/GetMangaByCategory?categoryID=" + category.categoryID.ToString());
-            //Mangas = JsonConvert.DeserializeObject<ObservableCollection<Manga>>(kq);
+            //Mangas = JsonConvert.DeserializeObject<List<Manga>>(kq);
             await Task.Run(async () =>
             {
-                Mangas = JsonConvert.DeserializeObject<ObservableCollection<Manga>>(kq);
+                Mangas = JsonConvert.DeserializeObject<List<Manga>>(kq);
             });
 
             var view = sender as View;

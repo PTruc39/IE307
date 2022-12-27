@@ -22,7 +22,9 @@
                                 <Label Text="{Binding comment}" FontSize="15"
                                         Grid.Row="1"/>
                             </Grid>
-                            
+                            <ViewCell.ContextActions>
+                                <MenuItem Clicked="MenuItem_Clicked" Text="Delete"  CommandParameter="{Binding .}"></MenuItem>
+                            </ViewCell.ContextActions>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

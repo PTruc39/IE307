@@ -35,9 +35,11 @@ namespace MangaApp.Views
         public Reading(Chapter chapter, List<Chapter> listchapter)
         {
             InitializeComponent();
-            GetChapterList(chapter.ChapterID);
+            //GetChapterList(chapter.ChapterID);
             listchaps = listchapter;
             chap = chapter;
+            categoryPicker.ItemsSource = listchapter;
+            categoryPicker.SelectedIndex = listchapter.FindIndex(item => item.ChapterID == chapter.ChapterID);
         }
 
         private void lstdslh_CurrentItemChanged(object sender, CurrentItemChangedEventArgs e)
@@ -69,7 +71,8 @@ namespace MangaApp.Views
             int index = listchaps.FindIndex(item => item.ChapterID == chap.ChapterID-1);
             if(index != -1)
             {
-                GetChapterList(chap.ChapterID - 1);
+                //GetChapterList(chap.ChapterID - 1);
+                categoryPicker.SelectedIndex = listchaps.FindIndex(item => item.ChapterID == chap.ChapterID-1);
                 chap = listchaps[index];
             }
             else
@@ -83,7 +86,9 @@ namespace MangaApp.Views
             int index = listchaps.FindIndex(item => item.ChapterID == chap.ChapterID + 1);
             if (index != -1)
             {
-                GetChapterList(chap.ChapterID + 1);
+                //GetChapterList(chap.ChapterID + 1);
+                categoryPicker.SelectedIndex = listchaps.FindIndex(item => item.ChapterID == chap.ChapterID + 1);
+
                 chap = listchaps[index];
             }
             else
@@ -91,6 +96,15 @@ namespace MangaApp.Views
                 DisplayAlert("no", "ko co chap de next nua", "no", "no");
             }
 
+        }
+
+        private void categoryPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            Picker picker = (Picker)sender;
+            Chapter selected = picker.SelectedItem as Chapter;
+            GetChapterList(selected.ChapterID);
+            chap = selected;
         }
     }
 }
