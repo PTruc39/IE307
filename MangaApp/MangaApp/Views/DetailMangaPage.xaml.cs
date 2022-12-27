@@ -17,6 +17,7 @@ namespace MangaApp.Views
     public partial class DetailMangaPage : ContentPage
     {
         Host host = new Host();
+        //int checking;
         public List<Chapter> dslh;
         public List<Comment> cmt ;
         public int favouriteTapCount = 0;
@@ -27,6 +28,18 @@ namespace MangaApp.Views
             var kq = await http.GetStringAsync
                 (host.url + "api/manga/GetMangaList");
             Mangas = JsonConvert.DeserializeObject<ObservableCollection<Manga>>(kq);
+        }
+        public async void CheckFavorite(Manga mg)
+        {
+            var kq = await http.GetStringAsync
+                (host.url + "api/checkfavorite?MangaID="+ mg.MangaID.ToString() +"&userID=" + User.userID.ToString());
+            //await DisplayAlert("checking", kq.ToString(), "yes", "no");
+            //checking = int.Parse(kq);
+            if (int.Parse(kq) == 1)
+                Heart.Source = "FavouriteRedIcon.png";
+            else
+                Heart.Source = "FavouriteBlackIcon.png";
+
         }
         public DetailMangaPage()
         {
@@ -52,6 +65,7 @@ namespace MangaApp.Views
             this.Manga = manga;
             this.BindingContext = this;
             GetChapterList(manga);
+            CheckFavorite(manga);
             GetComment(manga);
         }
         public Manga Manga { get; set; }
