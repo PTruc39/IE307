@@ -99,7 +99,7 @@
                         </StackLayout>
                     </ScrollView>
                 </StackLayout>
-                <ScrollView  Orientation="Horizontal" Grid.Row="2" Margin="0" VerticalScrollBarVisibility="Never">
+                    <ScrollView  Orientation="Horizontal" Grid.Row="2" Margin="0" HorizontalScrollBarVisibility="Never">
                     <StackLayout  Orientation="Horizontal" BackgroundColor="Transparent" BindableLayout.ItemsSource="{Binding Mangas}" >
                         <BindableLayout.EmptyView>
                             <ActivityIndicator IsRunning="True" IsVisible="true" x:Name="loading"/>
@@ -199,8 +199,8 @@
                             </StackLayout>
                         </ScrollView>-->
                     </StackLayout>
-                    <ScrollView  Orientation="Horizontal" Grid.Row="4" Margin="0" VerticalScrollBarVisibility="Never">
-                        <StackLayout  Orientation="Horizontal" BackgroundColor="Transparent" BindableLayout.ItemsSource="{Binding Mangas2}" >
+                    <ScrollView  Orientation="Horizontal" Grid.Row="4" Margin="0" HorizontalScrollBarVisibility="Never">
+                        <StackLayout  Orientation="Horizontal" BackgroundColor="Transparent" BindableLayout.ItemsSource="{Binding Mangas2}"  >
                             <BindableLayout.EmptyView>
                                 <ActivityIndicator IsRunning="True" IsVisible="true" x:Name="loading2"/>
 
