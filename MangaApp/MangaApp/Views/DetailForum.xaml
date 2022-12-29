@@ -9,6 +9,29 @@
                 <Image x:Name="BlogImg"></Image>
                 <Label x:Name="User"></Label>
                 <Label x:Name="BlogContent"></Label>
+                <ListView x:Name="lstdslh"  RowHeight="60"
+                      >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="5" RowSpacing="5">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"></RowDefinition>
+                                        <RowDefinition Height="auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Label Text="{Binding userName}" TextColor="Black" 
+                                       FontSize="16" FontAttributes="Bold"
+                                        Grid.Row="0"/>
+                                    <Label Text="{Binding comment}" FontSize="15"
+                                        Grid.Row="1"/>
+                                </Grid>
+                                <ViewCell.ContextActions>
+                                    <MenuItem Clicked="MenuItem_Clicked" Text="Delete"  CommandParameter="{Binding .}"></MenuItem>
+                                </ViewCell.ContextActions>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
