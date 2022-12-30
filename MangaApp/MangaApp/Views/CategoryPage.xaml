@@ -33,8 +33,9 @@
 
                             <TextCell Text="{Binding MangaName}" Detail="{Binding Description} ">
                                 <TextCell.ContextActions>
-                                    <MenuItem Clicked="MenuItem_Clicked" Text="Add to favorite"  CommandParameter="{Binding .}"></MenuItem>
-                                </TextCell.ContextActions>
+                                <MenuItem Clicked="MenuItem_Clicked" Text="Add to favorite"  CommandParameter="{Binding .}"></MenuItem>
+                                <MenuItem Clicked="MenuItem_Clicked_1" Text="Follow this Manga"  CommandParameter="{Binding .}"></MenuItem>
+                            </TextCell.ContextActions>
                             </TextCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
