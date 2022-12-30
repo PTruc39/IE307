@@ -44,7 +44,10 @@
                                     </Frame>
                                     <Label Grid.Column="0" Grid.Row="1" Text="{Binding MangaName}" FontAttributes="Bold" Padding="0,10,0,0"/>
                                     <Label Grid.Column="0" Grid.Row="2" Text="{Binding Description}" TextColor="{StaticResource Primary}" FontAttributes="Bold"/>
-                                    <Button Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" ImageSource="Heart" HorizontalOptions="End" WidthRequest="35" HeightRequest="35" CornerRadius="8" VerticalOptions="Center"  BackgroundColor="{StaticResource Primary}"/>
+                                    <Button Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" 
+                                            ImageSource="Heart" HorizontalOptions="End" Clicked="MenuItem_Clicked"
+                                            WidthRequest="35" HeightRequest="35" CornerRadius="8" CommandParameter="{Binding .}"
+                                            VerticalOptions="Center"  BackgroundColor="{StaticResource Primary}"/>
                                 </Grid>
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer  CommandParameter="{Binding .}" x:Name="Navigate" Tapped="Navigate_Tapped"/>

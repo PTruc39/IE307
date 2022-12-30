@@ -59,8 +59,9 @@ namespace MangaApp.Views
         }
         private async void MenuItem_Clicked(object sender, EventArgs e)
         {
-            MenuItem menuItem = (MenuItem)sender;
-            Manga manga = menuItem.CommandParameter as Manga;
+            //MenuItem menuItem = (MenuItem)sender;
+            //Manga manga = menuItem.CommandParameter as Manga;
+            var manga = (sender as View).BindingContext as Manga;
             Favorite favorite = new Favorite();
             favorite.mangaID = manga.MangaID;
             favorite.userID = User.userID;
