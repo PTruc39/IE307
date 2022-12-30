@@ -5,29 +5,56 @@
              x:Class="MangaApp.Views.CategoryPage">
     <ContentPage.Content>
         <StackLayout>
-            <Frame HasShadow="True" Margin="0,5" Padding="0" HeightRequest="70" HorizontalOptions="FillAndExpand">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Image HeightRequest="20" WidthRequest="20" Margin="20,0" Source="search.png"/>
-                    <Entry Grid.Column="1" Placeholder="Search" TextColor="Black" FontSize="15" TextChanged="Entry_TextChanged" x:Name="srch"
+            <Grid 
+          ColumnDefinitions="*,Auto" VerticalOptions="StartAndExpand" Padding="5,10,10,5">
+                <Entry Grid.Column="0" Placeholder="Search" TextColor="Black" FontSize="15" TextChanged="Entry_TextChanged" x:Name="srch"
                            FontFamily="ThemeFontRegular" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-                    </Entry>
-                    <!--<Image Grid.Column="2" HeightRequest="20" WidthRequest="20" Margin="20,0" Source="filter.png"/>-->
-                </Grid>
-            </Frame>
+                </Entry>
+                <Button Grid.Column="1"  Clicked="Button_Clicked"
+                        BackgroundColor="{StaticResource Primary}" CornerRadius="9" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="60" HeightRequest="50" ImageSource="search.png"/>
+
+                <!-- Here add the code that is being explained in this block -->
+
+            </Grid>
             <Picker x:Name="categoryPicker"
-                    Title="PICKKK"
-                    TitleColor="Blue"
+                    Title="Search by Category"
+                    TitleColor="{StaticResource Primary}"
                     ItemDisplayBinding="{Binding categoryName}"
                     FontSize="24"
                     SelectedIndexChanged="categoryPicker_SelectedIndexChanged"
              />
-            <Button Text="Search" Clicked="Button_Clicked"/>
-            <ListView x:Name="lstdslh" ItemSelected="lstdslh_ItemSelected">
+            <CollectionView Grid.ColumnSpan="2" Grid.Row="3" HorizontalScrollBarVisibility="Never"
+                x:Name="lstdslh"
+
+                Margin="-20,0,-25,0"
+                HeightRequest="460">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2"
+                                     VerticalItemSpacing="5"
+                                     HorizontalItemSpacing="5"
+                        ></GridItemsLayout>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="2,10,20,30">
+                            <Frame Padding="20,10,20,30" WidthRequest="220" HeightRequest="320" VerticalOptions="FillAndExpand" CornerRadius="20" HorizontalOptions="Start" HasShadow="False" >
+                                <Grid RowDefinitions="*,Auto,Auto" ColumnDefinitions="*,Auto">
+                                    <Frame Grid.ColumnSpan="2" Grid.Row="0" IsClippedToBounds="True" CornerRadius="25" HasShadow="False" Padding="0">
+                                        <Image Source="{Binding MangaImage}" Aspect="AspectFill" />
+                                    </Frame>
+                                    <Label Grid.Column="0" Grid.Row="1" Text="{Binding MangaName}" FontAttributes="Bold" Padding="0,10,0,0"/>
+                                    <Label Grid.Column="0" Grid.Row="2" Text="{Binding Description}" TextColor="{StaticResource Primary}" FontAttributes="Bold"/>
+                                    <Button Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" ImageSource="Heart" HorizontalOptions="End" WidthRequest="35" HeightRequest="35" CornerRadius="8" VerticalOptions="Center"  BackgroundColor="{StaticResource Primary}"/>
+                                </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer  CommandParameter="{Binding .}" x:Name="Navigate" Tapped="Navigate_Tapped"/>
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <!--<ListView x:Name="lstdslh" ItemSelected="lstdslh_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
 
@@ -39,7 +66,7 @@
                             </TextCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                </ListView>
+             </ListView>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

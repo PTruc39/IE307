@@ -99,5 +99,11 @@ namespace MangaApp.Views
             var noidung = new StringContent(json, Encoding.UTF8, "application/json");
             var apires = await http.PostAsync(host.url + "api/follow/AddFollow", noidung);
         }
+
+        private void Navigate_Tapped(object sender, EventArgs e)
+        {
+            var manga = (sender as View).BindingContext as Manga;
+            Navigation.PushAsync(new DetailMangaPage(manga));
+        }
     }
 }
