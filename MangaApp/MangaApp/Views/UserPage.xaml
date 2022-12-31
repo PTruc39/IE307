@@ -9,9 +9,10 @@
              mc:Ignorable="d" NavigationPage.HasNavigationBar="False"
              x:Class="MangaApp.Views.UserPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="edit" Text="Edit" Clicked="ToolbarItem_Clicked"/>
+        <ToolbarItem x:Name="logout" Text="Log Out" Clicked="Logout_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
+        <AbsoluteLayout>
         <StackLayout x:Name="userInfor" VerticalOptions="Center" HorizontalOptions="Center">
             <pv:PancakeView HeightRequest="150" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="Center" 
                         CornerRadius="75" Margin="5,10,0,10" HasShadow="True" BackgroundColor="White">
@@ -50,11 +51,74 @@
                        IsEnabled="False" Grid.Row="2" Grid.Column="1"/>
             </Grid>
            
-            <Button HorizontalOptions="Center" VerticalOptions="Center"
+            <!--<Button HorizontalOptions="Center" VerticalOptions="Center"
                 HeightRequest="50"
                 WidthRequest="100"
-                Text="Log Out" Clicked="Logout_Clicked"></Button>
+                Text="Log Out" Clicked="Logout_Clicked"></Button>-->
         </StackLayout>
+            <!--alo alo thử ,,,,,-->
+            <StackLayout x:Name="overlay" AbsoluteLayout.LayoutBounds="0,0, 1, 1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="HotPink" Opacity="0.7" IsVisible="False"/>
+            <Label Text="Status" HorizontalOptions="Center" VerticalOptions="Center" x:Name="LabelStatus" FontSize="Medium" FontAttributes="Bold"/>
+            <Grid AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+              AbsoluteLayout.LayoutFlags="PositionProportional"
+              Margin="0,0,10,100">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0" Orientation="Horizontal" IsVisible="False" x:Name="FloatMenuItem1">
+                    <Frame BackgroundColor="White" BorderColor="#FF4359"
+                           CornerRadius="30" WidthRequest="150">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="FloatMenuItem1Tap" Tapped="FloatMenuItem1Tap_OnTapped" />
+                        </Frame.GestureRecognizers>
+                        <Label Text="Edit Information" 
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="#FF4359"
+                               VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Grid.Row="1" Orientation="Horizontal" IsVisible="False" x:Name="FloatMenuItem2">
+                    <Frame BackgroundColor="White" HasShadow="True" CornerRadius="30" WidthRequest="150">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="FloatMenuItem2Tap" Tapped="FloatMenuItem2Tap_OnTapped" />
+                        </Frame.GestureRecognizers>
+                        <Label Text="Reset Password" 
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="#FF4359"
+                               VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Grid.Row="2" Orientation="Horizontal" IsVisible="False" x:Name="FloatMenuItem3">
+                    <Frame BackgroundColor="White" HasShadow="True" CornerRadius="30" WidthRequest="150">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="FloatMenuItem3Tap" Tapped="FloatMenuItem3Tap_OnTapped" />
+                        </Frame.GestureRecognizers>
+                        <Label Text="Menu 3" 
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="#FF4359"
+                               VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+
+            <Frame BackgroundColor="#FF4359" CornerRadius="30" HasShadow="True"
+               AbsoluteLayout.LayoutFlags="PositionProportional"
+               AbsoluteLayout.LayoutBounds="1,1,-1,-1"
+               Margin="10">
+                <Label Text="Edit" TextColor="White" FontSize="Medium" FontAttributes="Bold"/>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+        </AbsoluteLayout>
     </ContentPage.Content>
     <!--<Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20">
         <Grid.RowDefinitions>

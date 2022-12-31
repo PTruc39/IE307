@@ -2,44 +2,60 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MangaApp.Views.Reading"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             mc:Ignorable="d"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              Shell.NavBarIsVisible="true"
-             Shell.TabBarIsVisible="False">
+             Shell.TabBarIsVisible="False"
+             Title="{Binding chapter.ChapterID}">
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Text="Scroll to" Clicked="Button_Clicked"/>-->
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <ScrollView>
+        <Grid RowDefinitions="auto,50">
+        <!--<ScrollView>-->
             <StackLayout>
-            <Label x:Name=" currentItem"
-                   FontSize="25"/>
-                <Picker x:Name="categoryPicker"
+                <!--Picker x:Name="categoryPicker"
                     Title="PICKKK"
                     TitleColor="Blue"
                     ItemDisplayBinding="{Binding ChapterName}"
                     FontSize="24"
                     SelectedIndexChanged="categoryPicker_SelectedIndexChanged"
-             />
-            <FlexLayout>
-                <Button Text="back" Margin="10"
-                Clicked="Button_Clicked_back" />
+             />-->
+            <!--<FlexLayout>
+                <Button text="back" margin="10"
+                clicked="button_clicked_back" />
                 <Button Text="Scroll to 2" Margin="10"
                 Clicked="Button_Clicked" />
                     
                     <Button Text="next" Margin="10"
                 Clicked="Button_Clicked_next" />
-            </FlexLayout>
-            <Entry x:Name="pagenum" Placeholder="Page" Keyboard="Numeric"/>
-            <CarouselView x:Name="lstdslh"
+            </FlexLayout>-->
+            <!--<Entry HeightRequest="30" x:Name="pagenum" Placeholder="Page" Keyboard="Numeric"/>-->
+            <!--<CarouselView x:Name="lstdslh"
                           CurrentItemChanged="lstdslh_CurrentItemChanged"
                           PositionChanged="lstdslh_PositionChanged">
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
                         <Image Source="{Binding ListImage}"
-                               Aspect="AspectFill"
-                               HeightRequest="200"
-                               WidthRequest="200"
+                               Aspect="AspectFit"
                                HorizontalOptions="Center" />
                     </DataTemplate>
                 </CarouselView.ItemTemplate>
-            </CarouselView>
-            <!--<ListView x:Name="lstdslh" >
+            </CarouselView>-->
+                    <ScrollView Orientation="Vertical" VerticalScrollBarVisibility="Never">
+                        <StackLayout Orientation="Vertical" Spacing="10" BindableLayout.ItemsSource="{Binding images}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                        <Image Source="{Binding ListImage}"
+                                               Aspect="AspectFit"
+                                               HorizontalOptions="Center" />
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </ScrollView>
+                    <!--<ListView x:Name="lstdslh" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding ListImage}" Detail="{Binding ChapterID} "/>
@@ -47,6 +63,19 @@
                 </ListView.ItemTemplate>
             </ListView>-->
         </StackLayout>
-        </ScrollView>
+        <!--</ScrollView>-->
+            <Grid Grid.Row="1" HeightRequest="40" ColumnDefinitions="*,*,*">
+                <Button Text="Previous chapter" Margin="10,5"
+                Clicked="Button_Clicked_back"  FontSize="12"/>
+                <Picker Grid.Column="1" x:Name="categoryPicker"
+                    Title="PICKKK"
+                    TitleColor="Blue"
+                    ItemDisplayBinding="{Binding ChapterName}"
+                    FontSize="13"
+                    SelectedIndexChanged="categoryPicker_SelectedIndexChanged"/>
+                <Button Grid.Column="2" Text="Next chapter" Margin="10,5"
+                Clicked="Button_Clicked_next" FontSize="12" HorizontalOptions="End"/>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

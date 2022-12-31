@@ -18,6 +18,12 @@ namespace MangaApp.Views
         Host host = new Host();
         Chapter chap = new Chapter();
         public List<Chapter> listchaps;
+        public List<ListImg> _imgs;
+        public List<ListImg> images
+        {
+            get { return _imgs; }
+            set { _imgs = value; OnPropertyChanged(); }
+        }
         int length;
         public Reading()
         {
@@ -29,13 +35,15 @@ namespace MangaApp.Views
             var kq = await http.GetStringAsync
                 (host.url + "api/chapter/GetListByChapter?ChapterID=" + ChapterID.ToString());
             var dslh = JsonConvert.DeserializeObject<List<ListImg>>(kq);
-            lstdslh.ItemsSource = dslh;
+            images = dslh;
+            //lstdslh.ItemsSource = dslh;
             length = dslh.Count;
         }
         public Reading(Chapter chapter, List<Chapter> listchapter)
         {
             InitializeComponent();
-            //GetChapterList(chapter.ChapterID);
+            GetChapterList(chapter.ChapterID);
+            this.BindingContext = this;
             listchaps = listchapter;
             chap = chapter;
             categoryPicker.ItemsSource = listchapter;
@@ -47,24 +55,24 @@ namespace MangaApp.Views
             
         }
 
-        private void lstdslh_PositionChanged(object sender, PositionChangedEventArgs e)
-        {
-            try
-            {
-                int curr = e.CurrentPosition;
-                currentItem.Text = $"Position:{curr}";
-            }
-            catch { }
-        }
+        //private void lstdslh_PositionChanged(object sender, PositionChangedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        int curr = e.CurrentPosition;
+        //        currentItem.Text = $"Position:{curr}";
+        //    }
+        //    catch { }
+        //}
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            int page = 0;
-            if (pagenum.Text != null && pagenum.Text != "")
-                page = Int32.Parse(pagenum.Text);
+        //private void Button_Clicked(object sender, EventArgs e)
+        //{
+        //    int page = 0;
+        //    if (pagenum.Text != null && pagenum.Text != "")
+        //        page = Int32.Parse(pagenum.Text);
 
-            lstdslh.ScrollTo(page, position: ScrollToPosition.MakeVisible, animate: true);
-        }
+        //    lstdslh.ScrollTo(page, position: ScrollToPosition.MakeVisible, animate: true);
+        //}
 
         private void Button_Clicked_back(object sender, EventArgs e)
         {

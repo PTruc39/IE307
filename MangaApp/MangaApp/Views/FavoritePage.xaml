@@ -5,14 +5,30 @@
              Title="My Favourite List">
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="lstdslh" ItemSelected="lstdslh_ItemSelected"
+           
+            <ListView x:Name="lstFavourites" ItemSelected="lstFavourites_ItemSelected"
                       RowHeight="150"
                       IsPullToRefreshEnabled="True"
-                      Refreshing="lsthotel_Refreshing"
+                      Refreshing="lstFavourites_Refreshing"
                       RefreshControlColor="HotPink">
+                <!--<CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="1"
+                                         VerticalItemSpacing="5"></GridItemsLayout>
+                    </CollectionView.ItemsLayout>-->
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
+                        <!--<ViewCell>-->
+                        <SwipeView WidthRequest="200">
+                            <SwipeView.RightItems>
+                                <SwipeItems SwipeBehaviorOnInvoked="RemainOpen">
+                                    <SwipeItem Text="Delete"
+                                                   IconImageSource="deleteIcon.jpg"
+                                                   BackgroundColor="Red"
+                                                   CommandParameter="{Binding .}"
+                                                   Invoked="OnDeleteSwipeItemInvoked"/>
+
+                                </SwipeItems>
+                            </SwipeView.RightItems>
                             <Grid Padding="5" RowSpacing="5">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="1.2*"></RowDefinition>
@@ -31,14 +47,17 @@
                                 <Label Text="{Binding Description}" FontSize="15"
                                        Grid.Column="1" Grid.Row="1"/>
                             </Grid>
-                            <ViewCell.ContextActions>
+                            <!--<ViewCell.ContextActions>
                                 <MenuItem Clicked="MenuItem_Clicked" Text="Delete favorite"  CommandParameter="{Binding .}">
                                 </MenuItem>
                             </ViewCell.ContextActions>
-                        </ViewCell>
+                        </ViewCell>-->
+                        </SwipeView>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <!--</RefreshView>-->
+            <!--</ListView>-->
             <Button Text="test" Clicked="Button_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>
