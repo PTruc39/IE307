@@ -16,6 +16,7 @@ namespace MangaApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ForumPage : ContentPage
     {
+
         HttpClient http = new HttpClient();
         Host host = new Host();
         async void GetBlogs()

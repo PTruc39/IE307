@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MangaApp.Views.Notification">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="lstdslh"  RowHeight="60"
+                      IsPullToRefreshEnabled="True"
+                      Refreshing="lstdslh_Refreshing" ItemSelected="lstdslh_ItemSelected"
+                      RefreshControlColor="HotPink"
+                      >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="5" RowSpacing="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Label Text="NEWWWWWWWWWWW" TextColor="Black" 
+                                       FontSize="16" FontAttributes="Bold"
+                                        Grid.Row="0"/>
+                                <Label Text="{Binding notify}" FontSize="15"
+                                        Grid.Row="1"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--<Entry x:Name="Name" Placeholder="Name"/>-->
+            <!--<Button Text="submit" Clicked="Button_Clicked"/>-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

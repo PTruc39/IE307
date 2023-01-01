@@ -5,17 +5,19 @@
              Title="My Favourite List">
     <ContentPage.Content>
         <StackLayout>
-           
-            <ListView x:Name="lstFavourites" ItemSelected="lstFavourites_ItemSelected"
+            <RefreshView x:Name="refreshCV" Refreshing="refreshCV_Refreshing">
+            <CollectionView x:Name="lstFavourites">
+                <!--<ListView x:Name="lstFavourites" ItemSelected="lstFavourites_ItemSelected"
                       RowHeight="150"
                       IsPullToRefreshEnabled="True"
                       Refreshing="lstFavourites_Refreshing"
-                      RefreshControlColor="HotPink">
-                <!--<CollectionView.ItemsLayout>
-                        <GridItemsLayout Orientation="Vertical" Span="1"
+                      RefreshControlColor="HotPink">-->
+                
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="1"
                                          VerticalItemSpacing="5"></GridItemsLayout>
-                    </CollectionView.ItemsLayout>-->
-                <ListView.ItemTemplate>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <!--<ViewCell>-->
                         <SwipeView WidthRequest="200">
@@ -54,9 +56,9 @@
                         </ViewCell>-->
                         </SwipeView>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <!--</RefreshView>-->
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            </RefreshView>
             <!--</ListView>-->
             <Button Text="test" Clicked="Button_Clicked"></Button>
         </StackLayout>

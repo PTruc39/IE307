@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using MangaApp.Models;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -58,8 +59,9 @@ namespace MangaApp.Views
         }
         private async void MenuItem_Clicked(object sender, EventArgs e)
         {
-            MenuItem menuItem = (MenuItem)sender;
-            Manga manga = menuItem.CommandParameter as Manga;
+            //MenuItem menuItem = (MenuItem)sender;
+            //Manga manga = menuItem.CommandParameter as Manga;
+            var manga = (sender as View).BindingContext as Manga;
             Favorite favorite = new Favorite();
             favorite.mangaID = manga.MangaID;
             favorite.userID = User.userID;
@@ -85,6 +87,24 @@ namespace MangaApp.Views
         private void Entry_TextChanged(object sender, TextChangedEventArgs e)
         {
             searchname = srch.Text;  
+        }
+
+        private async void MenuItem_Clicked_1(object sender, EventArgs e)
+        {
+            MenuItem menuItem = (MenuItem)sender;
+            Manga manga = menuItem.CommandParameter as Manga;
+            Follow favorite = new Follow();
+            favorite.mangaID = manga.MangaID;
+            favorite.userID = User.userID;
+            var json = JsonConvert.SerializeObject(favorite);
+            var noidung = new StringContent(json, Encoding.UTF8, "application/json");
+            var apires = await http.PostAsync(host.url + "api/follow/AddFollow", noidung);
+        }
+
+        private void Navigate_Tapped(object sender, EventArgs e)
+        {
+            var manga = (sender as View).BindingContext as Manga;
+            Navigation.PushAsync(new DetailMangaPage(manga));
         }
     }
 }

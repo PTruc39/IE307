@@ -24,11 +24,11 @@ namespace MangaApp.Views
         //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         //}
-        public List<Manga> Mangas
-        {
-            get { return _mangas; }
-            set { _mangas = value; OnPropertyChanged(); }
-        }
+        //public List<Manga> Mangas
+        //{
+        //    get { return _mangas; }
+        //    set { _mangas = value; OnPropertyChanged(); }
+        //}
         public async void LayDSLoaiHoa()
         {
             var kq = await http.GetStringAsync
@@ -41,14 +41,8 @@ namespace MangaApp.Views
         {
             InitializeComponent();
             LayDSLoaiHoa();
-            this.BindingContext = this;
         }
-        
-        private void lstFavourites_Refreshing(object sender, EventArgs e)
-        {
-            lstFavourites.ItemsSource = null;
-            
-        }
+       
         //private void lstdslh_itemselected(object sender, SelectionChangedEventArgs e)
         //{
 
@@ -88,20 +82,17 @@ namespace MangaApp.Views
             DisplayAlert("aaa", User.userID.ToString(), "Aa", "aa");
         }
 
-        private void lstdsld_Refreshing(object sender, EventArgs e)
-        {
-
-        }
-
         private void lstFavourites_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             Manga manga = (Manga)lstFavourites.SelectedItem;
             Navigation.PushAsync(new DetailMangaPage(manga));
         }
 
-        private void lstFavourites_Refreshing_1(object sender, EventArgs e)
+        private void refreshCV_Refreshing(object sender, EventArgs e)
         {
-
+            lstFavourites.ItemsSource = null;
+            LayDSLoaiHoa();
+            refreshCV.IsRefreshing = false;
         }
     }
 }
