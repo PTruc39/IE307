@@ -49,7 +49,8 @@ namespace MangaApp.Views
             HttpClient http = new HttpClient();
             var kq = await http.GetStringAsync
                 (host.url+"api/manga/GetMangaList");
-            return await Task.FromResult(JsonConvert.DeserializeObject<List<Manga>>(kq).OrderByDescending(o => o.Liked).ToList());
+            return await Task.FromResult(JsonConvert.DeserializeObject<List<Manga>>(kq));
+            //return await Task.FromResult(JsonConvert.DeserializeObject<List<Manga>>(kq).OrderByDescending(o => o.Liked).ToList());
             //lstdslh.ItemsSource = Mangas;
             //lstdslh2.ItemsSource = dslh;
             //this.BindingContext = this;
@@ -69,8 +70,8 @@ namespace MangaApp.Views
             Task.Run(async () =>
             {
                 Mangas = await LayDSLoaiHoa();
-                Mangas2 = Mangas;
-                lstdslh.ItemsSource = Mangas;
+                Mangas2 = Enumerable.Reverse(Mangas.Take(20)).ToList();
+                lstdslh.ItemsSource = Mangas.OrderByDescending(o => o.Liked).ToList();
                 await GetCategory();
                 Carousel.ItemsSource = Mangas.Take(5);
 
