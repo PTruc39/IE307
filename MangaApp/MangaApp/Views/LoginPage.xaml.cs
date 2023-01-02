@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MangaApp.ViewModels;
 using Newtonsoft.Json;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -34,11 +35,11 @@ namespace MangaApp.Views
             string userID = await apires.Content.ReadAsStringAsync();
             User.userID = int.Parse(userID);
 
-            await DisplayAlert("adsad", User.userID.ToString(), "sd", "no");
+            await DisplayAlert("User id cua ban", User.userID.ToString(), "ok");
 
-            //await Application.Current.MainPage.Navigation.PopAsync();
-            //Application.Current.MainPage = new AppShell();
-            await Shell.Current.GoToAsync(state: "//AboutPage");
+            Preferences.Set("userID", int.Parse(userID));
+           
+                await Shell.Current.GoToAsync(state: "//AboutPage");
 
         }
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)

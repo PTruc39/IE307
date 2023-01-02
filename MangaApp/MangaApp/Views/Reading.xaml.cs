@@ -17,6 +17,7 @@ namespace MangaApp.Views
     {
         Host host = new Host();
         Chapter chap = new Chapter();
+        int Status;
         public List<Chapter> listchaps;
         public List<ListImg> _imgs;
         public List<ListImg> images
@@ -37,7 +38,7 @@ namespace MangaApp.Views
             var dslh = JsonConvert.DeserializeObject<List<ListImg>>(kq);
             images = dslh;
             //lstdslh.ItemsSource = dslh;
-            length = dslh.Count;
+            
         }
         public Reading(Chapter chapter, List<Chapter> listchapter)
         {
@@ -48,6 +49,8 @@ namespace MangaApp.Views
             chap = chapter;
             categoryPicker.ItemsSource = listchapter;
             categoryPicker.SelectedIndex = listchapter.FindIndex(item => item.ChapterID == chapter.ChapterID);
+            Status = categoryPicker.SelectedIndex;
+            length = listchapter.Count;
         }
 
         private void lstdslh_CurrentItemChanged(object sender, CurrentItemChangedEventArgs e)
@@ -76,12 +79,12 @@ namespace MangaApp.Views
 
         private void Button_Clicked_back(object sender, EventArgs e)
         {
-            int index = listchaps.FindIndex(item => item.ChapterID == chap.ChapterID-1);
-            if(index != -1)
+            Status = listchaps.FindIndex(item => item.ChapterID == chap.ChapterID) - 1;
+            if(Status != -1)
             {
                 //GetChapterList(chap.ChapterID - 1);
-                categoryPicker.SelectedIndex = listchaps.FindIndex(item => item.ChapterID == chap.ChapterID-1);
-                chap = listchaps[index];
+                categoryPicker.SelectedIndex = Status;
+                chap = listchaps[Status];
             }
             else
             {
@@ -91,17 +94,16 @@ namespace MangaApp.Views
 
         private void Button_Clicked_next(object sender, EventArgs e)
         {
-            int index = listchaps.FindIndex(item => item.ChapterID == chap.ChapterID + 1);
-            if (index != -1)
+            Status = listchaps.FindIndex(item => item.ChapterID == chap.ChapterID) + 1;
+            if (Status < length)
             {
-                //GetChapterList(chap.ChapterID + 1);
-                categoryPicker.SelectedIndex = listchaps.FindIndex(item => item.ChapterID == chap.ChapterID + 1);
-
-                chap = listchaps[index];
+                //GetChapterList(chap.ChapterID - 1);
+                categoryPicker.SelectedIndex = Status;
+                chap = listchaps[Status];
             }
             else
             {
-                DisplayAlert("no", "ko co chap de next nua", "no", "no");
+                DisplayAlert("no", "ko co chap de back nua", "no", "no");
             }
 
         }

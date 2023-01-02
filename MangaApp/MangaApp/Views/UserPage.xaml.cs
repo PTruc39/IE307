@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace MangaApp.Views
 {
@@ -45,6 +46,7 @@ namespace MangaApp.Views
         
         private void Logout_Clicked(object sender, EventArgs e)
         {
+            Preferences.Clear();
             Shell.Current.GoToAsync(state: "///LoginPage2");
         }
 

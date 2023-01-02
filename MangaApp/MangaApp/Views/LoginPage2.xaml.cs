@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MangaApp.ViewModels;
 using Newtonsoft.Json;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,6 +19,10 @@ namespace MangaApp.Views
         public LoginPage2()
         {
             InitializeComponent();
+            if(Preferences.Get("userID", 0)!=0)
+            { 
+                Shell.Current.GoToAsync(state: "//AboutPage");
+            }
         }
         async private void Button_Clicked_1(object sender, EventArgs e)
         {
@@ -30,7 +35,8 @@ namespace MangaApp.Views
             var apires = await client.PostAsync(host.url + "api/user/Login", noidung);
             string userID = await apires.Content.ReadAsStringAsync();
             User.userID = int.Parse(userID);
-            if (User.userID != 0)
+            Preferences.Set("userID", int.Parse(userID) );
+            if (Preferences.Get("userID", 0) != 0)
             {
                 //await Application.Current.MainPage.Navigation.PopAsync();
                 //Application.Current.MainPage = new AppShell();
