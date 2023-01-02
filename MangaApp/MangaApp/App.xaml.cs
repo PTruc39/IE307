@@ -3,6 +3,7 @@ using MangaApp.Services;
 using MangaApp.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Windows;
 
 namespace MangaApp
 {
@@ -14,7 +15,8 @@ namespace MangaApp
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            //MainPage = new AppShell();
+            MainPage = new MangaApp.AppShell();
             //MainPage = new NavigationPage(new LoginPage2());
         }
 

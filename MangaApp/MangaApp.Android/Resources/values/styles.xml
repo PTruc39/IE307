@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
+	<style name="Theme.Splash"
+         parent="android:Theme">
+		<item name="android:windowBackground">@drawable/splash</item>
+	</style>
 
   <style name="MainTheme" parent="MainTheme.Base">
     <!-- As of Xamarin.Forms 4.6 the theme has moved into the Forms binary -->
