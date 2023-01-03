@@ -178,6 +178,12 @@ namespace MangaApp.Views
                 txtCtrl.TextColor = Color.FromHex(hexColor);
         }
 
+        private void lstdslh_ItemSelected_1(object sender, SelectedItemChangedEventArgs e)
+        {
+
+               Manga manga = (Manga)lstdslh.SelectedItem;
+               Navigation.PushAsync(new DetailMangaPage(manga));
+        }
     }
     /*private void Button_Clicked(object sender, EventArgs e)
     {

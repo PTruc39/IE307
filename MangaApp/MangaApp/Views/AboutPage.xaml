@@ -160,7 +160,10 @@
                 </ScrollView>
                 <!--TESTINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-->
                     <StackLayout Grid.Row="3">
-                        <Label Text="NEWEST MANGA" TextColor="#515151" FontSize="15" FontFamily="ThemeFontBold"/>
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Image Source="fire_icon.png" HorizontalOptions="End" HeightRequest="20" WidthRequest="20" VerticalOptions="Start"/>
+                            <Label Text="NEWEST MANGA" TextColor="#515151" FontSize="15" FontFamily="ThemeFontBold"/>
+                         </StackLayout>
                         <!--<ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
                             <StackLayout Orientation="Horizontal" Spacing="10" BindableLayout.ItemsSource="{Binding Categorys}">
                                 <BindableLayout.ItemTemplate>
@@ -259,13 +262,15 @@
                         </StackLayout>
                     </ScrollView>
                     <StackLayout Grid.Row="5">
-                        <Label Text="TOP 10 MANGA FAVORITE" TextColor="#515151" FontSize="15" FontFamily="ThemeFontBold"/>
-                        
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Image Source="FavouriteRedIcon.png" HorizontalOptions="End" HeightRequest="20" WidthRequest="20" VerticalOptions="Start"/>
+                            <Label Text="TOP 10 MANGA FAVORITE" TextColor="#515151" FontSize="15" FontFamily="ThemeFontBold"/>
+                        </StackLayout>
                     </StackLayout>
                     <ListView x:Name="lstdslh"   Grid.Row="6"
                       RowHeight="150"
                       IsPullToRefreshEnabled="True"
-                      
+                      ItemSelected="lstdslh_ItemSelected_1"
                       RefreshControlColor="HotPink">
                         <ListView.ItemTemplate>
                             <DataTemplate>
