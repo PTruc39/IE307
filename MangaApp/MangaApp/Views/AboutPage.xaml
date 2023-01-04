@@ -60,8 +60,11 @@
                            VerticalOptions="Center"/>
                 </Grid>
                 <StackLayout Grid.Row="1">
-                    <Label Text="Tags" TextColor="#515151" FontSize="15" FontFamily="ThemeFontBold"/>
-                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Image Source="tag_icon.png" HorizontalOptions="End" HeightRequest="20" WidthRequest="20" VerticalOptions="Start"/>
+                        <Label Text="Tags" TextColor="#515151" FontSize="15" FontFamily="ThemeFontBold"/>
+                        </StackLayout>
+                        <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
                         <StackLayout Orientation="Horizontal" Spacing="10" BindableLayout.ItemsSource="{Binding Categorys}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>

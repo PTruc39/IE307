@@ -28,6 +28,14 @@ namespace MangaApp.Views
             lstdslh.ItemsSource = cmt;
             this.Manga=manga;
         }
+        public CommentPage(Manga manga, List<Comment> cmt,int i)
+        {
+            InitializeComponent();
+            cmts = cmt;
+            lstdslh.ItemsSource = cmt;
+            this.Manga = manga;
+            Name.Focus();
+        }
 
         public Manga Manga { get; }
 

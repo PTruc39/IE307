@@ -114,7 +114,7 @@ namespace MangaApp.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CommentPage(this.Manga,cmt));
+            Navigation.PushAsync(new CommentPage(this.Manga,cmt,1));
 
         }
         private async void SelectType(object sender, EventArgs e)
@@ -148,6 +148,12 @@ namespace MangaApp.Views
 
             if (txtCtrl != null)
                 txtCtrl.TextColor = Color.FromHex(hexColor);
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CommentPage(this.Manga, cmt));
+
         }
     }
 }
