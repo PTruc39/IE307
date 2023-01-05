@@ -32,10 +32,21 @@ namespace MangaApp.Views
             GetBlogs();
         }
 
-        private void lstdslh_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            GetBlogs();
+        }
+
+        private void lstdslh_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Blogs blog = (Blogs)lstdslh.SelectedItem;
             Navigation.PushAsync(new DetailForum(blog));
+        }
+
+        private void ImageButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AddForum());
         }
     }
 }

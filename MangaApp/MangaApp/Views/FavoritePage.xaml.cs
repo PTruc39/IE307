@@ -17,18 +17,12 @@ namespace MangaApp.Views
         HttpClient http = new HttpClient();
         HttpClient client = new HttpClient();
         public List<Manga> _mangas;
-
-        //public event PropertyChangedEventHandler PropertyChanged;
-        //protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-        //}
-        //public List<Manga> Mangas
-        //{
-        //    get { return _mangas; }
-        //    set { _mangas = value; OnPropertyChanged(); }
-        //}
+        public List<Category> _Categorys;
+        public List<Category> categories
+        {
+            get { return _Categorys; }
+            set { _Categorys = value; OnPropertyChanged(); }
+        }
         public async void LayDSLoaiHoa()
         {
             var kq = await http.GetStringAsync
@@ -36,7 +30,12 @@ namespace MangaApp.Views
             var result = JsonConvert.DeserializeObject<List<Manga>>(kq);
             lstFavourites.ItemsSource = result;
         }
-
+        async void GetCategoryByMangaID(int mangaID)
+        {
+            var kq = await http.GetStringAsync
+               (host.url + "api/category/GetCategoryByMangaID?MangaID=" + mangaID.ToString());
+            categories = JsonConvert.DeserializeObject<List<Category>>(kq);
+        }
         public FavoritePage()
         {
             InitializeComponent();
@@ -93,6 +92,12 @@ namespace MangaApp.Views
             lstFavourites.ItemsSource = null;
             LayDSLoaiHoa();
             refreshCV.IsRefreshing = false;
+        }
+
+        private async void lstFavourites_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var manga = e.CurrentSelection.FirstOrDefault() as Manga;
+            await Navigation.PushAsync(new DetailMangaPage(manga));
         }
     }
 }

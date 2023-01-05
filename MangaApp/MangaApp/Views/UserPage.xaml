@@ -8,19 +8,26 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              mc:Ignorable="d" NavigationPage.HasNavigationBar="False"
              x:Class="MangaApp.Views.UserPage">
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem x:Name="logout" Text="Log Out" Clicked="Logout_Clicked"/>
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
         <AbsoluteLayout>
-        <StackLayout x:Name="userInfor" VerticalOptions="Center" HorizontalOptions="Center">
-            <pv:PancakeView HeightRequest="150" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="Center" 
-                        CornerRadius="75" Margin="5,10,0,10" HasShadow="True" BackgroundColor="White">
-                <Image Source="avatar.jpg" Aspect="AspectFill"/>
-            </pv:PancakeView>
-            <Grid Margin="40">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
+            <Grid RowDefinitions="150, auto">
+                <pv:PancakeView HeightRequest="150" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="Start" 
+                        CornerRadius="75" Margin="30,75,30,30" HasShadow="True" BackgroundColor="White"
+                                    Grid.Row="0"
+                                    Grid.RowSpan="2">
+                    <Image HeightRequest="150" Source="avatar.jpg" Aspect="AspectFill"/>
+                </pv:PancakeView>
+                <Image Source="backgroundUser.jpg" Aspect="AspectFit" 
+                       
+                           Grid.Row="0"/>
+                <StackLayout Grid.Row="1" x:Name="userInfor" VerticalOptions="Center" HorizontalOptions="Center">
+                    
+                    <Grid Margin="40">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
@@ -28,13 +35,15 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="User Name :" 
-                       FontSize="18" FontAttributes="Bold"
-                       VerticalOptions="Center"
-                       Grid.Row="0" Grid.Column="0"/>
-                <Entry x:Name="username" 
+
+                    <Label x:Name="username"
+                       FontSize="24" FontAttributes="Bold"
+                           TextColor="Black"
+                       VerticalOptions="Center" HorizontalOptions="Center"
+                       Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+                <!--<Entry  
                        FontSize="18" FontAttributes="Bold"                      
-                       IsEnabled="False" Grid.Row="0" Grid.Column="1"/>
+                       IsEnabled="False" Grid.Row="1" Grid.Column="1"/>-->
                 <Label Text="Email :" 
                        FontSize="18" FontAttributes="Bold"                      
                        VerticalOptions="Center"                      
@@ -56,11 +65,12 @@
                 WidthRequest="100"
                 Text="Log Out" Clicked="Logout_Clicked"></Button>-->
         </StackLayout>
+            </Grid>
             <!--alo alo thử ,,,,,-->
-            <StackLayout x:Name="overlay" AbsoluteLayout.LayoutBounds="0,0, 1, 1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="HotPink" Opacity="0.7" IsVisible="False"/>
-            <Label Text="Status" HorizontalOptions="Center" VerticalOptions="Center" x:Name="LabelStatus" FontSize="Medium" FontAttributes="Bold"/>
+            <StackLayout x:Name="overlay" AbsoluteLayout.LayoutBounds="0,0, 1, 1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="#fff1f1" Opacity="0.7" IsVisible="False"/>
             <Grid AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
               AbsoluteLayout.LayoutFlags="PositionProportional"
+                  RowSpacing="10"
               Margin="0,0,10,100">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -69,7 +79,7 @@
                 </Grid.RowDefinitions>
 
                 <StackLayout Grid.Row="0" Orientation="Horizontal" IsVisible="False" x:Name="FloatMenuItem1">
-                    <Frame BackgroundColor="White" BorderColor="#FF4359"
+                    <Frame BackgroundColor="White" HasShadow="True"
                            CornerRadius="30" WidthRequest="150">
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer x:Name="FloatMenuItem1Tap" Tapped="FloatMenuItem1Tap_OnTapped" />
@@ -100,7 +110,7 @@
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer x:Name="FloatMenuItem3Tap" Tapped="FloatMenuItem3Tap_OnTapped" />
                         </Frame.GestureRecognizers>
-                        <Label Text="Menu 3" 
+                        <Label Text="Log out" 
                                FontSize="16"
                                FontAttributes="Bold"
                                TextColor="#FF4359"
@@ -110,10 +120,12 @@
             </Grid>
 
             <Frame BackgroundColor="#FF4359" CornerRadius="30" HasShadow="True"
+                   Margin="0" Padding="0"
                AbsoluteLayout.LayoutFlags="PositionProportional"
-               AbsoluteLayout.LayoutBounds="1,1,-1,-1"
-               Margin="10">
-                <Label Text="Edit" TextColor="White" FontSize="Medium" FontAttributes="Bold"/>
+               AbsoluteLayout.LayoutBounds="0.93, 0.95, -1, -1"
+               >
+                <!--<Label Text="Edit" TextColor="White" FontSize="Medium" FontAttributes="Bold"/>-->
+                <Image Margin="0" Source="settingIcon.png" HeightRequest="60" WidthRequest="60"/>
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"/>
                 </Frame.GestureRecognizers>
