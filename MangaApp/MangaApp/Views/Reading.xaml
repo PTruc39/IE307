@@ -44,7 +44,7 @@
                     </DataTemplate>
                 </CarouselView.ItemTemplate>
             </CarouselView>-->
-                    <ScrollView Orientation="Vertical" VerticalScrollBarVisibility="Never">
+                    <ScrollView Orientation="Vertical" VerticalScrollBarVisibility="Never" x:Name="listimg">
                         <StackLayout Orientation="Vertical" Spacing="10" BindableLayout.ItemsSource="{Binding images}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>

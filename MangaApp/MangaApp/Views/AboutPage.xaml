@@ -11,8 +11,28 @@
              xmlns:vm="clr-namespace:MangaApp.ViewModels"
              Title="{Binding Title}">
     <ContentPage.Content>
-        <ScrollView>
+        <StackLayout>
+            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*" Padding="10" x:Name="Userinfor" IsVisible="True">
+                <ImageButton Grid.Column="0" Grid.RowSpan="2" Source="avatar.png" HeightRequest="50" WidthRequest="50" HorizontalOptions="Start" BackgroundColor="#f1f0f4" CornerRadius="10"/>
+                <Label Grid.Column="1" Grid.Row="0" Text="Welcome" TextColor="Silver" FontAttributes="Bold" Margin="20,0,0,0"/>
+                <Label Grid.Column="1" Grid.Row="1" Text="Mariona Putri" FontAttributes="Bold" Margin="20,0,0,0"/>
+                <Image Grid.Column="2" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="End" Source="search.png" 
+                               HeightRequest="23"
+                               WidthRequest="23"
+                               TranslationX="60"/>
+                <Image Grid.Column="3" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="End" Source="notify_2.png" IsVisible="true"
+                               HeightRequest="25"
+                               WidthRequest="25"
+                               TranslationX="-10"/>
+                <Image Grid.Column="3" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="End" Source="notify_1.png" IsVisible="true"
+                               HeightRequest="25"
+                               WidthRequest="25"
+                               TranslationX="-10"/>
+            </Grid>
+            <ScrollView>
+            
             <StackLayout>
+                
             <!--<ListView x:Name="lstdslh" ItemSelected="lstdslh_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -25,8 +45,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>-->
-           
-            <Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10">
+              
+                <Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -307,6 +327,7 @@
                 </Grid>
         </StackLayout>
         </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
     <!--<ContentPage.BindingContext>
         <vm:AboutViewModel />

@@ -51,6 +51,7 @@ namespace MangaApp.Views
             categoryPicker.SelectedIndex = listchapter.FindIndex(item => item.ChapterID == chapter.ChapterID);
             Status = categoryPicker.SelectedIndex;
             length = listchapter.Count;
+            
         }
 
         private void lstdslh_CurrentItemChanged(object sender, CurrentItemChangedEventArgs e)
@@ -88,7 +89,7 @@ namespace MangaApp.Views
             }
             else
             {
-                DisplayAlert("no", "ko co chap de back nua", "no", "no");
+                DisplayAlert("Announcement", "You are reading the first chapter", "OK");
             }
         }
 
@@ -103,7 +104,7 @@ namespace MangaApp.Views
             }
             else
             {
-                DisplayAlert("no", "ko co chap de back nua", "no", "no");
+                DisplayAlert("Announcement", "You are reading the last chapter", "OK");
             }
 
         }
@@ -114,6 +115,7 @@ namespace MangaApp.Views
             Picker picker = (Picker)sender;
             Chapter selected = picker.SelectedItem as Chapter;
             GetChapterList(selected.ChapterID);
+            listimg.ScrollToAsync(0, 0, true);
             chap = selected;
         }
     }

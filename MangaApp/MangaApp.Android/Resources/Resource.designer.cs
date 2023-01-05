@@ -8497,37 +8497,43 @@ namespace MangaApp.Droid
 			public const int notification_tile_bg = 2131165322;
 			
 			// aapt resource value: 0x7F07008B
-			public const int notify_panel_notification_icon_bg = 2131165323;
+			public const int notify_1 = 2131165323;
 			
 			// aapt resource value: 0x7F07008C
-			public const int osm = 2131165324;
+			public const int notify_2 = 2131165324;
 			
 			// aapt resource value: 0x7F07008D
-			public const int phone = 2131165325;
+			public const int notify_panel_notification_icon_bg = 2131165325;
 			
 			// aapt resource value: 0x7F07008E
-			public const int search = 2131165326;
+			public const int osm = 2131165326;
 			
 			// aapt resource value: 0x7F07008F
-			public const int shower = 2131165327;
+			public const int phone = 2131165327;
 			
 			// aapt resource value: 0x7F070090
-			public const int splash = 2131165328;
+			public const int search = 2131165328;
 			
 			// aapt resource value: 0x7F070091
-			public const int square = 2131165329;
+			public const int shower = 2131165329;
 			
 			// aapt resource value: 0x7F070092
-			public const int tag_icon = 2131165330;
+			public const int splash = 2131165330;
 			
 			// aapt resource value: 0x7F070093
-			public const int tooltip_frame_dark = 2131165331;
+			public const int square = 2131165331;
 			
 			// aapt resource value: 0x7F070094
-			public const int tooltip_frame_light = 2131165332;
+			public const int tag_icon = 2131165332;
 			
 			// aapt resource value: 0x7F070095
-			public const int xamarin_logo = 2131165333;
+			public const int tooltip_frame_dark = 2131165333;
+			
+			// aapt resource value: 0x7F070096
+			public const int tooltip_frame_light = 2131165334;
+			
+			// aapt resource value: 0x7F070097
+			public const int xamarin_logo = 2131165335;
 			
 			static Drawable()
 			{
