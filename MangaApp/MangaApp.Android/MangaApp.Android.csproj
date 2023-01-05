@@ -191,7 +191,6 @@
     <AndroidResource Include="Resources\drawable\splash.png" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <AndroidResource Include="Resources\drawable\deleteicon1.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -202,12 +201,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\backgroundUser.jpg" />
-=======
+
     <AndroidResource Include="Resources\drawable\fire_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\tag_icon.png" />
->>>>>>> 9abd723261508e3d28a3d4e684216e74562e4231
+
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
