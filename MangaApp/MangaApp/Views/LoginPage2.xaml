@@ -12,9 +12,11 @@
                 <StackLayout Padding="40" VerticalOptions="Center"
                      HorizontalOptions="FillAndExpand">
                     <Label  Text="Email:"/>
-                    <Entry x:Name="email" Placeholder="Email"/>
+                    <Entry x:Name="email" Placeholder="Email" BackgroundColor="{Binding ValidateColor2}" Completed="email_Completed"/>
+                    <Label Text="Invalid Email" HorizontalTextAlignment="Center"  IsVisible="False" x:Name="invalidemail" TextColor="Red"/>
                     <Label Text="Password:"/>
-                    <Entry x:Name="password" IsPassword="True" Placeholder="Password"/>
+                    <Entry x:Name="password" IsPassword="True" Placeholder="Password" Completed="password_Completed" BackgroundColor="{Binding ValidateColor}"/>
+                    <Label Text="Password has to be longer than 8 character" HorizontalTextAlignment="Center" TextColor="Red" IsVisible="False" x:Name="invalipass"/>
                     <Button Text="Login" Clicked="Button_Clicked_1"/>
                     <Label Text="Register" HorizontalOptions="Center">
                         <Label.GestureRecognizers>
