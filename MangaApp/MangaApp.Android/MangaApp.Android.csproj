@@ -201,12 +201,10 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\backgroundUser.jpg" />
-
     <AndroidResource Include="Resources\drawable\fire_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\tag_icon.png" />
-
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\notify_1.png" />

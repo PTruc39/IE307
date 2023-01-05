@@ -36,11 +36,10 @@
     
     <TabBar>
         <ShellContent Title="About" Icon="icon_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
-        <ShellContent Title="Favorite" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:FavoritePage}" />
         <ShellContent Title="Category" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:CategoryPage}" />
-        <ShellContent Title="User" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:UserPage}" />
         <ShellContent Title="Test Page" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:ForumPage}" />
-        <ShellContent Title="Test Page 2" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:Notification}" />
+        <ShellContent Title="Favorite" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:FavoritePage}" />
+        <ShellContent Title="User" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:UserPage}" />
     </TabBar>
 
     <!--

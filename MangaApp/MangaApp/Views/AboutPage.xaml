@@ -20,14 +20,22 @@
                                HeightRequest="23"
                                WidthRequest="23"
                                TranslationX="60"/>
-                <Image Grid.Column="3" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="End" Source="notify_2.png" IsVisible="true"
-                               HeightRequest="25"
+                <Image Grid.Column="3" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="End" Source="notify_2.png" IsVisible="false"
+                               HeightRequest="25" x:Name="ntfno"
                                WidthRequest="25"
-                               TranslationX="-10"/>
-                <Image Grid.Column="3" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="End" Source="notify_1.png" IsVisible="true"
-                               HeightRequest="25"
+                               TranslationX="-10">
+                    <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="Gotontf" Tapped="Gotontf_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Grid.Column="3" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="End" Source="notify_1.png" IsVisible="false"
+                               HeightRequest="25" x:Name="ntfyes"
                                WidthRequest="25"
-                               TranslationX="-10"/>
+                               TranslationX="-10">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="Gotontf2" Tapped="Gotontf_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
             </Grid>
             <ScrollView>
             

@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using MangaApp.Models;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 
@@ -43,6 +44,23 @@ namespace MangaApp.Views
             get { return _Categorys; }
             set { _Categorys = value; OnPropertyChanged(); }
         }
+        public async void GetComment()
+        {
+            var kq = await client.GetStringAsync
+                (host.url + "api/user/GetNotifyByUser?userID=" + User.userID.ToString());
+            List<Notify> cmts = JsonConvert.DeserializeObject<List<Notify>>(kq);
+            if ( cmts.Count == 0)
+            {
+                ntfno.IsVisible = true;
+                ntfyes.IsVisible = false;
+            }
+            else
+            {
+                ntfyes.IsVisible = true;
+                ntfno.IsVisible = false;
+            }
+            
+        }
         public async Task<List<Manga>> LayDSLoaiHoa()
         {
             //List<Manga> dslh = null;
@@ -74,7 +92,7 @@ namespace MangaApp.Views
                 lstdslh.ItemsSource = Mangas.OrderByDescending(o => o.Liked).ToList();
                 await GetCategory();
                 Carousel.ItemsSource = Mangas.Take(5);
-
+                GetComment();
             });
             Device.StartTimer(TimeSpan.FromSeconds(2), (Func<bool>)(() =>
             {
@@ -183,6 +201,11 @@ namespace MangaApp.Views
 
                Manga manga = (Manga)lstdslh.SelectedItem;
                Navigation.PushAsync(new DetailMangaPage(manga));
+        }
+
+        private void Gotontf_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Notification());
         }
     }
     /*private void Button_Clicked(object sender, EventArgs e)

@@ -25,6 +25,16 @@ namespace MangaApp.Views
                 (host.url + "api/user/GetNotifyByUser?userID=" + User.userID.ToString());
             List<Notify> cmts = JsonConvert.DeserializeObject<List<Notify>>(kq);
             lstdslh.ItemsSource = cmts;
+            if(cmts.Count==0)
+            {
+                await DisplayAlert("yes", "empty", "yes");
+            }
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            GetComment();
+          
         }
         public Notification()
         {
