@@ -1,18 +1,75 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MangaApp.Views.ForumPage">
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"           
+             x:Class="MangaApp.Views.ForumPage"
+             Title="Forum">
     <ContentPage.Content>
-        <ListView x:Name="lstdslh" ItemSelected="lstdslh_ItemSelected">
+        <!--<ListView x:Name="lstdslh" ItemSelected="lstdslh_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding BlogName}" Detail="{Binding userName} ">
+                    <TextCell Text="{Binding BlogName}" Detail="{Binding userName} ">-->
                         <!--<TextCell.ContextActions>
                             <MenuItem Clicked="MenuItem_Clicked" Text="Add to favorite"  CommandParameter="{Binding .}"></MenuItem>
                         </TextCell.ContextActions>-->
-                    </TextCell>
+                    <!--</TextCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+        </ListView>-->
+        <AbsoluteLayout>
+            <CollectionView x:Name="lstdslh" Margin="15" SelectionMode="Single" SelectionChanged="lstdslh_SelectionChanged">
+                <CollectionView.EmptyView>
+                    <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Loading Data"/>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout HorizontalItemSpacing="15" VerticalItemSpacing="15" Orientation="Vertical" Span="2"></GridItemsLayout>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="10,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <BoxView Grid.Row="0" CornerRadius="10" Grid.RowSpan="3" BackgroundColor="#FF4359" Opacity="0.06"></BoxView>
+                            <Image Grid.Row="0" Grid.RowSpan="2" 
+                                   Aspect="AspectFill" Margin="30,5"                                
+                                   Source="{Binding BlogImg}"/>
+                            <StackLayout Margin="5" Grid.Row="2" Orientation="Vertical">
+                                <Label Text="{Binding BlogName}" TextColor="Black"
+                                       FontSize="16" FontAttributes="Bold"/>
+                                <Label Text="{Binding BlogContent}" 
+                                       LineBreakMode="WordWrap" MaxLines="2"/>
+                                <Label Text="read more" TextColor="Black"/>
+                                <StackLayout Orientation="Horizontal">
+                                    <pv:PancakeView HeightRequest="20" WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center" 
+                                                    CornerRadius="10" HasShadow="True" BackgroundColor="White">
+                                        <Image Source="avatar.jpg" Aspect="AspectFill"/>
+                                    </pv:PancakeView>
+                                    <Label Text="{Binding userName}" 
+                                           VerticalOptions="End"
+                                           HorizontalOptions="StartAndExpand" FontSize="14"/>
+                                    <!--<Frame Margin="5" Padding="0" BackgroundColor="Transparent" BorderColor="Gray" CornerRadius="10">
+                                        <StackLayout Margin="0" Padding="5" Orientation="Horizontal">
+                                            <Label Text="ADD"/>
+                                            <Image Source="plus.png" HeightRequest="15"/>
+                                        </StackLayout>
+                                    </Frame>-->
+                                </StackLayout>
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <ImageButton Source="addIcon.png"
+                         HeightRequest="60"
+                         WidthRequest="60"
+                         CornerRadius="20"
+                         BackgroundColor="White"
+                         Clicked="ImageButton_Clicked"
+                         AbsoluteLayout.LayoutFlags="PositionProportional"
+               AbsoluteLayout.LayoutBounds="0.93,0.95,-1,-1"/>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

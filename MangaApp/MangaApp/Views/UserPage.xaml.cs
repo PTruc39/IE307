@@ -83,9 +83,9 @@ namespace MangaApp.Views
 
                 //Show FloatMenuItem3
                 FloatMenuItem3.IsVisible = true;
-                await FloatMenuItem3.TranslateTo(0, 0, 100);
-                await FloatMenuItem3.TranslateTo(0, -20, 100);
-                await FloatMenuItem3.TranslateTo(0, 0, 200);
+                await FloatMenuItem3.TranslateTo(0, 0, 50);
+                await FloatMenuItem3.TranslateTo(0, -20, 50);
+                await FloatMenuItem3.TranslateTo(0, 0, 50);
             }
             else
             {
@@ -98,21 +98,21 @@ namespace MangaApp.Views
                 await ((Frame)sender).ScaleTo(1, 50, Easing.Linear);
 
                 //Hide FloatMenuItem1
-                await FloatMenuItem1.TranslateTo(0, 0, 100);
-                await FloatMenuItem1.TranslateTo(0, -5, 100);
-                await FloatMenuItem1.TranslateTo(0, 0, 200);
+                await FloatMenuItem1.TranslateTo(0, 0, 50);
+                await FloatMenuItem1.TranslateTo(0, -5, 50);
+                await FloatMenuItem1.TranslateTo(0, 0, 50);
                 FloatMenuItem1.IsVisible = false;
 
                 //Hide FloatMenuItem2
-                await FloatMenuItem2.TranslateTo(0, 0, 100);
-                await FloatMenuItem2.TranslateTo(0, -5, 100);
-                await FloatMenuItem2.TranslateTo(0, 0, 200);
+                await FloatMenuItem2.TranslateTo(0, 0, 50);
+                await FloatMenuItem2.TranslateTo(0, -5, 50);
+                await FloatMenuItem2.TranslateTo(0, 0, 50);
                 FloatMenuItem2.IsVisible = false;
 
                 //Hide FloatMenuItem3
-                await FloatMenuItem3.TranslateTo(0, 0, 100);
-                await FloatMenuItem3.TranslateTo(0, -5, 100);
-                await FloatMenuItem3.TranslateTo(0, 0, 200);
+                await FloatMenuItem3.TranslateTo(0, 0, 50);
+                await FloatMenuItem3.TranslateTo(0, -5, 50);
+                await FloatMenuItem3.TranslateTo(0, 0, 50);
                 FloatMenuItem3.IsVisible = false;
 
                 overlay.IsVisible = false;
@@ -123,19 +123,18 @@ namespace MangaApp.Views
 
         private async void FloatMenuItem1Tap_OnTapped(object sender, EventArgs e)
         {
-            LabelStatus.Text = "Menu 1";
             await Navigation.PushAsync(new EditUserPage(userinfor));
         }
 
         private async void FloatMenuItem2Tap_OnTapped(object sender, EventArgs e)
         {
-            LabelStatus.Text = "Menu 3";
             await Navigation.PushAsync(new ResetPasswordPage(userinfor));
         }
 
         private void FloatMenuItem3Tap_OnTapped(object sender, EventArgs e)
         {
-            LabelStatus.Text = "Menu 3";
+            Preferences.Clear();
+            Shell.Current.GoToAsync(state: "///LoginPage2");
         }
     }
 }
