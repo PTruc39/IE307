@@ -18,7 +18,9 @@ namespace MangaApp.Views
         string searchname="";
         string searchcategory="";
         HttpClient http = new HttpClient();
+        public List<Category> dslh;
         Host host = new Host();
+
         async void GetManga()
         {
             var kq = await http.GetStringAsync
@@ -30,16 +32,30 @@ namespace MangaApp.Views
         {
             var kq = await http.GetStringAsync
                 (host.url + "api/category/GetCategory");
-            var dslh = JsonConvert.DeserializeObject<List<Category>>(kq);
+            dslh = JsonConvert.DeserializeObject<List<Category>>(kq);
             categoryPicker.ItemsSource = dslh;
+            //
+            //    categoryPicker.SelectedIndex = dslh.FindIndex(item => item.categoryID == i);
+
         }
-        public CategoryPage()
+        public void autopicked (int i)
+        {
+            if (i != 0)
+                categoryPicker.SelectedIndex = dslh.FindIndex(item => item.categoryID == i);
+        }
+        public CategoryPage(int i=0)
         {
             InitializeComponent();
             GetCategory();
+            autopicked(i);
             GetManga();
-
         }
+
+        private void invoke(object v)
+        {
+            throw new NotImplementedException();
+        }
+
         private async void categoryPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             Picker picker = (Picker)sender;
@@ -49,6 +65,7 @@ namespace MangaApp.Views
                (host.url + "api/manga/GetMangaByCategory?categoryID=" + selected.categoryID.ToString());
             var dslh = JsonConvert.DeserializeObject<List<Manga>>(kq);
             lstdslh.ItemsSource = dslh;
+
 
         }
         private void lstdslh_ItemSelected(object sender, SelectedItemChangedEventArgs e)

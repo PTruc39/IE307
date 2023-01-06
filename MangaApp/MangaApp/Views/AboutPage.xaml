@@ -15,7 +15,7 @@
             <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*" Padding="10" x:Name="Userinfor" IsVisible="True">
                 <ImageButton Grid.Column="0" Grid.RowSpan="2" Source="avatar.png" HeightRequest="50" WidthRequest="50" HorizontalOptions="Start" BackgroundColor="#f1f0f4" CornerRadius="10"/>
                 <Label Grid.Column="1" Grid.Row="0" Text="Welcome" TextColor="Silver" FontAttributes="Bold" Margin="20,0,0,0"/>
-                <Label Grid.Column="1" Grid.Row="1" Text="Mariona Putri" FontAttributes="Bold" Margin="20,0,0,0"/>
+                <Label Grid.Column="1" Grid.Row="1" Text="" x:Name="username" TextColor="#FF4157" FontAttributes="Bold" Margin="20,0,0,0"/>
                 <Image Grid.Column="2" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="End" Source="search.png" 
                                HeightRequest="23"
                                WidthRequest="23"

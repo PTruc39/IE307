@@ -19,32 +19,43 @@
             <Image Aspect="AspectFill" Source="{Binding Manga.MangaImage}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
             <ImageButton BackgroundColor="Transparent" Aspect="Fill" Source="back.png" Margin="25" WidthRequest="20" HeightRequest="13" 
                      HorizontalOptions="Start" VerticalOptions="Start" Clicked="GoBack"/>
-            <pv:PancakeView x:Name="DetailsView" Grid.Row="1" CornerRadius="30,30,0,0"  Padding="35,35,35,0" Margin="0,-40,0,0" 
+            <pv:PancakeView x:Name="DetailsView" Grid.Row="1" CornerRadius="30,30,0,0"  Padding="35,20,35,0" Margin="0,-40,0,0" 
                         BackgroundColor="White" VerticalOptions="FillAndExpand">
                 <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
                     <StackLayout Spacing="15" HorizontalOptions="FillAndExpand">
-                        <Grid ColumnDefinitions="3*,1*" >
+                        <Grid ColumnDefinitions="3*,1*,1.5*" >
                                 <Label Text="{Binding Manga.MangaName}" FontSize="20" 
                                        TextColor="Black" FontFamily="ThemeFontRegular" 
-                                       HorizontalOptions="Start" VerticalOptions="Start"
+                                       HorizontalOptions="Start" VerticalOptions="CenterAndExpand"
                                        Grid.Column="0"/>
-                                <Image HorizontalOptions="End"  VerticalOptions="End" x:Name="Heart"
-                                       Source="FavouriteBlackIcon.png"
-                                           HeightRequest="25"
-                                           WidthRequest="25"
+                                <Image HorizontalOptions="End"  VerticalOptions="CenterAndExpand" x:Name="Heart"
+                                       Source="heartblack.png"
+                                           HeightRequest="30"
+                                           WidthRequest="30"
                                            Aspect="AspectFill"
                                        Grid.Column="1">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer x:Name="ImgAddToWishlist" Tapped="ImgAddToWishlist_Tapped"/>
                                     </Image.GestureRecognizers>
                                 </Image>
+                            <!--<Image HorizontalOptions="End"  VerticalOptions="CenterAndExpand" x:Name="follow"
+                                       Source="follow.png"
+                                           HeightRequest="35"
+                                           WidthRequest="45"
+                                           Aspect="AspectFill"
+                                       Grid.Column="2">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="ImgAddToFollow" />
+                                </Image.GestureRecognizers>
+                            </Image>-->
+                            <Button  Grid.Column="2" x:Name="followlabel" Text="Follow" Clicked="Button_Clicked_1" CornerRadius="100" FontSize="12" HeightRequest="35"/>
                         </Grid>
                         <StackLayout Grid.Row="0">
                             <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
                             <StackLayout Orientation="Horizontal" Spacing="10" BindableLayout.ItemsSource="{Binding categories}">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
-                                        <pv:PancakeView CornerRadius="15" Margin="1,10,0,10" HasShadow="True" BackgroundColor="White">
+                                        <pv:PancakeView CornerRadius="15" Margin="1,1,0,10" HasShadow="True" BackgroundColor="White">
                                             <pv:PancakeView.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="SelectType"/>
                                             </pv:PancakeView.GestureRecognizers>
@@ -127,13 +138,15 @@
                                     <DataTemplate>
                                         <StackLayout>
                                             <Frame Margin="0,0,0,0" HasShadow="False" CornerRadius="20" >
-                                                <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto">
+                                                <Grid RowDefinitions="*,*,Auto" ColumnDefinitions="Auto,120,Auto">
                                                     <Frame Grid.Column="0" Grid.RowSpan="3" Margin="0,0,20,0"  VerticalOptions="CenterAndExpand" WidthRequest="75" HeightRequest="85" HasShadow="False" CornerRadius="10" Padding="0" IsClippedToBounds="True">
                                                         <Image Source="avatar.jpg" Aspect="AspectFill"/>
                                                     </Frame>
-                                                    <Label Grid.Column="1" Grid.Row="0" Text="{Binding userName}" FontAttributes="Bold"/>
-                                                    <Label Grid.Column="1" Grid.Row="1" Text="{Binding comment}" TextColor="Silver" FontAttributes="Bold"/>
-                                                    <Label Grid.Column="1" Grid.Row="2" Text="⭐⭐⭐⭐⭐"  FontSize="13" />
+                                                    <Label Grid.Column="1" Grid.Row="0" Text="{Binding userName}" FontAttributes="Bold" />
+                                                    <Label Grid.Column="1" Grid.Row="1" Text="{Binding comment}" TextColor="Silver" FontAttributes="Bold"
+                                                           LineBreakMode="WordWrap"
+                                                           MaxLines="2"/>
+                                                    <Label Grid.Column="1" Grid.Row="2" Text="____"  FontSize="13" />
                                                     <Image Grid.Column="2" Grid.RowSpan="3" Source="DetailsArrow"/>
                                                 </Grid>
                                             </Frame>

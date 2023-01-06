@@ -19,6 +19,7 @@ namespace MangaApp.Views
         public int favouriteTapCount = 0;
         Host host = new Host();
         HttpClient client = new HttpClient();
+        public List<User> userinfor;
         public List<Manga> dslh;
         public List<Manga> _employees;
         public List<Category> _Categorys;
@@ -87,6 +88,15 @@ namespace MangaApp.Views
             Categorys = JsonConvert.DeserializeObject<List<Category>>(kq);
             return 0;
         }
+        public async void getUser()
+        {
+            HttpClient http = new HttpClient();
+
+            var kq = await http.GetStringAsync
+                (host.url + "api/userInfor/GetUserByID?userID=" + User.userID.ToString());
+            userinfor = JsonConvert.DeserializeObject<List<User>>(kq);
+            username.Text = userinfor[0].userName;
+        }
         public AboutPage()
         {
             InitializeComponent();
@@ -99,6 +109,7 @@ namespace MangaApp.Views
                 await GetCategory();
                 Carousel.ItemsSource = Mangas.Take(5);
                 GetComment();
+                getUser();
             });
             Device.StartTimer(TimeSpan.FromSeconds(2), (Func<bool>)(() =>
             {
