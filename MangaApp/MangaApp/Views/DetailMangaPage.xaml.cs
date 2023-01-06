@@ -119,27 +119,16 @@ namespace MangaApp.Views
         }
         private async void SelectType(object sender, EventArgs e)
         {
-            var category = (sender as View).BindingContext as Category;
-            //DisplayAlert("Test thu coi chon dc ko", category.categoryName, "yes", "no");
-            var kq = await client.GetStringAsync
-               (host.url + "api/manga/GetMangaByCategory?categoryID=" + category.categoryID.ToString());
-            //Mangas = JsonConvert.DeserializeObject<List<Manga>>(kq);
-            await Task.Run(async () =>
-            {
-                Mangas = JsonConvert.DeserializeObject<List<Manga>>(kq);
-            });
+            //var category = (sender as View).BindingContext as Category;
+            ////DisplayAlert("Test thu coi chon dc ko", category.categoryName, "yes", "no");
+            //var kq = await client.GetStringAsync
+            //   (host.url + "api/manga/GetMangaByCategory?categoryID=" + category.categoryID.ToString());
+            ////Mangas = JsonConvert.DeserializeObject<List<Manga>>(kq);
+            //await Task.Run(async () =>
+            //{
+            //    Mangas = JsonConvert.DeserializeObject<List<Manga>>(kq);
+            //});
 
-            var view = sender as View;
-            var parent = view.Parent as StackLayout;
-
-            foreach (var child in parent.Children)
-            {
-                VisualStateManager.GoToState(child, "Normal");
-                ChangeTextColor(child, "#707070");
-            }
-
-            VisualStateManager.GoToState(view, "Selected");
-            ChangeTextColor(view, "#FFFFFF");
         }
 
         private void ChangeTextColor(View child, string hexColor)

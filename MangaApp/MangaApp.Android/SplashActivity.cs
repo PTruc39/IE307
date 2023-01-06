@@ -15,7 +15,7 @@ namespace MangaApp.Droid
     [Activity(Theme = "@style/Theme.Splash",
        MainLauncher = true,
        NoHistory = true,
-       Icon = "@drawable/splash")]
+       Icon = "@drawable/logo")]
     public class SplashActivity : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)

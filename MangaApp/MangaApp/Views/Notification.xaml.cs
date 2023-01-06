@@ -27,7 +27,11 @@ namespace MangaApp.Views
             lstdslh.ItemsSource = cmts;
             if(cmts.Count==0)
             {
-                await DisplayAlert("yes", "empty", "yes");
+                emptyntf.IsVisible = true;
+            }
+            else
+            {
+                emptyntf.IsVisible = false;
             }
         }
         protected override void OnAppearing()

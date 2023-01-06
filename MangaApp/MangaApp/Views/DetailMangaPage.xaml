@@ -50,12 +50,12 @@
                                             </pv:PancakeView.GestureRecognizers>
                                             <VisualStateManager.VisualStateGroups>
                                                 <VisualStateGroup x:Name="CommonStates">
-                                                    <VisualState x:Name="Normal">
+                                                    <VisualState x:Name="Selected">
                                                         <VisualState.Setters>
                                                             <Setter Property="BackgroundGradientStops" Value="{x:Null}"/>
                                                         </VisualState.Setters>
                                                     </VisualState>
-                                                    <VisualState x:Name="Selected">
+                                                    <VisualState x:Name="Normal">
                                                         <VisualState.Setters>
                                                             <Setter Property="BackgroundGradientStops">
                                                                 <Setter.Value>
@@ -71,7 +71,7 @@
                                                     </VisualState>
                                                 </VisualStateGroup>
                                             </VisualStateManager.VisualStateGroups>
-                                                <Label x:Name="PropertyTypeName" Padding="20,5" Text="{Binding categoryName}" TextColor="#707070" FontSize="15" FontFamily="ThemeFontRegular"/>
+                                                <Label x:Name="PropertyTypeName" Padding="20,5" Text="{Binding categoryName}" TextColor="white" FontSize="15" FontFamily="ThemeFontRegular"/>
                                         </pv:PancakeView>
                                     </DataTemplate>
                                 </BindableLayout.ItemTemplate>

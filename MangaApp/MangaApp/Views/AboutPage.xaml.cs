@@ -61,6 +61,12 @@ namespace MangaApp.Views
             }
             
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            GetComment();
+        }
         public async Task<List<Manga>> LayDSLoaiHoa()
         {
             //List<Manga> dslh = null;
