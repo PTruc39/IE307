@@ -12,7 +12,7 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <Image Grid.Row="0" Margin="0,30" Source="Logo.png" Aspect="AspectFit" HeightRequest="180" WidthRequest="80"></Image>
-            <Frame Grid.Row="1" Margin="0,0,0,-40" BorderColor="#1C375C" HasShadow="True"  CornerRadius="50" HeightRequest="700">
+            <Frame Grid.Row="1" Margin="0,0,0,-40" BorderColor="#FF4359"  HasShadow="True"  CornerRadius="50" HeightRequest="700">
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="20" Padding="20,10,20,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
