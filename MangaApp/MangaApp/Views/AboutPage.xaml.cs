@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using MangaApp.Models;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 
@@ -18,6 +19,7 @@ namespace MangaApp.Views
         public int favouriteTapCount = 0;
         Host host = new Host();
         HttpClient client = new HttpClient();
+        public List<User> userinfor;
         public List<Manga> dslh;
         public List<Manga> _employees;
         public List<Category> _Categorys;
@@ -43,6 +45,29 @@ namespace MangaApp.Views
             get { return _Categorys; }
             set { _Categorys = value; OnPropertyChanged(); }
         }
+        public async void GetComment()
+        {
+            var kq = await client.GetStringAsync
+                (host.url + "api/user/GetNotifyByUser?userID=" + User.userID.ToString());
+            List<Notify> cmts = JsonConvert.DeserializeObject<List<Notify>>(kq);
+            if ( cmts.Count == 0)
+            {
+                ntfno.IsVisible = true;
+                ntfyes.IsVisible = false;
+            }
+            else
+            {
+                ntfyes.IsVisible = true;
+                ntfno.IsVisible = false;
+            }
+            
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            GetComment();
+        }
         public async Task<List<Manga>> LayDSLoaiHoa()
         {
             //List<Manga> dslh = null;
@@ -63,6 +88,15 @@ namespace MangaApp.Views
             Categorys = JsonConvert.DeserializeObject<List<Category>>(kq);
             return 0;
         }
+        public async void getUser()
+        {
+            HttpClient http = new HttpClient();
+
+            var kq = await http.GetStringAsync
+                (host.url + "api/userInfor/GetUserByID?userID=" + User.userID.ToString());
+            userinfor = JsonConvert.DeserializeObject<List<User>>(kq);
+            username.Text = userinfor[0].userName;
+        }
         public AboutPage()
         {
             InitializeComponent();
@@ -71,10 +105,11 @@ namespace MangaApp.Views
             {
                 Mangas = await LayDSLoaiHoa();
                 Mangas2 = Enumerable.Reverse(Mangas.Take(20)).ToList();
-                lstdslh.ItemsSource = Mangas.OrderByDescending(o => o.Liked).ToList();
+                lstdslh.ItemsSource = Mangas.OrderByDescending(o => o.Liked).Take(10).ToList();
                 await GetCategory();
                 Carousel.ItemsSource = Mangas.Take(5);
-
+                GetComment();
+                getUser();
             });
             Device.StartTimer(TimeSpan.FromSeconds(2), (Func<bool>)(() =>
             {
@@ -183,6 +218,11 @@ namespace MangaApp.Views
 
                Manga manga = (Manga)lstdslh.SelectedItem;
                Navigation.PushAsync(new DetailMangaPage(manga));
+        }
+
+        private void Gotontf_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Notification());
         }
     }
     /*private void Button_Clicked(object sender, EventArgs e)

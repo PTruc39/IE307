@@ -4,6 +4,9 @@
              x:Class="MangaApp.Views.Notification">
     <ContentPage.Content>
         <StackLayout>
+            <Frame  Padding="24" CornerRadius="0" x:Name="emptyntf" IsVisible="false">
+                <Label Text="You don't have any notifications." HorizontalTextAlignment="Center"  FontSize="24"/>
+            </Frame>
             <ListView x:Name="lstdslh"  RowHeight="60"
                       IsPullToRefreshEnabled="True"
                       Refreshing="lstdslh_Refreshing" ItemSelected="lstdslh_ItemSelected"

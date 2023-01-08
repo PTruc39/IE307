@@ -2,10 +2,47 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MangaApp.Views.LoginPage2"
+             BackgroundImageSource="loginBG.png"
              Shell.NavBarIsVisible="False"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <Grid Margin="0">
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Margin="0,30" Source="Logo.png" Aspect="AspectFit" HeightRequest="180" WidthRequest="80"></Image>
+            <Frame Grid.Row="1" Margin="0,0,0,-40" BorderColor="#FF4359"  HasShadow="True"  CornerRadius="50" HeightRequest="700">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="20" Padding="20,10,20,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0"  Text="Welcome Back!" FontSize="24" FontAttributes="Bold" TextColor="#FF4359" HorizontalOptions="CenterAndExpand"></Label>
+                    <Label Grid.Row="1" Margin="0,-5,0,0" Text="Login in to account" TextColor="#1C375C"  HorizontalOptions="CenterAndExpand"></Label>
+                    <StackLayout Grid.Row="2">
+                        <Entry x:Name="email"  BackgroundColor="{Binding ValidateColor2}" Completed="email_Completed"  Placeholder="Email" Margin="0,20,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Entry>
+                        <Label Text="Invalid Email" HorizontalTextAlignment="Center"  IsVisible="False" x:Name="invalidemail" TextColor="Red"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="3">
+                        <Entry x:Name="password" Completed="password_Completed" BackgroundColor="{Binding ValidateColor}"  Placeholder="Password" IsPassword="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Entry>
+                        <Label Text="Password has to be longer than 8 character" HorizontalTextAlignment="Center" TextColor="Red" IsVisible="False" x:Name="invalipass"/>
+                    </StackLayout>
+                    <Button Clicked="Button_Clicked_1" Grid.Row="4" Text="Login"  CornerRadius="20"></Button>
+                   
+                    <Label Grid.Row="5" Text="Haven't had a account? Go to Register!" FontAttributes="Bold" HorizontalOptions="CenterAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                            Tapped="TapGestureRecognizer_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+            </Frame>
+        </Grid>
+        <!--<Grid Margin="0">
             <Image Margin="0" Source="loginBG.png" Aspect="AspectFill"/>
             <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
                 <Label Text="Login" FontSize="Large" HorizontalOptions="CenterAndExpand"></Label>
@@ -26,6 +63,6 @@
                     </Label>
                 </StackLayout>
             </StackLayout>
-        </Grid>
+        </Grid>-->
     </ContentPage.Content>
 </ContentPage>

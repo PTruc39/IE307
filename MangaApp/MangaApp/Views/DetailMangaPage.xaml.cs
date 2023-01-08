@@ -43,9 +43,9 @@ namespace MangaApp.Views
             //await DisplayAlert("checking", kq.ToString(), "yes", "no");
             //checking = int.Parse(kq);
             if (int.Parse(kq) == 1)
-                Heart.Source = "FavouriteRedIcon.png";
+                Heart.Source = "heartpink.png";
             else
-                Heart.Source = "FavouriteBlackIcon.png";
+                Heart.Source = "heartblack.png";
 
         }
         public DetailMangaPage()
@@ -93,13 +93,6 @@ namespace MangaApp.Views
         {
             this.Navigation.PopAsync();
         }
-
-        private void ImgAddToWishlist_Tapped(object sender, EventArgs e)
-        {
-            favouriteTapCount++;
-            Image img = (Image)sender;
-            img.Source = favouriteTapCount % 2 == 0 ? "FavouriteBlackIcon.png" : "FavouriteRedIcon.png";
-        }
         private void ReadNow(object sender, EventArgs e)
         {
             Navigation.PushAsync(new Reading(dslh[0],dslh));
@@ -120,26 +113,9 @@ namespace MangaApp.Views
         private async void SelectType(object sender, EventArgs e)
         {
             var category = (sender as View).BindingContext as Category;
-            //DisplayAlert("Test thu coi chon dc ko", category.categoryName, "yes", "no");
-            var kq = await client.GetStringAsync
-               (host.url + "api/manga/GetMangaByCategory?categoryID=" + category.categoryID.ToString());
-            //Mangas = JsonConvert.DeserializeObject<List<Manga>>(kq);
-            await Task.Run(async () =>
-            {
-                Mangas = JsonConvert.DeserializeObject<List<Manga>>(kq);
-            });
+            Navigation.PushAsync(new CategoryPage2(category.categoryName));
 
-            var view = sender as View;
-            var parent = view.Parent as StackLayout;
 
-            foreach (var child in parent.Children)
-            {
-                VisualStateManager.GoToState(child, "Normal");
-                ChangeTextColor(child, "#707070");
-            }
-
-            VisualStateManager.GoToState(view, "Selected");
-            ChangeTextColor(view, "#FFFFFF");
         }
 
         private void ChangeTextColor(View child, string hexColor)
@@ -155,5 +131,43 @@ namespace MangaApp.Views
             Navigation.PushAsync(new CommentPage(this.Manga, cmt));
 
         }
+        private async void ImgAddToWishlist_Tapped(object sender, EventArgs e)
+        {
+            Image img = (Image)sender;
+            Favorite favorite = new Favorite();
+            favorite.mangaID = this.Manga.MangaID;
+            favorite.userID = User.userID;
+            if (img.Source.ToString() == "File: heartblack.png")
+            {
+                var json = JsonConvert.SerializeObject(favorite);
+                var noidung = new StringContent(json, Encoding.UTF8, "application/json");
+                var apires = await client.PostAsync(host.url + "api/user/AddFavorite", noidung);
+                img.Source = "heartpink.png";
+            }
+            else
+            {
+                var json = JsonConvert.SerializeObject(favorite);
+                var noidung = new StringContent(json, Encoding.UTF8, "application/json");
+                var apires = await client.PostAsync(host.url + "api/user/DeleteFavorite", noidung);
+                img.Source = "heartblack.png";
+
+            }
+        }
+
+        private async void Button_Clicked_1(object sender, EventArgs e)
+        {
+            Follow favorite = new Follow();
+            favorite.mangaID = this.Manga.MangaID;
+            favorite.userID = User.userID;
+            var json = JsonConvert.SerializeObject(favorite);
+            var noidung = new StringContent(json, Encoding.UTF8, "application/json");
+            var apires = await http.PostAsync(host.url + "api/follow/AddFollow", noidung);
+        }
+        //private void ImgAddToWishlist_Tapped(object sender, EventArgs e)
+        //{
+        //    favouriteTapCount++;
+        //    Image img = (Image)sender;
+        //    img.Source = favouriteTapCount % 2 == 0 ? "heartblack.png" : "heartpink.png";
+        //}
     }
 }

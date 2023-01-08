@@ -13,10 +13,10 @@ using Xamarin.Forms.Xaml;
 namespace MangaApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CategoryPage : ContentPage
+    public partial class CategoryPage2 : ContentPage
     {
-        string searchname="";
-        string searchcategory="";
+        string searchname = "";
+        string searchcategory = "";
         HttpClient http = new HttpClient();
         public List<Category> dslh;
         Host host = new Host();
@@ -24,29 +24,32 @@ namespace MangaApp.Views
         async void GetManga()
         {
             var kq = await http.GetStringAsync
-                (host.url + "api/manga/GetMangaList");
+                                (host.url + "api/manga/GetMangaList");
             var dslh = JsonConvert.DeserializeObject<List<Manga>>(kq);
             lstdslh.ItemsSource = dslh;
+
         }
-        async void GetCategory ()
+        async void GetCategory(String i)
         {
             var kq = await http.GetStringAsync
                 (host.url + "api/category/GetCategory");
             dslh = JsonConvert.DeserializeObject<List<Category>>(kq);
             categoryPicker.ItemsSource = dslh;
+            categoryPicker.SelectedIndex = dslh.FindIndex(item => item.categoryName == i);
             //
             //    categoryPicker.SelectedIndex = dslh.FindIndex(item => item.categoryID == i);
 
         }
-        public void autopicked (int i)
+        public void autopicked(int i)
         {
             if (i != 0)
                 categoryPicker.SelectedIndex = dslh.FindIndex(item => item.categoryID == i);
         }
-        public CategoryPage()
+        public CategoryPage2(String i)
         {
             InitializeComponent();
-            GetCategory();
+            GetCategory(i);
+            DisplayAlert("a", i.ToString(), "a");
             //autopicked(i);
             GetManga();
         }
@@ -90,20 +93,20 @@ namespace MangaApp.Views
         {
             var action = await DisplayActionSheet("ActionSheet: Send to?", "Cancel", null, "Email", "Twitter", "Facebook");
             if (action == "Email")
-            await DisplayAlert("pick", action, "yes", "no");
+                await DisplayAlert("pick", action, "yes", "no");
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
             var kq = await http.GetStringAsync
-                (host.url + "api/manga/findmanga?name="+searchname+"&categoryID="+searchcategory);
+                (host.url + "api/manga/findmanga?name=" + searchname + "&categoryID=" + searchcategory);
             var dslh = JsonConvert.DeserializeObject<List<Manga>>(kq);
             lstdslh.ItemsSource = dslh;
         }
 
         private void Entry_TextChanged(object sender, TextChangedEventArgs e)
         {
-            searchname = srch.Text;  
+            searchname = srch.Text;
         }
 
         private async void MenuItem_Clicked_1(object sender, EventArgs e)

@@ -11,8 +11,36 @@
              xmlns:vm="clr-namespace:MangaApp.ViewModels"
              Title="{Binding Title}">
     <ContentPage.Content>
-        <ScrollView>
+        <StackLayout>
+            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*" Padding="10" x:Name="Userinfor" IsVisible="True">
+                <ImageButton Grid.Column="0" Grid.RowSpan="2" Source="avatar.png" HeightRequest="50" WidthRequest="50" HorizontalOptions="Start" BackgroundColor="#f1f0f4" CornerRadius="10"/>
+                <Label Grid.Column="1" Grid.Row="0" Text="Welcome" TextColor="Silver" FontAttributes="Bold" Margin="20,0,0,0"/>
+                <Label Grid.Column="1" Grid.Row="1" Text="" x:Name="username" TextColor="#FF4157" FontAttributes="Bold" Margin="20,0,0,0"/>
+                <Image Grid.Column="2" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="End" Source="search.png" 
+                               HeightRequest="23"
+                               WidthRequest="23"
+                               TranslationX="60"/>
+                <Image Grid.Column="3" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="End" Source="notify_2.png" IsVisible="false"
+                               HeightRequest="25" x:Name="ntfno"
+                               WidthRequest="25"
+                               TranslationX="-10">
+                    <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="Gotontf" Tapped="Gotontf_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Grid.Column="3" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="End" Source="notify_1.png" IsVisible="false"
+                               HeightRequest="25" x:Name="ntfyes"
+                               WidthRequest="25"
+                               TranslationX="-10">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="Gotontf2" Tapped="Gotontf_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+            <ScrollView>
+            
             <StackLayout>
+                
             <!--<ListView x:Name="lstdslh" ItemSelected="lstdslh_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -25,8 +53,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>-->
-           
-            <Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10">
+              
+                <Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -287,6 +315,7 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="1*"></ColumnDefinition>
                                             <ColumnDefinition Width="2*"></ColumnDefinition>
+                                            <ColumnDefinition Width="auto"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
                                         <Image Source="{Binding MangaImage}" Aspect="AspectFit"
                                        Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"/>
@@ -295,7 +324,11 @@
                                        Grid.Column="1" Grid.Row="0"/>
                                         <Label Text="{Binding Description}" FontSize="15"
                                        Grid.Column="1" Grid.Row="1"/>
-                                    </Grid>
+                                         <StackLayout Grid.Column="2" Grid.Row="0" Grid.RowSpan="3"  Spacing="0" WidthRequest="60" Padding="0" VerticalOptions="CenterAndExpand">
+                                                <Label Text="{Binding Liked}" FontAttributes="Bold" FontSize="20" TextColor="Black" HorizontalOptions="Center"></Label>
+                                                <Label Text="HEARTS"  TextColor="Black" HorizontalOptions="Center"  ></Label>
+                                         </StackLayout>
+                                        </Grid>
                                     <!--<ViewCell.ContextActions>
                                         <MenuItem Clicked="MenuItem_Clicked" Text="Delete favorite"  CommandParameter="{Binding .}">
                                         </MenuItem>
@@ -307,6 +340,7 @@
                 </Grid>
         </StackLayout>
         </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
     <!--<ContentPage.BindingContext>
         <vm:AboutViewModel />
