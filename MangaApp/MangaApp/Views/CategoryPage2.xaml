@@ -4,17 +4,6 @@
              x:Class="MangaApp.Views.CategoryPage2">
     <ContentPage.Content>
         <StackLayout>
-            <Grid 
-          ColumnDefinitions="*,Auto" VerticalOptions="StartAndExpand" Padding="5,10,10,5">
-                <Entry Grid.Column="0" Placeholder="Search" TextColor="Black" FontSize="15" TextChanged="Entry_TextChanged" x:Name="srch"
-                           FontFamily="ThemeFontRegular" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-                </Entry>
-                <Button Grid.Column="1"  Clicked="Button_Clicked"
-                        BackgroundColor="{StaticResource Primary}" CornerRadius="9" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="60" HeightRequest="50" ImageSource="search.png"/>
-
-                <!-- Here add the code that is being explained in this block -->
-
-            </Grid>
             <Picker x:Name="categoryPicker"
                     Title="Search by Category"
                     TitleColor="{StaticResource Primary}"

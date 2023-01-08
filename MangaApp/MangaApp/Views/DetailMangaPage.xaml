@@ -94,7 +94,7 @@
                                 <StackLayout Orientation="Horizontal" Spacing="10">
                                     <Image WidthRequest="26" Source="heartpink.png"/>
                                     <Label Text="This manga has been liked by " VerticalOptions="Center"></Label>
-                                    <Label Text="{Binding Manga.Liked}" VerticalOptions="Center" Font0Family="ThemeFontRegular" TextColor="{StaticResource Primary}"/>
+                                    <Label Text="{Binding Manga.Liked}" VerticalOptions="Center" FontFamily="ThemeFontRegular" TextColor="{StaticResource Primary}"/>
                                     <Label Text="times!" VerticalOptions="Center"></Label>
 
                                 </StackLayout>

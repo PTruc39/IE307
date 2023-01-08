@@ -104,10 +104,10 @@ namespace MangaApp.Views
             lstdslh.ItemsSource = dslh;
         }
 
-        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        /*private void Entry_TextChanged(object sender, TextChangedEventArgs e)
         {
             searchname = srch.Text;
-        }
+        }*/
 
         private async void MenuItem_Clicked_1(object sender, EventArgs e)
         {
