@@ -38,11 +38,7 @@ namespace MangaApp.Views
             //    categoryPicker.SelectedIndex = dslh.FindIndex(item => item.categoryID == i);
 
         }
-        public void autopicked (int i)
-        {
-            if (i != 0)
-                categoryPicker.SelectedIndex = dslh.FindIndex(item => item.categoryID == i);
-        }
+        
         public CategoryPage()
         {
             InitializeComponent();
@@ -61,12 +57,20 @@ namespace MangaApp.Views
             Picker picker = (Picker)sender;
             Category selected = picker.SelectedItem as Category;
             searchcategory = selected.categoryID.ToString();
-            var kq = await http.GetStringAsync
-               (host.url + "api/manga/GetMangaByCategory?categoryID=" + selected.categoryID.ToString());
-            var dslh = JsonConvert.DeserializeObject<List<Manga>>(kq);
-            lstdslh.ItemsSource = dslh;
-
-
+            if (srch.Text == "" || srch.Text is null)
+            {
+                var kq = await http.GetStringAsync
+                 (host.url + "api/manga/GetMangaByCategory?categoryID=" + selected.categoryID.ToString());
+                var dslh = JsonConvert.DeserializeObject<List<Manga>>(kq);
+                lstdslh.ItemsSource = dslh;
+            }
+            else
+            {
+                var kq = await http.GetStringAsync
+                    (host.url + "api/manga/findmanga?name=" + searchname + "&categoryID=" + searchcategory);
+                var dslh = JsonConvert.DeserializeObject<List<Manga>>(kq);
+                lstdslh.ItemsSource = dslh;
+            }
         }
         private void lstdslh_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
@@ -95,10 +99,40 @@ namespace MangaApp.Views
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            var kq = await http.GetStringAsync
+            if (srch.Text != "")
+            {
+                if (!(srch.Text is null))
+                {
+                    
+                        if (searchcategory == "")
+                        {
+                            var kq = await http.GetStringAsync
+                        (host.url + "api/manga/findmanga?name=" + searchname);
+                            var dslh = JsonConvert.DeserializeObject<List<Manga>>(kq);
+                            lstdslh.ItemsSource = dslh;
+                        }
+                        else
+                        {
+                            var kq = await http.GetStringAsync
+                            (host.url + "api/manga/findmanga?name=" + searchname + "&categoryID=" + searchcategory);
+                            var dslh = JsonConvert.DeserializeObject<List<Manga>>(kq);
+                            lstdslh.ItemsSource = dslh;
+                        }
+                    
+                }
+                else
+                {
+                    GetManga();
+                }
+            }
+            else
+            {
+                GetManga();
+            }
+           /* var kq = await http.GetStringAsync
                 (host.url + "api/manga/findmanga?name="+searchname+"&categoryID="+searchcategory);
             var dslh = JsonConvert.DeserializeObject<List<Manga>>(kq);
-            lstdslh.ItemsSource = dslh;
+            lstdslh.ItemsSource = dslh;*/
         }
 
         private void Entry_TextChanged(object sender, TextChangedEventArgs e)
@@ -123,6 +157,11 @@ namespace MangaApp.Views
         {
             var manga = (sender as View).BindingContext as Manga;
             Navigation.PushAsync(new DetailMangaPage(manga));
+        }
+
+        private void srch_Completed(object sender, EventArgs e)
+        {
+
         }
     }
 }

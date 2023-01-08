@@ -92,24 +92,20 @@
                         <StackLayout Spacing="15" >
                             <StackLayout Orientation="Horizontal" Spacing="15">
                                 <StackLayout Orientation="Horizontal" Spacing="10">
-                                    <Image WidthRequest="16" Source="bed.png"/>
-                                    <Label Text="{Binding Manga.Description}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
+                                    <Image WidthRequest="26" Source="heartpink.png"/>
+                                    <Label Text="This manga has been liked by " VerticalOptions="Center"></Label>
+                                    <Label Text="{Binding Manga.Liked}" VerticalOptions="Center" Font0Family="ThemeFontRegular" TextColor="{StaticResource Primary}"/>
+                                    <Label Text="times!" VerticalOptions="Center"></Label>
+
                                 </StackLayout>
-                                <StackLayout Orientation="Horizontal" Spacing="10">
-                                    <Image WidthRequest="16" Source="shower.png"/>
-                                    <Label Text="{Binding Manga.Description}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal" Spacing="10">
-                                    <Image WidthRequest="16" Source="square.png"/>
-                                    <Label Text="{Binding Manga.Description}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
-                                </StackLayout>
+                               
                             </StackLayout>
                         </StackLayout>
-                     
-                       
-                        <Label Text="Description" FontSize="15" FontFamily="ThemeFontBold" TextColor="#515151"/>
-                        <Label Text="{Binding Manga.Description}"  FontSize="15" FontFamily="ThemeFontRegular" TextColor="#515151"/>
-                        <Label Text="Chapters" FontSize="15" FontFamily="ThemeFontBold" TextColor="#515151"/>
+
+
+                        <Label Text="Description" FontSize="20" FontFamily="ThemeFontBold" TextColor="{StaticResource Primary}"/>
+                        <Label Text="{Binding Manga.Description}"  FontSize="15" FontFamily="ThemeFontRegular" />
+                        <Label Text="Chapters" FontSize="20" FontFamily="ThemeFontBold" TextColor="{StaticResource Primary}"/>
                         <ScrollView VerticalOptions="FillAndExpand"
                                 Orientation="Vertical">
                             <ListView x:Name="lstdslh" ItemSelected="lstdslh_ItemSelected" RowHeight="30" HeightRequest="150">
@@ -134,6 +130,9 @@
                 
                 ItemsLayout="HorizontalList"
                 HeightRequest="100">
+                                <CollectionView.EmptyView>
+                                    <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Don't have any comments."/>
+                                </CollectionView.EmptyView>
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate>
                                         <StackLayout>

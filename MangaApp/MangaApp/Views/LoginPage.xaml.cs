@@ -75,11 +75,19 @@ namespace MangaApp.Views
             string userID = await apires.Content.ReadAsStringAsync();
             User.userID = int.Parse(userID);
             Preferences.Set("userID", int.Parse(userID));
-            await DisplayAlert("User id cua ban", Preferences.Get("userID", 0).ToString(), "ok");
+                    if (int.Parse(userID) != 0)
+                    {
+                        await DisplayAlert("User id cua ban", Preferences.Get("userID", 0).ToString(), "ok");
 
-            Preferences.Set("userID", int.Parse(userID));
-           
-                await Shell.Current.GoToAsync(state: "//AboutPage");
+                        Preferences.Set("userID", int.Parse(userID));
+
+                        await Shell.Current.GoToAsync(state: "//AboutPage");
+                    }
+                    else
+                    {
+                        await DisplayAlert("Register Failed!", "Your email/password is invalid.", "yes");
+
+                    }
                 }
                 else
                 {
