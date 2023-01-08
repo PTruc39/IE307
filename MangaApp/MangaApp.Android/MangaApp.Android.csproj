@@ -118,15 +118,6 @@
     <AndroidResource Include="Resources\drawable\osm.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\apt1.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\apt2.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\apt3.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\back.png" />
   </ItemGroup>
   <ItemGroup>
@@ -200,13 +191,13 @@
     <AndroidResource Include="Resources\drawable\settingIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\backgroundUser.jpg" />
-
     <AndroidResource Include="Resources\drawable\fire_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\tag_icon.png" />
-
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bguser.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>

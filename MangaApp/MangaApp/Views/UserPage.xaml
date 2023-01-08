@@ -6,26 +6,26 @@
              xmlns:st="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
 
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             mc:Ignorable="d" NavigationPage.HasNavigationBar="False"
-             x:Class="MangaApp.Views.UserPage">
+             mc:Ignorable="d"
+             x:Class="MangaApp.Views.UserPage" Shell.NavBarIsVisible="False">
     <!--<ContentPage.ToolbarItems>
         <ToolbarItem x:Name="logout" Text="Log Out" Clicked="Logout_Clicked"/>
     </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
         <AbsoluteLayout>
-            <Grid RowDefinitions="150, auto">
-                <pv:PancakeView HeightRequest="150" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="Start" 
-                        CornerRadius="75" Margin="30,75,30,30" HasShadow="True" BackgroundColor="White"
-                                    Grid.Row="0"
-                                    Grid.RowSpan="2">
-                    <Image HeightRequest="150" Source="avatar.jpg" Aspect="AspectFill"/>
+            <Grid RowDefinitions="270, auto">
+                <pv:PancakeView HeightRequest="160" WidthRequest="160" HorizontalOptions="Center" VerticalOptions="Start" 
+                                CornerRadius="80" Margin="30,87,30,0" HasShadow="True" BackgroundColor="White" 
+                                Padding="0"
+                                Grid.Row="0" Grid.RowSpan="2">
+                    <Image HeightRequest="160" Source="avatar.jpg" Aspect="AspectFill"/>
                 </pv:PancakeView>
-                <Image Source="backgroundUser.jpg" Aspect="AspectFit" 
+                <Image Source="bguser.jpg" Aspect="AspectFill" 
                        
                            Grid.Row="0"/>
                 <StackLayout Grid.Row="1" x:Name="userInfor" VerticalOptions="Center" HorizontalOptions="Center">
                     
-                    <Grid Margin="40">
+                    <Grid Margin="50,10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2*"/>
                     <RowDefinition Height="*"/>
@@ -37,21 +37,22 @@
                 </Grid.ColumnDefinitions>
 
                     <Label x:Name="username"
-                       FontSize="24" FontAttributes="Bold"
+                       FontSize="28" FontAttributes="Bold"
                            TextColor="Black"
-                       VerticalOptions="Center" HorizontalOptions="Center"
+                       VerticalOptions="Start" HorizontalOptions="Center"
                        Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
                 <!--<Entry  
                        FontSize="18" FontAttributes="Bold"                      
                        IsEnabled="False" Grid.Row="1" Grid.Column="1"/>-->
                 <Label Text="Email :" 
-                       FontSize="18" FontAttributes="Bold"                      
+                       FontSize="18" FontAttributes="Bold"   
+                       TextColor="Black"
                        VerticalOptions="Center"                      
                        Grid.Row="1" Grid.Column="0"/>
                 <Entry x:Name="email" IsEnabled="False" 
                        FontSize="18" FontAttributes="Bold"                     
                        Grid.Row="1" Grid.Column="1"/>
-                <Label Text="Password :" 
+                        <Label Text="Password :" TextColor="Black"
                        FontSize="18" FontAttributes="Bold"
                        VerticalOptions="Center"                                            
                        Grid.Row="2" Grid.Column="0"/>

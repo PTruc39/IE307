@@ -37,6 +37,8 @@ namespace MangaApp.Views
             username.Text = userinfor[0].userName;
             email.Text = userinfor[0].email;
             password.Text = userinfor[0].password;
+            email.TextColor = Color.Black;
+            password.TextColor = Color.Black;
         }
         public UserPage()
         {

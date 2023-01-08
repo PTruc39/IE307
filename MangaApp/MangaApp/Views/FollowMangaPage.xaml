@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MangaApp.Views.FollowMangaPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <RefreshView x:Name="refreshCV" Refreshing="refreshCV_Refreshing">
+                    <CollectionView x:Name="lstFavourites" HeightRequest="80"
+                            SelectionMode="Single" SelectionChanged="lstFavourites_SelectionChanged">
+
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" Span="1"
+                                         VerticalItemSpacing="5"></GridItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems SwipeBehaviorOnInvoked="RemainOpen">
+                                            <SwipeItem Text="Delete"
+                                                       IconImageSource="apt2.jpeg"                                                    
+                                                       BackgroundColor="#fff1f1"
+                                                       
+                                                       CommandParameter="{Binding .}"
+                                                       Invoked="OnDeleteSwipeItemInvoked"/>
+                                        </SwipeItems>
+
+                                    </SwipeView.RightItems>
+                                    <StackLayout>
+                                        <Grid RowSpacing="5">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1.2*"></RowDefinition>
+                                                <RowDefinition Height="0.9*"></RowDefinition>
+                                                <RowDefinition Height="0.9*"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Image HeightRequest="70" WidthRequest="50" Margin="10,5"
+                                                       Source="{Binding MangaImage}" 
+                                                       Aspect="AspectFill" 
+                                                       Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"/>
+
+                                            <Label Text="{Binding MangaName}" TextColor="Black" 
+                                                       FontSize="16" FontAttributes="Bold"
+                                                       Grid.Column="1" Grid.Row="0"/>
+                                            <!--<ScrollView Grid.Row="1" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                                                <StackLayout Orientation="Horizontal" Spacing="10" BindableLayout.ItemsSource="{Binding categories}">
+                                                    <BindableLayout.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <pv:PancakeView CornerRadius="15" Margin="1,10,0,10" HasShadow="True" BackgroundColor="White">
+                                                                <pv:PancakeView.GestureRecognizers>
+                                                                    <TapGestureRecognizer Tapped=""/>
+                                                                </pv:PancakeView.GestureRecognizers>
+                                                                <VisualStateManager.VisualStateGroups>
+                                                                    <VisualStateGroup x:Name="CommonStates">
+                                                                        <VisualState x:Name="Normal">
+                                                                            <VisualState.Setters>
+                                                                                <Setter Property="BackgroundGradientStops" Value="{x:Null}"/>
+                                                                            </VisualState.Setters>
+                                                                        </VisualState>
+                                                                        <VisualState x:Name="Selected">
+                                                                            <VisualState.Setters>
+                                                                                <Setter Property="BackgroundGradientStops">
+                                                                                    <Setter.Value>
+                                                                                        <pv:GradientStopCollection>
+                                                                                            <pv:GradientStop Color="#FF4157" Offset="0" />
+                                                                                            <pv:GradientStop Color="#FF4359" Offset="0.5" />
+                                                                                            <pv:GradientStop Color="#FE93C5" Offset="1" />
+                                                                                        </pv:GradientStopCollection>
+                                                                                    </Setter.Value>
+                                                                                </Setter>
+                                                                                <Setter Property="BackgroundGradientAngle" Value="270"/>
+                                                                            </VisualState.Setters>
+                                                                        </VisualState>
+                                                                    </VisualStateGroup>
+                                                                </VisualStateManager.VisualStateGroups>
+                                                                <Label x:Name="PropertyTypeName" Padding="20,5" Text="{Binding categoryName}" TextColor="#707070" FontSize="15" FontFamily="ThemeFontRegular"/>
+                                                            </pv:PancakeView>
+                                                        </DataTemplate>
+                                                    </BindableLayout.ItemTemplate>
+                                                </StackLayout>
+                                            </ScrollView>-->
+                                            <Label Text="{Binding Description}" FontSize="15"
+                                                       Grid.Column="1" Grid.Row="2"/>
+                                        </Grid>
+                                    </StackLayout>
+                                </SwipeView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </RefreshView>
+                <Button Text="test" Clicked="Button_Clicked"></Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

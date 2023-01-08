@@ -36,7 +36,10 @@
     
     <TabBar>
         <ShellContent Title="About" Icon="icon_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
-        <ShellContent Title="Favorite" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:FavoritePage}" />
+        <Tab Title="My List" Icon="icon_feed.png" >
+            <ShellContent ContentTemplate="{DataTemplate local:FavoritePage}" Title="Favorite"/>
+            <ShellContent ContentTemplate="{DataTemplate local:FollowMangaPage}" Title="Follow"/>
+        </Tab>
         <ShellContent Title="Category" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:CategoryPage}" />
         <ShellContent Title="User" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:UserPage}" />
         <ShellContent Title="Test Page" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:ForumPage}" />
