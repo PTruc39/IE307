@@ -82,7 +82,7 @@ namespace MangaApp.Views
                 GetComment(this.Manga);
             }
             else
-                DisplayAlert("KHONG duoc xoa", "KHONG", "KHONG", "KHONGGG");
+                await DisplayAlert("KHONG duoc xoa", "KHONG", "KHONG", "KHONGGG");
 
         }
     }
