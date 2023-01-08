@@ -105,7 +105,7 @@ namespace MangaApp.Views
             {
                 Mangas = await LayDSLoaiHoa();
                 Mangas2 = Enumerable.Reverse(Mangas.Take(20)).ToList();
-                lstdslh.ItemsSource = Mangas.OrderByDescending(o => o.Liked).ToList();
+                lstdslh.ItemsSource = Mangas.OrderByDescending(o => o.Liked).Take(10).ToList();
                 await GetCategory();
                 Carousel.ItemsSource = Mangas.Take(5);
                 GetComment();

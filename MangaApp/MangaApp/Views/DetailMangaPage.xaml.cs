@@ -113,7 +113,7 @@ namespace MangaApp.Views
         private async void SelectType(object sender, EventArgs e)
         {
             var category = (sender as View).BindingContext as Category;
-            Navigation.PushAsync(new CategoryPage(category.categoryID));
+            Navigation.PushAsync(new CategoryPage());
 
 
         }

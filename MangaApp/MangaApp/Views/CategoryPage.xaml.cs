@@ -43,11 +43,11 @@ namespace MangaApp.Views
             if (i != 0)
                 categoryPicker.SelectedIndex = dslh.FindIndex(item => item.categoryID == i);
         }
-        public CategoryPage(int i=0)
+        public CategoryPage()
         {
             InitializeComponent();
             GetCategory();
-            autopicked(i);
+            //autopicked(i);
             GetManga();
         }
 

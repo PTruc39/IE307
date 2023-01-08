@@ -23,11 +23,11 @@
                         BackgroundColor="White" VerticalOptions="FillAndExpand">
                 <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
                     <StackLayout Spacing="15" HorizontalOptions="FillAndExpand">
-                        <Grid ColumnDefinitions="3*,1*,1.5*" >
+                        <Grid ColumnDefinitions="3*,1*,1.5*" RowDefinitions="80" >
                                 <Label Text="{Binding Manga.MangaName}" FontSize="20" 
                                        TextColor="Black" FontFamily="ThemeFontRegular" 
                                        HorizontalOptions="Start" VerticalOptions="CenterAndExpand"
-                                       Grid.Column="0"/>
+                                       Grid.Column="0" Grid.Row="0"/>
                                 <Image HorizontalOptions="End"  VerticalOptions="CenterAndExpand" x:Name="Heart"
                                        Source="heartblack.png"
                                            HeightRequest="30"
@@ -48,7 +48,7 @@
                                     <TapGestureRecognizer x:Name="ImgAddToFollow" />
                                 </Image.GestureRecognizers>
                             </Image>-->
-                            <Button  Grid.Column="2" x:Name="followlabel" Text="Follow" Clicked="Button_Clicked_1" CornerRadius="100" FontSize="12" HeightRequest="35"/>
+                            <Button  Grid.Column="2" x:Name="followlabel" Text="Follow" Clicked="Button_Clicked_1" CornerRadius="100" FontSize="12" HeightRequest="35" VerticalOptions="Center"/>
                         </Grid>
                         <StackLayout Grid.Row="0">
                             <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
