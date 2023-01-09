@@ -103,6 +103,8 @@ namespace MangaApp.Views
             base.OnAppearing();
             DetailsView.TranslationY = 600;
             DetailsView.TranslateTo(0, 0, 500, Easing.SinInOut);
+            GetComment(this.Manga);
+
         }
 
         private void Button_Clicked(object sender, EventArgs e)

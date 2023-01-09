@@ -103,9 +103,9 @@
                         </StackLayout>
 
 
-                        <Label Text="Description" FontSize="20" FontFamily="ThemeFontBold" TextColor="{StaticResource Primary}"/>
+                        <Label Text="Description" FontAttributes="Bold" FontSize="20" FontFamily="ThemeFontBold" TextColor="{StaticResource Primary}"/>
                         <Label Text="{Binding Manga.Description}"  FontSize="15" FontFamily="ThemeFontRegular" />
-                        <Label Text="Chapters" FontSize="20" FontFamily="ThemeFontBold" TextColor="{StaticResource Primary}"/>
+                        <Label Text="Chapters" FontAttributes="Bold" FontSize="20" FontFamily="ThemeFontBold" TextColor="{StaticResource Primary}"/>
                         <ScrollView VerticalOptions="FillAndExpand"
                                 Orientation="Vertical">
                             <ListView x:Name="lstdslh" ItemSelected="lstdslh_ItemSelected" RowHeight="30" HeightRequest="150">

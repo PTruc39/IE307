@@ -8,7 +8,9 @@
                 <RefreshView x:Name="refreshCV" Refreshing="refreshCV_Refreshing">
                     <CollectionView x:Name="lstFavourites" HeightRequest="80"
                             SelectionMode="Single" SelectionChanged="lstFavourites_SelectionChanged">
-
+                        <CollectionView.EmptyView>
+                            <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="You haven't followed any mangas."/>
+                        </CollectionView.EmptyView>
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout Orientation="Vertical" Span="1"
                                          VerticalItemSpacing="5"></GridItemsLayout>

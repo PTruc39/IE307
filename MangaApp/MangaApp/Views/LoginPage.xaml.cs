@@ -164,5 +164,12 @@ namespace MangaApp.Views
                 }
             }
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            email.Text = "";
+            username.Text = "";
+            password.Text = "";
+        }
     }
 }

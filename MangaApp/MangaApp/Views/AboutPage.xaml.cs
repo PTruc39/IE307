@@ -65,7 +65,7 @@ namespace MangaApp.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            getUser();
             GetComment();
         }
         public async Task<List<Manga>> LayDSLoaiHoa()
