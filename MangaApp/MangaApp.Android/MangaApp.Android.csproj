@@ -151,9 +151,6 @@
     <AndroidResource Include="Resources\drawable\search.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\shower.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\square.png" />
   </ItemGroup>
   <ItemGroup>

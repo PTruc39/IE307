@@ -92,7 +92,6 @@
                         <StackLayout Spacing="15" >
                             <StackLayout Orientation="Horizontal" Spacing="15">
                                 <StackLayout Orientation="Horizontal" Spacing="10">
-<<<<<<< HEAD
                                     <Image WidthRequest="16" Source="heartIcon.png"/>
                                     <Label Text="{Binding Manga.Liked}" FontSize="16" FontFamily="ThemeFontRegular" TextColor="#707070"/>
                                 </StackLayout>
@@ -109,7 +108,6 @@
                                     <Label Text="{Binding Manga.Liked}" VerticalOptions="Center" FontFamily="ThemeFontRegular" TextColor="{StaticResource Primary}"/>
                                     <Label Text="times!" VerticalOptions="Center"></Label>
 
->>>>>>> dfac558150f321e8269eef2aebdb8a3c07bc0bad
                                 </StackLayout>
                                
                             </StackLayout>
