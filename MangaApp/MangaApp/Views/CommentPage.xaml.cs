@@ -42,14 +42,20 @@ namespace MangaApp.Views
         private async void Button_Clicked(object sender, EventArgs e)
         {
             Comment cmt = new Comment();
-           
-            cmt.MangaID = this.Manga.MangaID;
-            cmt.userID = User.userID;
-            cmt.comment = Name.Text;
-            var json = JsonConvert.SerializeObject(cmt);
-            var noidung = new StringContent(json, Encoding.UTF8, "application/json");
-            var apires = await client.PostAsync(host.url + "api/user/AddComment", noidung);
-            GetComment(this.Manga);
+            if (Name.Text == "" || Name.Text is null)
+            {
+                await DisplayAlert("Warning", "Your input is invalid!", "Ok");
+            }
+            else
+            {
+                cmt.MangaID = this.Manga.MangaID;
+                cmt.userID = User.userID;
+                cmt.comment = Name.Text;
+                var json = JsonConvert.SerializeObject(cmt);
+                var noidung = new StringContent(json, Encoding.UTF8, "application/json");
+                var apires = await client.PostAsync(host.url + "api/user/AddComment", noidung);
+                GetComment(this.Manga);
+            }
             
         }
         async void GetComment(Manga manga)

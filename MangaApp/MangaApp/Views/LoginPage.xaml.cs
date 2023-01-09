@@ -85,7 +85,7 @@ namespace MangaApp.Views
                     }
                     else
                     {
-                        await DisplayAlert("Register Failed!", "Your email/password is invalid.", "yes");
+                        await DisplayAlert("Register Failed!", "Your email is existed.", "yes");
 
                     }
                 }
