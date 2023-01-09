@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+using System.Collections.ObjectModel;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -19,8 +17,8 @@ namespace MangaApp.Views
         Chapter chap = new Chapter();
         int Status;
         public List<Chapter> listchaps;
-        public List<ListImg> _imgs;
-        public List<ListImg> images
+        public ObservableCollection<ListImg> _imgs;
+        public ObservableCollection<ListImg> images
         {
             get { return _imgs; }
             set { _imgs = value; OnPropertyChanged(); }
@@ -35,10 +33,10 @@ namespace MangaApp.Views
             HttpClient http = new HttpClient();
             var kq = await http.GetStringAsync
                 (host.url + "api/chapter/GetListByChapter?ChapterID=" + ChapterID.ToString());
-            var dslh = JsonConvert.DeserializeObject<List<ListImg>>(kq);
+            var dslh = JsonConvert.DeserializeObject<ObservableCollection<ListImg>>(kq);
             images = dslh;
-            //lstdslh.ItemsSource = dslh;
-            
+            lstdslh.ItemsSource = dslh;
+
         }
         public Reading(Chapter chapter, List<Chapter> listchapter)
         {
@@ -115,7 +113,7 @@ namespace MangaApp.Views
             Picker picker = (Picker)sender;
             Chapter selected = picker.SelectedItem as Chapter;
             GetChapterList(selected.ChapterID);
-            listimg.ScrollToAsync(0, 0, true);
+            //listimg.ScrollToAsync(0, 0, true);
             chap = selected;
         }
     }

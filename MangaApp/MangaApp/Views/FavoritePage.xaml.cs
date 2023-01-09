@@ -99,5 +99,11 @@ namespace MangaApp.Views
             var manga = e.CurrentSelection.FirstOrDefault() as Manga;
             await Navigation.PushAsync(new DetailMangaPage(manga));
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            LayDSLoaiHoa();
+        }
     }
 }

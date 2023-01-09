@@ -35,16 +35,15 @@
     </Shell.Items>
     
     <TabBar>
-        <ShellContent Title="About" Icon="icon_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
+        <ShellContent Title="Home" Icon="homeIcon.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
 
-        <Tab Title="My List" Icon="icon_feed.png" >
+        <Tab Title="My List" Icon="listIcon.png" >
             <ShellContent ContentTemplate="{DataTemplate local:FavoritePage}" Title="Favorite"/>
             <ShellContent ContentTemplate="{DataTemplate local:FollowMangaPage}" Title="Follow"/>
         </Tab>
-        <ShellContent Title="Category" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:CategoryPage}" />
-        <ShellContent Title="Test Page" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:ForumPage}" />
-        <ShellContent Title="Favorite" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:FavoritePage}" />
-        <ShellContent Title="User" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:UserPage}" />
+        <ShellContent Title="Category" Icon="categoryIcon.png" ContentTemplate="{DataTemplate local:CategoryPage}" />
+        <ShellContent Title="Forum" Icon="forumIcon.png" ContentTemplate="{DataTemplate local:ForumPage}" />
+        <ShellContent Title="User" Icon="userIcon.png" ContentTemplate="{DataTemplate local:UserPage}" />
     </TabBar>
 
     <!--
