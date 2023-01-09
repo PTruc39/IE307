@@ -9,13 +9,13 @@
              Shell.NavBarIsVisible="true"
              Shell.TabBarIsVisible="False"
              Title="{Binding chapter.ChapterID}">
-    <ContentPage.ToolbarItems>
-        <!--<ToolbarItem Text="Scroll to" Clicked="Button_Clicked"/>-->
-    </ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Text="Scroll to" Clicked="Button_Clicked"/>
+    </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
         <Grid RowDefinitions="auto,50">
         <!--<ScrollView>-->
-            <StackLayout>
+            <!--<StackLayout Margin="0" Grid.Row="0" BackgroundColor="Red">-->
                 <!--Picker x:Name="categoryPicker"
                     Title="PICKKK"
                     TitleColor="Blue"
@@ -44,28 +44,41 @@
                     </DataTemplate>
                 </CarouselView.ItemTemplate>
             </CarouselView>-->
-                    <ScrollView Orientation="Vertical" VerticalScrollBarVisibility="Never" x:Name="listimg">
-                        <StackLayout Orientation="Vertical" Spacing="10" BindableLayout.ItemsSource="{Binding images}">
-                            <BindableLayout.ItemTemplate>
+                    <!--<ScrollView Margin="0" Orientation="Vertical" VerticalScrollBarVisibility="Never" x:Name="listimg">
+                <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" Spacing="0"
+                             Orientation="Vertical" MinimumHeightRequest="600"
+                             BindableLayout.ItemsSource="{Binding images}">
+                    
+                        <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                        <Image Source="{Binding ListImage}"
-                                               Aspect="AspectFit"
-                                               HorizontalOptions="Center" />
-                                </DataTemplate>
+                            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <Image Source="{Binding ListImage}" 
+                                       Aspect="AspectFit"></Image>
+                            </Grid>
+                        </DataTemplate>
                             </BindableLayout.ItemTemplate>
                         </StackLayout>
-                    </ScrollView>
-                    <!--<ListView x:Name="lstdslh" >
-                <ListView.ItemTemplate>
+                    </ScrollView>-->
+            <CollectionView x:Name="lstdslh">
+                <CollectionView.EmptyView>
+                    <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Loading Data"/>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="1"></GridItemsLayout>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding ListImage}" Detail="{Binding ChapterID} "/>
+                        <Grid Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowDefinitions="600">
+                            <Image Source="{Binding ListImage}" 
+                                   Aspect="Fill"></Image>
+                        </Grid>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>-->
-        </StackLayout>
-        <!--</ScrollView>-->
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
             <Grid Grid.Row="1" HeightRequest="40" ColumnDefinitions="*,*,*">
-                <Button Text="Previous chapter" Margin="10,5"
+                <Button Text="Prev chapter" Margin="10,5"
                 Clicked="Button_Clicked_back"  FontSize="12"/>
                 <Picker Grid.Column="1" x:Name="categoryPicker"
                     Title="PICKKK"
@@ -76,6 +89,7 @@
                 <Button Grid.Column="2" Text="Next chapter" Margin="10,5"
                 Clicked="Button_Clicked_next" FontSize="12" HorizontalOptions="End"/>
             </Grid>
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

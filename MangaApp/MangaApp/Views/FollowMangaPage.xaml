@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MangaApp.Views.FollowMangaPage">
+             x:Class="MangaApp.Views.FollowMangaPage"
+             Title="My List">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
@@ -18,75 +19,41 @@
                                 <SwipeView>
                                     <SwipeView.RightItems>
                                         <SwipeItems SwipeBehaviorOnInvoked="RemainOpen">
-                                            <SwipeItem Text="Delete"
-                                                       IconImageSource="apt2.jpeg"                                                    
-                                                       BackgroundColor="#fff1f1"
-                                                       
-                                                       CommandParameter="{Binding .}"
-                                                       Invoked="OnDeleteSwipeItemInvoked"/>
+                                            <SwipeItemView BackgroundColor="#fff1f1"
+                                                           CommandParameter="{Binding .}"
+                                                           Invoked="OnDeleteSwipeItemInvoked">
+                                                <StackLayout Orientation="Vertical" WidthRequest="100">
+                                                    <StackLayout Orientation="Vertical" Padding="20,30,20,20"
+                                                                 VerticalOptions="Center" HorizontalOptions="Center">
+                                                        <Image Source="deleteIcon.png" HeightRequest="36" WidthRequest="27"/>
+                                                        <Label Text="Delete" TextColor="Black" FontSize="20"/>
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </SwipeItemView>
                                         </SwipeItems>
 
                                     </SwipeView.RightItems>
-                                    <StackLayout>
-                                        <Grid RowSpacing="5">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="1.2*"></RowDefinition>
-                                                <RowDefinition Height="0.9*"></RowDefinition>
-                                                <RowDefinition Height="0.9*"></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1*"></ColumnDefinition>
-                                                <ColumnDefinition Width="2*"></ColumnDefinition>
-                                            </Grid.ColumnDefinitions>
+                                    <StackLayout Padding="5" >
+                                        <Frame x:Name="frame" HasShadow="True" CornerRadius="20" HeightRequest="120" Padding="0">
+                                            <Grid HorizontalOptions="FillAndExpand" BackgroundColor="White" VerticalOptions="FillAndExpand" >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Image Grid.Column="0" Source="{Binding MangaImage}" 
+                                                       HeightRequest="100" WidthRequest="100" Aspect="Fill"></Image>
+                                                <Grid Grid.Column="1" Padding="20, 10" RowDefinitions="*, *">
+                                                    <Label Text="{Binding MangaName}" FontAttributes="Bold" 
+                                                           HorizontalOptions="FillAndExpand" TextColor="Black"
+                                                           VerticalOptions="Start"
+                                                           FontSize="20"></Label>
+                                                    <Label Grid.Row="1" Text="{Binding Description}" HorizontalOptions="FillAndExpand" 
+                                                           VerticalOptions="Start" TextColor="Black"
+                                                           LineBreakMode="WordWrap" MaxLines="2" FontSize="16"></Label>
+                                                </Grid>
 
-                                            <Image HeightRequest="70" WidthRequest="50" Margin="10,5"
-                                                       Source="{Binding MangaImage}" 
-                                                       Aspect="AspectFill" 
-                                                       Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"/>
-
-                                            <Label Text="{Binding MangaName}" TextColor="Black" 
-                                                       FontSize="16" FontAttributes="Bold"
-                                                       Grid.Column="1" Grid.Row="0"/>
-                                            <!--<ScrollView Grid.Row="1" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                                                <StackLayout Orientation="Horizontal" Spacing="10" BindableLayout.ItemsSource="{Binding categories}">
-                                                    <BindableLayout.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <pv:PancakeView CornerRadius="15" Margin="1,10,0,10" HasShadow="True" BackgroundColor="White">
-                                                                <pv:PancakeView.GestureRecognizers>
-                                                                    <TapGestureRecognizer Tapped=""/>
-                                                                </pv:PancakeView.GestureRecognizers>
-                                                                <VisualStateManager.VisualStateGroups>
-                                                                    <VisualStateGroup x:Name="CommonStates">
-                                                                        <VisualState x:Name="Normal">
-                                                                            <VisualState.Setters>
-                                                                                <Setter Property="BackgroundGradientStops" Value="{x:Null}"/>
-                                                                            </VisualState.Setters>
-                                                                        </VisualState>
-                                                                        <VisualState x:Name="Selected">
-                                                                            <VisualState.Setters>
-                                                                                <Setter Property="BackgroundGradientStops">
-                                                                                    <Setter.Value>
-                                                                                        <pv:GradientStopCollection>
-                                                                                            <pv:GradientStop Color="#FF4157" Offset="0" />
-                                                                                            <pv:GradientStop Color="#FF4359" Offset="0.5" />
-                                                                                            <pv:GradientStop Color="#FE93C5" Offset="1" />
-                                                                                        </pv:GradientStopCollection>
-                                                                                    </Setter.Value>
-                                                                                </Setter>
-                                                                                <Setter Property="BackgroundGradientAngle" Value="270"/>
-                                                                            </VisualState.Setters>
-                                                                        </VisualState>
-                                                                    </VisualStateGroup>
-                                                                </VisualStateManager.VisualStateGroups>
-                                                                <Label x:Name="PropertyTypeName" Padding="20,5" Text="{Binding categoryName}" TextColor="#707070" FontSize="15" FontFamily="ThemeFontRegular"/>
-                                                            </pv:PancakeView>
-                                                        </DataTemplate>
-                                                    </BindableLayout.ItemTemplate>
-                                                </StackLayout>
-                                            </ScrollView>-->
-                                            <Label Text="{Binding Description}" FontSize="15"
-                                                       Grid.Column="1" Grid.Row="2"/>
-                                        </Grid>
+                                            </Grid>
+                                        </Frame>
                                     </StackLayout>
                                 </SwipeView>
                             </DataTemplate>

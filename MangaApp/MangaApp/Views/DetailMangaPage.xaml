@@ -92,16 +92,16 @@
                         <StackLayout Spacing="15" >
                             <StackLayout Orientation="Horizontal" Spacing="15">
                                 <StackLayout Orientation="Horizontal" Spacing="10">
-                                    <Image WidthRequest="16" Source="bed.png"/>
-                                    <Label Text="{Binding Manga.Description}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
+                                    <Image WidthRequest="16" Source="heartIcon.png"/>
+                                    <Label Text="{Binding Manga.Liked}" FontSize="16" FontFamily="ThemeFontRegular" TextColor="#707070"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal" Spacing="10">
-                                    <Image WidthRequest="16" Source="shower.png"/>
-                                    <Label Text="{Binding Manga.Description}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
+                                    <Image WidthRequest="16" Source="heartIcon.png"/>
+                                    <Label Text="{Binding Manga.Liked}" FontSize="16" FontFamily="ThemeFontRegular" TextColor="#707070"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal" Spacing="10">
-                                    <Image WidthRequest="16" Source="square.png"/>
-                                    <Label Text="{Binding Manga.Description}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
+                                    <Image WidthRequest="16" Source="userIcon1.png"/>
+                                    <Label Text="{Binding Manga.Liked}" FontSize="16" FontFamily="ThemeFontRegular" TextColor="#707070"/>
                                 </StackLayout>
                             </StackLayout>
                         </StackLayout>
