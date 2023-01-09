@@ -74,21 +74,29 @@ namespace MangaApp.Views
             var apires = await client.PostAsync(host.url+"api/user/AddUser", noidung);
             string userID = await apires.Content.ReadAsStringAsync();
             User.userID = int.Parse(userID);
-                    Preferences.Set("userID", int.Parse(userID));
-                    await DisplayAlert("User id cua ban", Preferences.Get("userID", 0).ToString(), "ok");
-
             Preferences.Set("userID", int.Parse(userID));
-           
-                await Shell.Current.GoToAsync(state: "//AboutPage");
+                    if (int.Parse(userID) != 0)
+                    {
+                        await DisplayAlert("User id cua ban", Preferences.Get("userID", 0).ToString(), "ok");
+
+                        Preferences.Set("userID", int.Parse(userID));
+
+                        await Shell.Current.GoToAsync(state: "//AboutPage");
+                    }
+                    else
+                    {
+                        await DisplayAlert("Register Failed!", "Your email/password is invalid.", "yes");
+
+                    }
                 }
                 else
                 {
-                    DisplayAlert("Register Failed!", "Your email/password is invalid.", "yes");
+                    await DisplayAlert("Register Failed!", "Your email/password is invalid.", "yes");
 
                 }
             }
             else
-                DisplayAlert("Register Failed!", "Please fill all your inputs.", "yes");
+               await DisplayAlert("Register Failed!", "Please fill all your inputs.", "yes");
 
         }
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)

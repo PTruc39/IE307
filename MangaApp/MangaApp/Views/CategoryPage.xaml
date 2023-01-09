@@ -2,13 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+              xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             
              x:Class="MangaApp.Views.CategoryPage">
     <ContentPage.Content>
         <StackLayout>
             <Grid 
           ColumnDefinitions="*,Auto" VerticalOptions="StartAndExpand" Padding="5,10,10,5">
                 <Entry Grid.Column="0" Placeholder="Search" TextColor="Black" FontSize="15" TextChanged="Entry_TextChanged" x:Name="srch"
-                           FontFamily="ThemeFontRegular" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                           FontFamily="ThemeFontRegular" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Completed="srch_Completed">
                 </Entry>
                 <Button Grid.Column="1"  Clicked="Button_Clicked"
                         BackgroundColor="{StaticResource Primary}" CornerRadius="9" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="60" HeightRequest="50" ImageSource="search.png"/>
@@ -20,7 +22,7 @@
                     Title="Search by Category"
                     TitleColor="{StaticResource Primary}"
                     ItemDisplayBinding="{Binding categoryName}"
-                    FontSize="24"
+                    FontSize="18"
                     SelectedIndexChanged="categoryPicker_SelectedIndexChanged"
              />
             <CollectionView Grid.ColumnSpan="2" Grid.Row="3" HorizontalScrollBarVisibility="Never"
@@ -30,25 +32,30 @@
                 HeightRequest="460">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" Span="2"
-                                     VerticalItemSpacing="5"
-                                     HorizontalItemSpacing="5"
+                                     VerticalItemSpacing="1"
                         ></GridItemsLayout>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout Padding="2,10,20,30">
-                            <Frame Padding="20,10,20,30" WidthRequest="220" HeightRequest="320" VerticalOptions="FillAndExpand" CornerRadius="20" HorizontalOptions="Start" HasShadow="False" >
-                                <Grid RowDefinitions="*,Auto,30" ColumnDefinitions="*,Auto">
-                                    <Frame Grid.ColumnSpan="2" Grid.Row="0" IsClippedToBounds="True" CornerRadius="25" HasShadow="False" Padding="0">
+                        <StackLayout Padding="8,10,15,10">
+                            <Frame Padding="15,5,20,0" WidthRequest="220" HeightRequest="320" VerticalOptions="FillAndExpand" CornerRadius="20" HorizontalOptions="Start" HasShadow="False" >
+                                <pv:PancakeView CornerRadius="20" HasShadow="True" BackgroundColor="White">
+                                    <Grid RowDefinitions="*,Auto,35" ColumnDefinitions="*,Auto">
+                                    <Frame Grid.ColumnSpan="2" Grid.Row="0" IsClippedToBounds="True" CornerRadius="20" HasShadow="False" Padding="0">
                                         <Image Source="{Binding MangaImage}" Aspect="AspectFill" />
                                     </Frame>
-                                    <Label Grid.Column="0" Grid.Row="1" Text="{Binding MangaName}" FontAttributes="Bold" Padding="0,10,0,0"/>
-                                    <Label Grid.Column="0" Grid.Row="2" Text="{Binding Description}" TextColor="{StaticResource Primary}" FontAttributes="Bold"/>
-                                    <Button Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" 
-                                            ImageSource="Heart" HorizontalOptions="End" Clicked="MenuItem_Clicked_1"
+                                    <Label Grid.Column="0" Grid.Row="1" Text="{Binding MangaName}" FontAttributes="Bold" Padding="5,0,0,0"/>
+                                    <Button Grid.Column="1" Grid.Row="1"
+                                            ImageSource="heartblack.png" HorizontalOptions="End" Clicked="MenuItem_Clicked_1"
                                             WidthRequest="35" HeightRequest="35" CornerRadius="8" CommandParameter="{Binding .}"
                                             VerticalOptions="Center"  BackgroundColor="{StaticResource Primary}"/>
+                                    <Button Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Text="Read Now!"
+                                            ImageSource="Heart"  Clicked="Navigate_Tapped"
+                                            HeightRequest="40" 
+                                             CornerRadius="20" CommandParameter="{Binding .}"
+                                             BackgroundColor="{StaticResource Primary}"/>
                                 </Grid>
+                                </pv:PancakeView>
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer  CommandParameter="{Binding .}" x:Name="Navigate" Tapped="Navigate_Tapped"/>
                                 </Frame.GestureRecognizers>
