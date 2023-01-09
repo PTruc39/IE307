@@ -9,7 +9,7 @@ namespace MangaApp
 
         //public string url = "http://172.30.208.45/MangaApi/";
 
-        public string url = "http://mangaappapi.somee.com/";
+        //public string url = "http://mangaappapi.somee.com/";
 
     }
 }
