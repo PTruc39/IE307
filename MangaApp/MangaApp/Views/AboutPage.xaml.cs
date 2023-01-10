@@ -224,6 +224,12 @@ namespace MangaApp.Views
         {
             Navigation.PushAsync(new Notification());
         }
+
+        private void Gotonsrch_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CategoryPage());
+
+        }
     }
     /*private void Button_Clicked(object sender, EventArgs e)
     {
