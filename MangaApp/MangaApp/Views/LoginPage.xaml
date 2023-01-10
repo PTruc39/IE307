@@ -18,8 +18,9 @@
             </Grid.RowDefinitions>
             <Image Grid.Row="0" Margin="0,10,0,0" Source="Logo.png" Aspect="AspectFit" HeightRequest="120" WidthRequest="30"></Image>
             <Frame Grid.Row="1" Margin="20,10" BorderColor="#FF4359" HasShadow="True"  CornerRadius="50" >
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="20" Padding="20">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="15" Padding="20,10,20,0">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
@@ -40,9 +41,11 @@
                         <Entry x:Name="password" Completed="password_Completed" BackgroundColor="{Binding ValidateColor}"  Placeholder="Password" IsPassword="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Entry>
                         <Label Text="Password has to be longer than 8 character" HorizontalTextAlignment="Center" TextColor="Red" IsVisible="False" x:Name="invalipass"/>
                     </StackLayout>
-
-                    <Button Grid.Row="5" Text="Register" BackgroundColor="#FF4359"  CornerRadius="20"  Clicked="Button_Clicked_1"></Button>
-                    <Label Grid.Row="6" Text="Aldready had an account? Go to Login!" FontAttributes="Bold" HorizontalOptions="CenterAndExpand">
+                    <StackLayout Grid.Row="5">
+                        <Entry x:Name="cfpassword" Completed="cfpassword_Completed" BackgroundColor="{Binding ValidateColor3}"  Placeholder="Confirm Password" IsPassword="True" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Entry>
+                    </StackLayout>
+                    <Button Grid.Row="6" Text="Register" BackgroundColor="#FF4359"  CornerRadius="20"  Clicked="Button_Clicked_1"></Button>
+                    <Label Grid.Row="7" Text="Aldready had an account? Go to Login!" FontAttributes="Bold" HorizontalOptions="CenterAndExpand">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer
                             Tapped="TapGestureRecognizer_Tapped"/>

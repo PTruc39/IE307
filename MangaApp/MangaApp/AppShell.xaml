@@ -36,13 +36,13 @@
     
     <TabBar>
         <ShellContent Title="Home" Icon="homeIcon.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
+        <ShellContent Title="Category" Icon="categoryIcon.png" ContentTemplate="{DataTemplate local:CategoryPage}" />
+        <ShellContent Title="Forum" Icon="forumIcon.png" ContentTemplate="{DataTemplate local:ForumPage}" />
 
         <Tab Title="My List" Icon="listIcon.png" >
             <ShellContent ContentTemplate="{DataTemplate local:FavoritePage}" Title="Favorite"/>
             <ShellContent ContentTemplate="{DataTemplate local:FollowMangaPage}" Title="Follow"/>
         </Tab>
-        <ShellContent Title="Category" Icon="categoryIcon.png" ContentTemplate="{DataTemplate local:CategoryPage}" />
-        <ShellContent Title="Forum" Icon="forumIcon.png" ContentTemplate="{DataTemplate local:ForumPage}" />
         <ShellContent Title="User" Icon="userIcon.png" ContentTemplate="{DataTemplate local:UserPage}" />
     </TabBar>
 

@@ -63,7 +63,7 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </RefreshView>
-                <Button Text="test" Clicked="Button_Clicked"></Button>
+                <!--<Button Text="test" Clicked="Button_Clicked"></Button>-->
         </StackLayout>
         </ScrollView>
     </ContentPage.Content>

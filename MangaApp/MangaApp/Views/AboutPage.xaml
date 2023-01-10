@@ -73,7 +73,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <CarouselView x:Name="Carousel" IndicatorView="IndicatorView"
+                    <CarouselView x:Name="Carousel" IndicatorView="IndicatorView" ItemsSource="{Binding Mangas3}"
                           HeightRequest="200">
                     <CarouselView.ItemTemplate>
                         <DataTemplate>

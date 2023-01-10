@@ -40,6 +40,11 @@ namespace MangaApp.Views
             get { return _employees; }
             set { _employees = value; OnPropertyChanged(); }
         }
+        public List<Manga> Mangas3
+        {
+            get { return _employees; }
+            set { _employees = value; OnPropertyChanged(); }
+        }
         public List<Category> Categorys
         {
             get { return _Categorys; }
@@ -80,13 +85,12 @@ namespace MangaApp.Views
             //lstdslh2.ItemsSource = dslh;
             //this.BindingContext = this;
         }
-        public async Task<int> GetCategory()
+        public async Task<List<Category>> GetCategory()
         {
             HttpClient http = new HttpClient();
             var kq = await http.GetStringAsync
                 (host.url + "api/category/GetCategory");
-            Categorys = JsonConvert.DeserializeObject<List<Category>>(kq);
-            return 0;
+            return await Task.FromResult(JsonConvert.DeserializeObject<List<Category>>(kq));
         }
         public async void getUser()
         {
@@ -104,10 +108,12 @@ namespace MangaApp.Views
             Task.Run(async () =>
             {
                 Mangas = await LayDSLoaiHoa();
+                Categorys = await GetCategory();
                 Mangas2 = Enumerable.Reverse(Mangas.Take(20)).ToList();
+                Mangas3 = Mangas.Take(5).ToList();
                 lstdslh.ItemsSource = Mangas.OrderByDescending(o => o.Liked).Take(10).ToList();
-                await GetCategory();
-                Carousel.ItemsSource = Mangas.Take(5);
+               
+                //Carousel.ItemsSource = Mangas.Take(5);
                 GetComment();
                 getUser();
             });

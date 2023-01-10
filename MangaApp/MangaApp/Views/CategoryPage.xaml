@@ -9,11 +9,11 @@
         <StackLayout>
             <Grid 
           ColumnDefinitions="*,Auto" VerticalOptions="StartAndExpand" Padding="5,10,10,5">
-                <Entry Grid.Column="0" Placeholder="Search" TextColor="Black" FontSize="15" TextChanged="Entry_TextChanged" x:Name="srch"
+                <Entry Grid.Column="0" Placeholder="Search by name" TextColor="Black" FontSize="15" TextChanged="Entry_TextChanged" x:Name="srch"
                            FontFamily="ThemeFontRegular" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Completed="srch_Completed">
                 </Entry>
                 <Button Grid.Column="1"  Clicked="Button_Clicked"
-                        BackgroundColor="{StaticResource Primary}" CornerRadius="9" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="60" HeightRequest="50" ImageSource="search.png"/>
+                        BackgroundColor="{StaticResource Primary}" CornerRadius="9" VerticalOptions="Center" HorizontalOptions="End" WidthRequest="60" HeightRequest="50" Text="Search"/>
 
                 <!-- Here add the code that is being explained in this block -->
 
