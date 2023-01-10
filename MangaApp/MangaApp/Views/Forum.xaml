@@ -5,7 +5,7 @@
 
     <ContentPage.Content>
         <StackLayout Padding="10,10,10,10">
-            <Label x:Name="test" Text="popopopopopojoshidbsufvbusfj"></Label>
+            <Label x:Name="test" Text="Change your Avatar!"></Label>
             <Image
                 x:Name="viewPhotoImage"
                 Aspect="AspectFill"

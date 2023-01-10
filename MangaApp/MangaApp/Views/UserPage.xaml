@@ -18,7 +18,11 @@
                                 CornerRadius="80" Margin="30,87,30,0" HasShadow="True" BackgroundColor="White" 
                                 Padding="0"
                                 Grid.Row="0" Grid.RowSpan="2">
-                    <Image HeightRequest="160" Source="avatar.jpg" Aspect="AspectFill"/>
+                    <Image HeightRequest="160" Source="avatar.jpg" Aspect="AspectFill">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="ChangeAvatar" Tapped="ChangeAvatar_Tapped"/>
+                        </Image.GestureRecognizers>
+                    </Image>
                 </pv:PancakeView>
                 <Image Source="bguser.jpg" Aspect="AspectFill" 
                        

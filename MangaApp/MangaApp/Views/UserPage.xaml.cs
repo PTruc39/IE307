@@ -138,5 +138,11 @@ namespace MangaApp.Views
             Preferences.Clear();
             Shell.Current.GoToAsync(state: "///LoginPage2");
         }
+
+        private async void ChangeAvatar_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Forum());
+
+        }
     }
 }

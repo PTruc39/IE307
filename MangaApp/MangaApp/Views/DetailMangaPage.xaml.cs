@@ -48,6 +48,21 @@ namespace MangaApp.Views
                 Heart.Source = "heartblack.png";
 
         }
+        public async Task<int> LayDSLoaiHoa()
+        {
+            var kq = await http.GetStringAsync
+                (host.url + "api/follow/GetFollowByUser?userID=" + User.userID.ToString());
+            var result = JsonConvert.DeserializeObject<List<Manga>>(kq);
+            if(result.Where(hotel => hotel.MangaID==this.Manga.MangaID).Count()!=0)
+            {
+                followlabel.Text = "Unfollow";
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
         public DetailMangaPage()
         {
             InitializeComponent();
@@ -81,6 +96,7 @@ namespace MangaApp.Views
             CheckFavorite(manga);
             GetComment(manga);
             GetCategoryByMangaID(manga.MangaID);
+            LayDSLoaiHoa();
         }
         public Manga Manga { get; set; }
         private void lstdslh_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -158,12 +174,27 @@ namespace MangaApp.Views
 
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
-            Follow favorite = new Follow();
-            favorite.mangaID = this.Manga.MangaID;
-            favorite.userID = User.userID;
-            var json = JsonConvert.SerializeObject(favorite);
-            var noidung = new StringContent(json, Encoding.UTF8, "application/json");
-            var apires = await http.PostAsync(host.url + "api/follow/AddFollow", noidung);
+            if (followlabel.Text == "Follow")
+            {
+                Follow favorite = new Follow();
+                favorite.mangaID = this.Manga.MangaID;
+                favorite.userID = User.userID;
+                var json = JsonConvert.SerializeObject(favorite);
+                var noidung = new StringContent(json, Encoding.UTF8, "application/json");
+                var apires = await http.PostAsync(host.url + "api/follow/AddFollow", noidung);
+                followlabel.Text = "Unfollow";
+            }
+            else
+            {
+                Follow favorite = new Follow();
+                favorite.mangaID = this.Manga.MangaID;
+                favorite.userID = User.userID;
+                var json = JsonConvert.SerializeObject(favorite);
+                var noidung = new StringContent(json, Encoding.UTF8, "application/json");
+                var apires = await http.PostAsync(host.url + "api/follow/DeleteFollow", noidung);
+                followlabel.Text = "Follow";
+
+            }
         }
         //private void ImgAddToWishlist_Tapped(object sender, EventArgs e)
         //{

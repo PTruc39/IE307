@@ -17,12 +17,12 @@ namespace MangaApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ForumPage : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //public event PropertyChangedEventHandler PropertyChanged;
+        //protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        }
+        //}
         int i = 1;
         HttpClient http = new HttpClient();
         public List<Blogs> dslh;

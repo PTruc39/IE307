@@ -91,18 +91,11 @@
                         </StackLayout>
                         <StackLayout Spacing="15" >
                             <StackLayout Orientation="Horizontal" Spacing="15">
+                                
                                 <StackLayout Orientation="Horizontal" Spacing="10">
-                                    <Image WidthRequest="16" Source="heartIcon.png"/>
-                                    <Label Text="{Binding Manga.Liked}" FontSize="16" FontFamily="ThemeFontRegular" TextColor="#707070"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal" Spacing="10">
-                                    <Image WidthRequest="16" Source="heartIcon.png"/>
-                                    <Label Text="{Binding Manga.Liked}" FontSize="16" FontFamily="ThemeFontRegular" TextColor="#707070"/>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal" Spacing="10">
-                                    <Image WidthRequest="16" Source="userIcon1.png"/>
-                                    <Label Text="{Binding Manga.Liked}" FontSize="16" FontFamily="ThemeFontRegular" TextColor="#707070"/>
+
                                     <Image WidthRequest="26" Source="heartpink.png"/>
+
                                     <Label Text="This manga has been liked by " VerticalOptions="Center"></Label>
                                     <Label Text="{Binding Manga.Liked}" VerticalOptions="Center" FontFamily="ThemeFontRegular" TextColor="{StaticResource Primary}"/>
                                     <Label Text="times!" VerticalOptions="Center"></Label>
