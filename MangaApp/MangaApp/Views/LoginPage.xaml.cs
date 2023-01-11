@@ -44,6 +44,19 @@ namespace MangaApp.Views
                 OnPropertyChanged();
             }
         }
+        public Color validateColor3 = Color.Transparent;
+        public Color ValidateColor3
+        {
+            get
+            {
+                return validateColor3;
+            }
+            set
+            {
+                validateColor3 = value;
+                OnPropertyChanged();
+            }
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -60,9 +73,9 @@ namespace MangaApp.Views
 
         async private void Button_Clicked_1(object sender, EventArgs e)
         {
-            if (isEmpty(email.Text, password.Text, username.Text))
+            if (isEmpty(email.Text, password.Text, username.Text, cfpassword.Text))
             {
-                if (isValidEmail(email.Text) && isPass(password.Text))
+                if (isValidEmail(email.Text) && isPass(password.Text) && isMatch(cfpassword.Text,password.Text))
                 {
                     Host host = new Host();
             User user = new User();
@@ -122,13 +135,21 @@ namespace MangaApp.Views
             else
                 return (true);
         }
-        public static bool isEmpty(string inputEmail = null, string inputPass = null, string inputName = null)
+        public static bool isEmpty(string inputEmail = null, string inputPass = null, string inputName = null, string inputPasscf = null)
         {
 
-            if (inputEmail is null || inputPass is null || inputName is null)
+            if (inputEmail is null || inputPass is null || inputName is null || inputPasscf is null)
                 return (false);
             else
                 return (true);
+        }
+
+        public static bool isMatch(string inputPasscf , string inputPass)
+        {
+
+            if (inputPass == inputPasscf)
+                return (true);
+            else return false;
         }
 
         private void password_Completed(object sender, EventArgs e)
@@ -170,6 +191,21 @@ namespace MangaApp.Views
             email.Text = "";
             username.Text = "";
             password.Text = "";
+        }
+
+        private void cfpassword_Completed(object sender, EventArgs e)
+        {
+            if (!(cfpassword.Text is null) && !(password.Text is null))
+            {
+                if (isMatch(cfpassword.Text,password.Text))
+                {
+                    ValidateColor3 = Color.Transparent;
+                }
+                else
+                {
+                    ValidateColor3 = Color.Red;
+                }
+            }
         }
     }
 }

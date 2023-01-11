@@ -5,62 +5,62 @@
              x:Class="MangaApp.Views.FavoritePage"
              Title="My List">
     <ContentPage.Content>
-        <Grid>
-                <RefreshView x:Name="refreshCV" Refreshing="refreshCV_Refreshing">
-                    <CollectionView x:Name="lstFavourites" HeightRequest="80"
+        <Grid RowDefinition="Auto">
+            <RefreshView x:Name="refreshCV" Refreshing="refreshCV_Refreshing">
+                <CollectionView x:Name="lstFavourites" HeightRequest="80"
                             SelectionMode="Single" SelectionChanged="lstFavourites_SelectionChanged">
-                        <CollectionView.EmptyView>
-                            <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="You don't have any favorite mangas."/>
-                        </CollectionView.EmptyView>
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout Orientation="Vertical" Span="1"
+                    <CollectionView.EmptyView>
+                        <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="You don't have any favorite mangas."/>
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="1"
                                          VerticalItemSpacing="5"></GridItemsLayout>
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <SwipeView>
-                                    <SwipeView.RightItems>
-                                        <SwipeItems SwipeBehaviorOnInvoked="RemainOpen">
-                                            <SwipeItemView BackgroundColor="#fff1f1"
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems SwipeBehaviorOnInvoked="RemainOpen">
+                                        <SwipeItemView BackgroundColor="#fff1f1"
                                                            CommandParameter="{Binding .}"
                                                            Invoked="OnDeleteSwipeItemInvoked">
-                                                <StackLayout Orientation="Vertical" WidthRequest="100">
-                                                    <StackLayout Orientation="Vertical" Padding="20,30,20,20"
+                                            <StackLayout Orientation="Vertical" WidthRequest="100">
+                                                <StackLayout Orientation="Vertical" Padding="20,30,20,20"
                                                                  VerticalOptions="Center" HorizontalOptions="Center">
-                                                        <Image Source="deleteIcon.png" HeightRequest="36" WidthRequest="27"/>
-                                                        <Label Text="Delete" TextColor="Black" FontSize="20"/>
-                                                    </StackLayout>
+                                                    <Image Source="deleteIcon.png" HeightRequest="36" WidthRequest="27"/>
+                                                    <Label Text="Delete" TextColor="Black" FontSize="20"/>
                                                 </StackLayout>
-                                            </SwipeItemView>
-                                        </SwipeItems>
-                                    </SwipeView.RightItems>
+                                            </StackLayout>
+                                        </SwipeItemView>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
 
-                                        <Frame x:Name="frame" HasShadow="True" CornerRadius="20" HeightRequest="120" Padding="0">
-                                            <Grid HorizontalOptions="FillAndExpand" BackgroundColor="White" VerticalOptions="FillAndExpand" >
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                                </Grid.ColumnDefinitions>
-                                                <Image Grid.Column="0" Source="{Binding MangaImage}" 
+                                <Frame x:Name="frame" HasShadow="True" CornerRadius="20" HeightRequest="120" Padding="0">
+                                    <Grid HorizontalOptions="FillAndExpand" BackgroundColor="White" VerticalOptions="FillAndExpand" >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Grid.Column="0" Source="{Binding MangaImage}" 
                                                        HeightRequest="100" WidthRequest="100" Aspect="Fill"></Image>
-                                                <Grid Grid.Column="1" Padding="20, 10" RowDefinitions="*, *">
-                                                    <Label Text="{Binding MangaName}" FontAttributes="Bold" 
+                                        <Grid Grid.Column="1" Padding="20, 10" RowDefinitions="*, *">
+                                            <Label Text="{Binding MangaName}" FontAttributes="Bold" 
                                                            HorizontalOptions="FillAndExpand" TextColor="Black"
                                                            VerticalOptions="Start"
                                                            FontSize="20"></Label>
-                                                    <Label Grid.Row="1" Text="{Binding Description}" HorizontalOptions="FillAndExpand" 
+                                            <Label Grid.Row="1" Text="{Binding Description}" HorizontalOptions="FillAndExpand" 
                                                            VerticalOptions="Start" TextColor="Black"
                                                            LineBreakMode="WordWrap" MaxLines="2" FontSize="16"></Label>
-                                                </Grid>
+                                        </Grid>
 
-                                            </Grid>
-                                        </Frame>
+                                    </Grid>
+                                </Frame>
 
-                                </SwipeView>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-                </RefreshView>
-        </Grid>
+                            </SwipeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+            </Grid>
     </ContentPage.Content>
 </ContentPage>

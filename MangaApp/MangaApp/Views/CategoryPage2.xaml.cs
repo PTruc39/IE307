@@ -51,7 +51,7 @@ namespace MangaApp.Views
             GetCategory(i);
             DisplayAlert("a", i.ToString(), "a");
             //autopicked(i);
-            GetManga();
+            //GetManga();
         }
 
         private void invoke(object v)

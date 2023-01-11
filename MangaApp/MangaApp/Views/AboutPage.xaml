@@ -19,7 +19,11 @@
                 <Image Grid.Column="2" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="End" Source="search.png" 
                                HeightRequest="23"
                                WidthRequest="23"
-                               TranslationX="60"/>
+                               TranslationX="60">
+                    <Image.GestureRecognizers>
+                    <TapGestureRecognizer x:Name="Gotonsrch" Tapped="Gotonsrch_Tapped"/>
+                </Image.GestureRecognizers>
+                </Image>
                 <Image Grid.Column="3" Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="End" Source="notify_2.png" IsVisible="false"
                                HeightRequest="25" x:Name="ntfno"
                                WidthRequest="25"
@@ -69,7 +73,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <CarouselView x:Name="Carousel" IndicatorView="IndicatorView"
+                    <CarouselView x:Name="Carousel" IndicatorView="IndicatorView" ItemsSource="{Binding Mangas3}"
                           HeightRequest="200">
                     <CarouselView.ItemTemplate>
                         <DataTemplate>
@@ -159,7 +163,7 @@
                                             <pv:PancakeView CornerRadius="13" Padding="15,5" BackgroundColor="Black" Opacity="0.5" 
                                                     HorizontalOptions="Start" VerticalOptions="Start">
                                                 <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Start">
-                                                    <Image HeightRequest="12" WidthRequest="12" Source="location.png" VerticalOptions="Center" HorizontalOptions="Start"/>
+                                                            <Image HeightRequest="12" WidthRequest="12" Source="userIcon1.png" VerticalOptions="Center" HorizontalOptions="Start"/>
                                                     <Label Text="{Binding MangaName}" FontSize="12" TextColor="White" FontFamily="ThemeFontRegular" VerticalOptions="Center"/>
                                                 </StackLayout>
                                             </pv:PancakeView>
@@ -167,15 +171,11 @@
                                         <StackLayout Grid.Row="1" Spacing="5" Margin="20,5">
                                             <Label Text="{Binding MangaName}" FontSize="15" FontFamily="ThemeFontBold" TextColor="#515151"/>
                                             <StackLayout Orientation="Horizontal" Spacing="15">
-                                                <StackLayout Orientation="Horizontal" Spacing="10">
+                                                        <StackLayout Orientation="Horizontal" Spacing="10">
                                                             <Image WidthRequest="16" Source="heartIcon.png"/>
-                                                    <Label Text="{Binding Liked}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
-                                                </StackLayout>
-                                                <StackLayout Orientation="Horizontal" Spacing="10">
-                                                            <Image WidthRequest="16" Source="heartIcon.png"/>
-                                                    <Label Text="{Binding Liked}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
-                                                </StackLayout>
-                                                <StackLayout Orientation="Horizontal" Spacing="10">
+                                                            <Label Text="{Binding Liked}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Horizontal" Spacing="10">
                                                     <Image WidthRequest="16" Source="userIcon1.png"/>
                                                     <Label Text="{Binding MangaName}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
                                                 </StackLayout>
@@ -298,7 +298,7 @@
                             <Label Text="TOP 10 MANGA FAVORITE" TextColor="#515151" FontSize="15" FontFamily="ThemeFontBold"/>
                         </StackLayout>
                     </StackLayout>
-                    <ListView x:Name="lstdslh"   Grid.Row="6"
+                        <ListView x:Name="lstdslh"   Grid.Row="6" VerticalScrollBarVisibility="Never"
                       RowHeight="150"
                       IsPullToRefreshEnabled="True"
                       ItemSelected="lstdslh_ItemSelected_1"

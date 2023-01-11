@@ -88,7 +88,7 @@ namespace MangaApp.Views
                 GetComment(this.Manga);
             }
             else
-                await DisplayAlert("KHONG duoc xoa", "KHONG", "KHONG", "KHONGGG");
+                await DisplayAlert("Warning!", "You can't delete this comment!", "OK");
 
         }
     }
