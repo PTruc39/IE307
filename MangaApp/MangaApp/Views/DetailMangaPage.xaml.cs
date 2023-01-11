@@ -63,10 +63,10 @@ namespace MangaApp.Views
                 return 0;
             }
         }
-        public DetailMangaPage()
-        {
-            InitializeComponent();
-        }
+        //public DetailMangaPage()
+        //{
+        //    InitializeComponent();
+        //}
         async void GetChapterList(Manga manga)
         {
             var kq = await http.GetStringAsync

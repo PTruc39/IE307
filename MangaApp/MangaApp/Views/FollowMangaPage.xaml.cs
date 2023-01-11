@@ -40,14 +40,15 @@ namespace MangaApp.Views
             bool answer = await DisplayAlert("Warning", "Do you really want to delete this comic?", "Yes", "No");
             if (answer)
             {
-                SwipeItem swipeItem = (SwipeItem)sender;
-                Manga manga = swipeItem.CommandParameter as Manga;
+                SwipeItemView swipeItemView = (SwipeItemView)sender;
+                Manga manga = swipeItemView.CommandParameter as Manga;
                 Favorite favorite = new Favorite();
                 favorite.mangaID = manga.MangaID;
                 favorite.userID = User.userID;
                 var json = JsonConvert.SerializeObject(favorite);
                 var noidung = new StringContent(json, Encoding.UTF8, "application/json");
-                var apires = await client.PostAsync(host.url + "api/user/DeleteFollow", noidung);
+                var apires = await client.PostAsync(host.url + "api/follow/DeleteFollow", noidung);
+                LayDSLoaiHoa();
             }
         }
         private void Button_Clicked(object sender, EventArgs e)
@@ -73,6 +74,12 @@ namespace MangaApp.Views
         {
             var manga = e.CurrentSelection.FirstOrDefault() as Manga;
             await Navigation.PushAsync(new DetailMangaPage(manga));
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            LayDSLoaiHoa();
         }
     }
 }

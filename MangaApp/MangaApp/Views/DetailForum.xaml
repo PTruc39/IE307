@@ -4,7 +4,10 @@
              xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"           
              x:Class="MangaApp.Views.DetailForum"
              Title="Post"
-             NavigationPage.HasNavigationBar="False">
+             Shell.TabBarIsVisible="False">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IconOverride="back.png" Command="{Binding GoBackCommand}"/>
+    </Shell.BackButtonBehavior>
     <ContentPage.Content>
         <RefreshView>
         <Grid RowDefinitions="auto, 60">
@@ -84,7 +87,7 @@
                                 </Grid>-->
                                 <CollectionView x:Name="lstdslh" Margin="15" SelectionMode="Single">
                                     <CollectionView.EmptyView>
-                                        <Label HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Loading Data"/>
+                                        <Image Margin="0" VerticalOptions="Start" Source="comments.jpg" Aspect="AspectFit"/>
                                     </CollectionView.EmptyView>
                                     <CollectionView.ItemsLayout>
                                         <GridItemsLayout HorizontalItemSpacing="15" VerticalItemSpacing="15" Orientation="Vertical" Span="1"></GridItemsLayout>

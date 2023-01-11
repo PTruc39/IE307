@@ -5,8 +5,7 @@
              x:Class="MangaApp.Views.FavoritePage"
              Title="My List">
     <ContentPage.Content>
-        <ScrollView>
-        <StackLayout>
+        <Grid>
                 <RefreshView x:Name="refreshCV" Refreshing="refreshCV_Refreshing">
                     <CollectionView x:Name="lstFavourites" HeightRequest="80"
                             SelectionMode="Single" SelectionChanged="lstFavourites_SelectionChanged">
@@ -34,9 +33,8 @@
                                                 </StackLayout>
                                             </SwipeItemView>
                                         </SwipeItems>
-
                                     </SwipeView.RightItems>
-                                    <StackLayout Padding="5" >
+
                                         <Frame x:Name="frame" HasShadow="True" CornerRadius="20" HeightRequest="120" Padding="0">
                                             <Grid HorizontalOptions="FillAndExpand" BackgroundColor="White" VerticalOptions="FillAndExpand" >
                                                 <Grid.ColumnDefinitions>
@@ -57,14 +55,12 @@
 
                                             </Grid>
                                         </Frame>
-                                    </StackLayout>
+
                                 </SwipeView>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </RefreshView>
-                <Button Text="test" Clicked="Button_Clicked"></Button>
-        </StackLayout>
-        </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

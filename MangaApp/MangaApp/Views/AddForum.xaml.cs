@@ -35,7 +35,7 @@ namespace MangaApp.Views
             var json = JsonConvert.SerializeObject(blog);
             var noidung = new StringContent(json, Encoding.UTF8, "application/json");
             var apires = await client.PostAsync(host.url + "api/blog/AddBlog", noidung);
-            
+            await Navigation.PushAsync(new DetailForum(blog));
         }
     }
 }

@@ -40,6 +40,7 @@ namespace MangaApp.Views
         {
             InitializeComponent();
             LayDSLoaiHoa();
+            this.BindingContext = this;
         }
        
         //private void lstdslh_itemselected(object sender, SelectionChangedEventArgs e)
@@ -65,14 +66,16 @@ namespace MangaApp.Views
             bool answer = await DisplayAlert("Warning", "Do you really want to delete this comic?", "Yes", "No");
             if (answer)
             {
-                SwipeItem swipeItem = (SwipeItem)sender;
-                Manga manga = swipeItem.CommandParameter as Manga;
+                SwipeItemView swipeItemView = (SwipeItemView)sender;
+                Manga manga = swipeItemView.CommandParameter as Manga;
                 Favorite favorite = new Favorite();
                 favorite.mangaID = manga.MangaID;
                 favorite.userID = User.userID;
+                await DisplayAlert("Warning", "userID: " + favorite.userID.ToString() + " mangaID " + favorite.mangaID.ToString(), "Yes", "No");
                 var json = JsonConvert.SerializeObject(favorite);
                 var noidung = new StringContent(json, Encoding.UTF8, "application/json");
                 var apires = await client.PostAsync(host.url + "api/user/DeleteFavorite", noidung);
+                LayDSLoaiHoa();
             }
         }
         private void Button_Clicked(object sender, EventArgs e)
@@ -85,6 +88,7 @@ namespace MangaApp.Views
         {
             Manga manga = (Manga)lstFavourites.SelectedItem;
             Navigation.PushAsync(new DetailMangaPage(manga));
+
         }
 
         private void refreshCV_Refreshing(object sender, EventArgs e)
@@ -100,10 +104,10 @@ namespace MangaApp.Views
             await Navigation.PushAsync(new DetailMangaPage(manga));
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            LayDSLoaiHoa();
-        }
+        //protected override void OnAppearing()
+        //{
+        //    base.OnAppearing();
+        //    LayDSLoaiHoa();
+        //}
     }
 }

@@ -8371,16 +8371,16 @@ namespace MangaApp.Droid
 			public const int back = 2131165279;
 			
 			// aapt resource value: 0x7F070060
-			public const int bed = 2131165280;
+			public const int bguser = 2131165280;
 			
 			// aapt resource value: 0x7F070061
-			public const int bguser = 2131165281;
+			public const int bookmark = 2131165281;
 			
 			// aapt resource value: 0x7F070062
-			public const int bookmark = 2131165282;
+			public const int categoryIcon = 2131165282;
 			
 			// aapt resource value: 0x7F070063
-			public const int categoryIcon = 2131165283;
+			public const int comments = 2131165283;
 			
 			// aapt resource value: 0x7F070064
 			public const int deleteIcon = 2131165284;

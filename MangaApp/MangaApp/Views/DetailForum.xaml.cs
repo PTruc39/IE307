@@ -8,6 +8,7 @@ using MangaApp.Models;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Windows.Input;
 
 namespace MangaApp.Views
 {
@@ -20,10 +21,13 @@ namespace MangaApp.Views
         public Blogs blogs { get; set; }
         async void GetComment(Blogs blog)
         {
-            var kq = await http.GetStringAsync
-                (host.url + "api/comment/GetCommentByManga?MangaID=&BlogID=" + blog.BlogID.ToString());
-            cmt = JsonConvert.DeserializeObject<List<Comment>>(kq);
-            lstdslh.ItemsSource = cmt;
+            if (blog.BlogID != 0)
+            {
+                var kq = await http.GetStringAsync
+                    (host.url + "api/comment/GetCommentByManga?MangaID=&BlogID=" + blog.BlogID.ToString());
+                cmt = JsonConvert.DeserializeObject<List<Comment>>(kq);
+                lstdslh.ItemsSource = cmt;
+            }
         }
         public DetailForum(Blogs blog)
         {
@@ -34,9 +38,14 @@ namespace MangaApp.Views
             user.Text = blog.userName;
             GetComment(blog);
             blogs = blog;
+            if (Device.RuntimePlatform == "Android")
+            {
+                NavigationPage.SetHasBackButton(this, false);
+            }
 
         }
 
+        public ICommand GoBackCommand => new Command (async() => await Navigation.PopToRootAsync());
         private void MenuItem_Clicked(object sender, EventArgs e)
         {
 
@@ -57,5 +66,11 @@ namespace MangaApp.Views
             yourCmt.Text = "";
             GetComment(blogs);
         }
+
+        private async void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopToRootAsync();
+        }
+
     }
 }
