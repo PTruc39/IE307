@@ -36,9 +36,9 @@ namespace MangaApp.Views
             userinfor = JsonConvert.DeserializeObject<List<User>>(kq);
             username.Text = userinfor[0].userName;
             email.Text = userinfor[0].email;
-            password.Text = userinfor[0].password;
+            //password.Text = userinfor[0].password;
             email.TextColor = Color.Black;
-            password.TextColor = Color.Black;
+            //password.TextColor = Color.Black;
         }
         public UserPage()
         {

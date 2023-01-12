@@ -31,7 +31,7 @@
 
                     <Grid Margin="50,10">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
@@ -56,13 +56,13 @@
                         <Entry x:Name="email" IsEnabled="False" 
                        FontSize="18" FontAttributes="Bold"                     
                        Grid.Row="1" Grid.Column="1"/>
-                        <Label Text="Password :" TextColor="Black"
+                        <!--<Label Text="Password :" TextColor="Black"
                        FontSize="18" FontAttributes="Bold"
                        VerticalOptions="Center"                                            
                        Grid.Row="2" Grid.Column="0"/>
                         <Entry x:Name="password" IsPassword="True" 
                        FontSize="18" FontAttributes="Bold"                     
-                       IsEnabled="False" Grid.Row="2" Grid.Column="1"/>
+                       IsEnabled="False" Grid.Row="2" Grid.Column="1"/>-->
                     </Grid>
 
                     <!--<Button HorizontalOptions="Center" VerticalOptions="Center"

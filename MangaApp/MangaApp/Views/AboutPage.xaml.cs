@@ -23,6 +23,11 @@ namespace MangaApp.Views
         public List<Manga> dslh;
         public List<Manga> _employees;
         public List<Category> _Categorys;
+        public  List<Manga> GetNElement(List<Manga> a, int n)
+        {
+            List<Manga> b = a.Take(5).ToList();
+            return b;
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -110,9 +115,9 @@ namespace MangaApp.Views
                 Mangas = await LayDSLoaiHoa();
                 Categorys = await GetCategory();
                 Mangas2 = Enumerable.Reverse(Mangas.Take(20)).ToList();
-                Mangas3 = Mangas.Take(5).ToList();
                 lstdslh.ItemsSource = Mangas.OrderByDescending(o => o.Liked).Take(10).ToList();
-               
+                Mangas3 = GetNElement(Mangas, 5);
+
                 //Carousel.ItemsSource = Mangas.Take(5);
                 GetComment();
                 getUser();

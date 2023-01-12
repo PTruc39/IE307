@@ -193,7 +193,7 @@
                     <StackLayout Grid.Row="3">
                         <StackLayout Orientation="Horizontal" Spacing="10">
                             <Image Source="fire_icon.png" HorizontalOptions="End" HeightRequest="20" WidthRequest="20" VerticalOptions="Start"/>
-                            <Label Text="NEWEST MANGA" TextColor="#515151" FontSize="15" FontFamily="ThemeFontBold"/>
+                            <Label Text="NEWEST MANGAS" TextColor="#515151" FontSize="15" FontFamily="ThemeFontBold"/>
                          </StackLayout>
                         <!--<ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
                             <StackLayout Orientation="Horizontal" Spacing="10" BindableLayout.ItemsSource="{Binding Categorys}">
@@ -274,10 +274,7 @@
                                                             <Image WidthRequest="16" Source="heartIcon.png"/>
                                                         <Label Text="{Binding Liked}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
                                                     </StackLayout>
-                                                    <StackLayout Orientation="Horizontal" Spacing="10">
-                                                            <Image WidthRequest="16" Source="heartIcon.png"/>
-                                                        <Label Text="{Binding Liked}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>
-                                                    </StackLayout>
+                                                    
                                                     <StackLayout Orientation="Horizontal" Spacing="10">
                                                             <Image WidthRequest="16" Source="userIcon1.png"/>
                                                         <Label Text="{Binding MangaName}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#707070"/>

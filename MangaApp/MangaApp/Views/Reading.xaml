@@ -80,7 +80,7 @@
                 <Button Text="Prev chapter" Margin="10,5"
                 Clicked="Button_Clicked_back"  FontSize="12"/>
                 <Picker Grid.Column="1" x:Name="categoryPicker"
-                    Title="PICKKK"
+                    Title="Select a chapter"
                     TitleColor="Blue"
                     ItemDisplayBinding="{Binding ChapterName}"
                     FontSize="13"

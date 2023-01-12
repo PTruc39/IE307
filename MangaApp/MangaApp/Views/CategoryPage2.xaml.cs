@@ -49,7 +49,7 @@ namespace MangaApp.Views
         {
             InitializeComponent();
             GetCategory(i);
-            DisplayAlert("a", i.ToString(), "a");
+            //DisplayAlert("a", i.ToString(), "a");
             //autopicked(i);
             //GetManga();
         }
